@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="schoolApp" ng-strict-di>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="styles/main.css"/>
+        <title>Σχολικός κατάλογος</title>
+    </head>
+    
+    <body>
+        <navbar></navbar>
+        <div class="container">
+            <breadcrumb></breadcrumb>
+            <div ng-view></div>
+        </div>
+        
+        <script type="text/javascript" src="scripts/vendor.js"></script>
+        <script type="text/javascript" src="scripts/application.js"></script>
+    </body>
+</html>

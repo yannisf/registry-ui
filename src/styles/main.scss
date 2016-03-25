@@ -1,0 +1,241 @@
+@import '_bootstrap';
+@import '../../bower_components/components-font-awesome/css/font-awesome';
+
+$boy-color: #3399ff;
+$girl-color: #ff33ff;
+$preschool-a-color: #ff8000;
+$preschool-b-color: #66cc00;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.clabel {
+    font-weight: bold;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.submessage {
+  font-size: larger;
+  font-style: italic;
+  margin: 1em;
+}
+
+.collaspable {
+  @extend .clickable;
+  @extend .glyphicon;
+  font-size: small;
+}
+
+.collapsable-open {
+  @extend .collaspable;
+  @extend .glyphicon-triangle-right;
+}
+
+.collapsable-close {
+  @extend .collaspable;
+  @extend .glyphicon-triangle-bottom;
+}
+
+.loader-input {
+  position: relative;
+  padding-right: 30px;
+}
+
+.loader-img {
+  @extend .loader-small;
+  position: absolute;
+  right: 30px;
+  top: 12px;
+}
+
+.loader-small {
+  width: 16px;
+  height: 16px;
+}
+
+.loader-medium {
+  width: 32px;
+  height: 32px;
+}
+
+.loader-large {
+  width: 64px;
+  height: 64px;
+}
+
+.loader-area {
+  @extend .center-block;
+  @extend .loader-large;
+  margin-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.phone-type {
+  @extend .label;
+  @extend .label-default;
+}
+
+.child-list-col1 {
+  width: 30%
+}
+
+.child-list-col2 {
+  width: 30%
+}
+
+.child-list-col3 {
+  width: 15%
+}
+
+.child-list-col4 {
+  width: 15%
+}
+
+.child-list-col5 {
+  width: 10%
+}
+
+.overview-area {
+}
+
+.overview-msg {
+  width: 100%; 
+  text-align: center;
+  font-style: italic; 
+}
+
+.overview-col1 {
+  width: 70%;
+}
+
+.overview-col2 {
+  width: 30%;
+}
+
+.group-overview-col1 {
+  width: 60%;
+}
+
+.group-overview-col2 {
+  width: 40%;
+}
+
+.btn-remove {
+  @extend .btn;
+  @extend .btn-danger;
+  @extend .btn-xs;
+}
+
+@mixin info-badge-mixin($background: $badge-bg) {
+	@extend .badge;
+	color: lighten($badge-color, 80%);
+	background-color: $background;
+}
+
+.boys-badge {
+	@include info-badge-mixin($boy-color);
+}
+
+.girls-badge {
+    @include info-badge-mixin($girl-color);
+}
+
+.levela-badge {
+	@include info-badge-mixin($preschool-a-color);
+}
+
+.levelb-badge {
+	@include info-badge-mixin($preschool-b-color);
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url('fonts/opensans.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('fonts/opensans-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url('fonts/opensans-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url('fonts/opensans-bolditalic.woff') format('woff');
+}
+
+.overview-area table {
+  @extend .table-hover;
+  font-size: 14px;
+  td {
+	position: relative;
+    input {
+  	  width: 70%;
+  	}
+  };
+  .loader-small {
+	position: absolute;
+	right: 5px;
+  }
+}
+
+div.controls {
+  visibility: hidden;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+tr:hover div.controls {
+  visibility: visible;
+  transition-delay: 0.3s;
+}
+
+.control-glyphicon {
+  @extend .glyphicon;
+  font-size: 14px;
+}
+
+span.remove {
+  @extend .control-glyphicon;
+  @extend .glyphicon-remove;
+}
+
+span.ok {
+  @extend .control-glyphicon;
+  @extend .glyphicon-ok;
+}
+
+span.edit {
+  @extend .control-glyphicon;
+  @extend .glyphicon-edit;
+}
+
+span.new-window {
+  @extend .control-glyphicon;
+  @extend .glyphicon-new-window;
+}
+
+.cancel-link {
+  @extend .btn;
+  @extend .btn-xs;
+  @extend .btn-link;
+  font-size: 14px;
+}
