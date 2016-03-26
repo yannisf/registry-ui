@@ -1,6 +1,4 @@
-* Fix fonts and assets
-* Fix stylesheet
+* Use a proxy (Login issue)
+* Fix fonts (now copied/ uses sass)
 * Compile templates to scripts
-* Implement watches
-* Use a proxy
 * Create a dev build

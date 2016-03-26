@@ -13,18 +13,26 @@
         </div>
 
         <div class="collapse navbar-collapse" collapse="navCollapsed">
+
             <ul class="nav navbar-nav" ng-if="credentials.authenticated">
+
                 <li><a href ng-click="toOverview()">Επισκόπιση</a></li>
-                <li ng-if="active.group" dropdown>
-                    <a href="#" role="button" aria-expanded="false" dropdown-toggle>Tάξη<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+
+                <li ng-if="active.group" uib-dropdown>
+                    <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
+                        Tάξη<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
                         <li><a href ng-click="toGroup()">Παιδιά</a></li>
                         <li><a href ng-click="go('/child/create')">Νέο παιδί</a> </li>
                     </ul>
                 </li>
-                <li ng-if="active.group" dropdown>
-                    <a href="#" role="button" aria-expanded="false" dropdown-toggle> Εκτυπώσεις <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+
+                <li ng-if="active.group" uib-dropdown>
+                    <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
+                        Εκτυπώσεις <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
                         <li><a href="api/child/report/pdf/first?class={{active.group.id}}" target="_blank">Μικρά ονόματα</a></li>
                         <li><a href="api/child/report/pdf/full?class={{active.group.id}}" target="_blank">Ολόκληρα ονόματα</a></li>
                         <li><a href="api/child/report/pdf/smallTags?class={{active.group.id}}" target="_blank">Ταμπέλες ονομάτων (μικρές)</a></li>
@@ -33,6 +41,7 @@
                         <li><a href="api/communication/{{active.group.id}}?format=a3" target="_blank">Πίνακας Επικοινωνίας (A3)</a></li>
                     </ul>
                 </li>
+
             </ul>
 
             <form class="navbar-form navbar-right" role="search">
