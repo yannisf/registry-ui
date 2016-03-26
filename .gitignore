@@ -1,5 +1,6 @@
 .idea
-bower_components
-node_modules
-dist
 *.iml
+node_modules
+bower_components
+dist
+target
