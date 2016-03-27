@@ -8,7 +8,7 @@ angular.module('schoolApp').directive('inputAddress', ['$rootScope', 'uuid4', 'A
                 address: "=",
                 allowCopy: "="
             },
-            templateUrl: "app/schoolApp/inputAddress/inputAddress.tpl.html",
+            templateUrl: "app/schoolApp/address/inputAddress.tpl.html",
             link: function (scope) {
                 scope.typeaheads = $rootScope.typeaheads;
 
