@@ -1,8 +1,6 @@
+angular.module('typeaheads').service('typeAheadService', ['$http',
 
-
-angular.module('typeaheads', [])
-
-    .service('typeAheadService', ['$http', function ($http) {
+    function ($http) {
         return {
             getFirstNames: function (startsWith) {
                 return $http.get('api/typeahead/firstnames', {params:{search:startsWith}}).then(
@@ -54,35 +52,6 @@ angular.module('typeaheads', [])
                 );
             }
         };
-    }])
-
-    .run(['$rootScope', 'typeAheadService',
-        function ($rootScope, typeAheadService) {
-            angular.extend($rootScope, {
-                typeaheads: {
-                    getFirstNames: function (startsWith) {
-                        return typeAheadService.getFirstNames(startsWith);
-                    },
-                    getLastNames: function (startsWith) {
-                        return typeAheadService.getLastNames(startsWith);
-                    },
-                    getNationalities: function (startsWith) {
-                        return typeAheadService.getNationalities(startsWith);
-                    },
-                    getProfessions: function (startsWith) {
-                        return typeAheadService.getProfessions(startsWith);
-                    },
-                    getStreetNames: function (startsWith) {
-                        return typeAheadService.getStreetNames(startsWith);
-                    },
-                    getNeighbourhoods: function (startsWith) {
-                        return typeAheadService.getNeighbourhoods(startsWith);
-                    },
-                    getCities: function (startsWith) {
-                        return typeAheadService.getCities(startsWith);
-                    }
-                }
-            });
-        }
-    ]);
+    }
+]);
 

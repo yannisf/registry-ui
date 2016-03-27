@@ -1,8 +1,5 @@
-
-
-angular.module('overview')
-
-    .directive('focusAndSelect', [function () {
+angular.module('overview').directive('focusAndSelect', [
+    function () {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -13,4 +10,5 @@ angular.module('overview')
                 });
             }
 		};
-	}]);
+	}
+]);

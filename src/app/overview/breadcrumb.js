@@ -1,4 +1,3 @@
-
 angular.module('overview').directive('breadcrumb', ['$location', '$cookieStore', 'ActiveCache',
     function ($location, $cookieStore, ActiveCache) {
 
@@ -18,7 +17,7 @@ angular.module('overview').directive('breadcrumb', ['$location', '$cookieStore',
             restrict: 'E',
             replace: true,
             scope: true,
-            templateUrl: "app/components/breadcrumb.tpl.html",
+            templateUrl: "app/overview/breadcrumb.tpl.html",
             controller: ['$scope', function($scope) {
 				$scope.active = ActiveCache;
                 

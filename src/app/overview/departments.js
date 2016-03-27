@@ -1,5 +1,3 @@
-
-
 angular.module('overview').directive('departments', ['uuid4', 'Department', 'ActiveCache',
     function (uuid4, Department, ActiveCache) {
         return {

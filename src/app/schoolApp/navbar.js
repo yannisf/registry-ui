@@ -1,11 +1,10 @@
-
-angular.module('schoolApp')
-    .directive('navbar', ['$location', '$cookieStore', 'ActiveCache', function ($location, $cookieStore, ActiveCache) {
+angular.module('schoolApp').directive('navbar', ['$location', '$cookieStore', 'ActiveCache',
+    function ($location, $cookieStore, ActiveCache) {
         return {
             restrict: 'E',
             replace: true,
             scope: true,
-            templateUrl: "app/components/navbar.tpl.html",
+            templateUrl: "app/schoolApp/navbar.tpl.html",
             controller: ['$scope', function($scope) {
                 $scope.active = ActiveCache;
                 
@@ -20,16 +19,5 @@ angular.module('schoolApp')
                 };
             }]
         };
-    }])
-    
-    .directive('stopit', [function () {
-        return {
-            restrict: 'A',
-            scope: false,
-            link: function(scope, element) {
-                element.find('input').bind('click', function(event) {
-                    event.stopPropagation();
-                });
-            }
-        };
-    }]);
+    }
+]);

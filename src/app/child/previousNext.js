@@ -1,8 +1,6 @@
+angular.module('child') .directive('previousNext', ['$location', 'ActiveCache',
 
-
-angular.module('child')
-
-    .directive('previousNext', ['$location', 'ActiveCache', function ($location, ActiveCache) {
+    function ($location, ActiveCache) {
         return {
             restrict: 'E',
             replace: true,
@@ -57,4 +55,5 @@ angular.module('child')
 
             }
         };
-    }]);
+    }
+]);

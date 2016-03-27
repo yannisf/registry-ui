@@ -1,6 +1,5 @@
-
-
-angular.module('child').directive('displayChild', ['AddressService', function (AddressService) {
+angular.module('child').directive('displayChild', ['AddressService',
+    function (AddressService) {
         return {
             restrict: 'E',
             replace: true,
@@ -13,4 +12,5 @@ angular.module('child').directive('displayChild', ['AddressService', function (A
                 scope.isBlankAddress = AddressService.isBlank;
             }
         };
-    }]);
+    }
+]);

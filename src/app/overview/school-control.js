@@ -1,5 +1,3 @@
-
-
 angular.module('overview').directive('schoolControl', ['School', 'ActiveCache',
 	function (School, ActiveCache) {
 		return {

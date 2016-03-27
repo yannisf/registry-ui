@@ -1,5 +1,3 @@
-
-
 angular.module('overview').directive('groupControl', ['$location', 'Group', 'ActiveCache',
 	function ($location, Group, ActiveCache) {
 		return {

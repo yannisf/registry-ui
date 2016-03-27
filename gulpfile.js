@@ -22,14 +22,28 @@ gulp.task('clean', function () {
 
 gulp.task('html', function () {
     return gulp.src('src/**/*.html')
-        .pipe(plugins.watch('src/**/*.html'))
+//        .pipe(plugins.watch('src/**/*.html'))
         .pipe(gulp.dest('dist/'))
+//        .on('finish', function() {plugins.util.log('HTML processed.')});
+});
+
+gulp.task('staticHtml', function () {
+    return gulp.src('src/*.html')
+//        .pipe(plugins.watch('src/**/*.html'))
+        .pipe(gulp.dest('dist/'))
+//        .on('finish', function() {plugins.util.log('HTML processed.')});
+});
+
+gulp.task('templates', function () {
+    return gulp.src('src/app/**/*.html')
+        .pipe(plugins.angularTemplatecache('application.tpl.js', {root: 'app', module:'schoolApp'}))
+        .pipe(gulp.dest('dist/scripts'))
 //        .on('finish', function() {plugins.util.log('HTML processed.')});
 });
 
 gulp.task('styles', function () {
     return gulp.src('src/styles/main.scss')
-        .pipe(plugins.watch('src/styles/main.scss'))
+//        .pipe(plugins.watch('src/styles/main.scss'))
         .pipe(plugins.sass())
         .pipe(plugins.cleanCss())
         .pipe(gulp.dest('dist/styles'))
@@ -72,43 +86,25 @@ gulp.task('vendor', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src(['src/app/values.js',
-            'src/app/components/typeaheads.js',
-            'src/app/overview/overview.js',
-            'src/app/relationship/relationship.js',
-            'src/app/child/child.js',
-            'src/app/relationship/guardian.js',
-            'src/app/application.js',
-            'src/app/overview/schools.js',
-            'src/app/overview/departments.js',
-            'src/app/overview/groups.js',
-            'src/app/overview/school-control.js',
-            'src/app/overview/department-control.js',
-            'src/app/overview/group-control.js',
-            'src/app/overview/focusAndSelect.js',
-            'src/app/components/navbar.js',
-            'src/app/components/logout.js',
-            'src/app/components/breadcrumb.js',
-            'src/app/components/statistics.js',
-            'src/app/child/listGroupController.js',
-            'src/app/child/createChildController.js',
-            'src/app/child/updateChildController.js',
-            'src/app/child/displayChild.js',
-            'src/app/child/previousNext.js',
-            'src/app/address/address.js',
-            'src/app/address/input-address.js',
-            'src/app/relationship/displayGuardian.js',
-            'src/app/relationship/telephones.js',
-            'src/app/relationship/createGuardianController.js',
-            'src/app/relationship/updateGuardianController.js'])
+    return gulp.src([
+            'src/app/values/**/*.js',
+            'src/app/typeaheads/**/*.js',
+            'src/app/overview/**/*.js',
+            'src/app/relationship/**/*.js',
+            'src/app/child/**/*.js',
+            'src/app/guardian/**/*.js',
+            'src/app/schoolApp/**/*.js'
+    ])
 //        .pipe(plugins.watch('src/**/*.js'))
         .pipe(plugins.jshint()).pipe(plugins.jshint.reporter('default'))
 //        .pipe(plugins.continuousConcat('application.js'))
         .pipe(plugins.concat('application.js'))
-//        .pipe(plugins.uglify())
+        .pipe(plugins.uglify())
         .pipe(gulp.dest('dist/scripts'))
 //        .on('data', function() {plugins.util.log('Scripts processed.')});
 });
 
 
-gulp.task('default', ['clean', 'html', 'styles', 'images', 'fonts', 'vendor', 'scripts', 'connect']);
+gulp.task('default', ['clean', 'staticHtml', 'styles', 'images', 'fonts', 'vendor', 'scripts', 'templates']);
+
+gulp.task('dev', ['default', 'connect']);

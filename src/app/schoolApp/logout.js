@@ -1,11 +1,10 @@
-
-angular.module('schoolApp')
-    .directive('logout', ['$rootScope', '$http', '$window', function ($rootScope, $http, $window) {
+angular.module('schoolApp').directive('logout', ['$rootScope', '$http', '$window',
+    function ($rootScope, $http, $window) {
         return {
             restrict: 'E',
             replace: true,
             scope: true,
-            templateUrl: "app/components/logout.tpl.html",
+            templateUrl: "app/schoolApp/logout.tpl.html",
             controller: ['$scope', function($scope) {
 
                 $http.get('api/context/authentication').success(function(data) {
@@ -22,4 +21,5 @@ angular.module('schoolApp')
                 };
             }]
         };
-    }]);
+    }
+]);
