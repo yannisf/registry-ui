@@ -1,4 +1,5 @@
 angular.module('overview').directive('groupControl', ['$location', 'Group', 'ActiveCache',
+
 	function ($location, Group, ActiveCache) {
 		return {
 			restrict: 'A',
@@ -7,7 +8,7 @@ angular.module('overview').directive('groupControl', ['$location', 'Group', 'Act
 				groups: "=",
 				viewData: "="
 			},
-			templateUrl: "app/overview/group-control.tpl.html",
+			templateUrl: "app/overview/groupControl/groupControl.tpl.html",
 			link: function(scope, element) {
 				element.bind('keypress', function(e) {
 					scope.$apply(function () {

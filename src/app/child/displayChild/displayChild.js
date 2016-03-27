@@ -7,7 +7,7 @@ angular.module('child').directive('displayChild', ['AddressService',
                 child: "=",
                 address: "="
             },
-            templateUrl: "app/child/displayChild.tpl.html",
+            templateUrl: "app/child/displayChild/displayChild.tpl.html",
             link: function(scope) {
                 scope.isBlankAddress = AddressService.isBlank;
             }

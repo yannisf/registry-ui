@@ -4,7 +4,7 @@ angular.module('schoolApp').directive('logout', ['$rootScope', '$http', '$window
             restrict: 'E',
             replace: true,
             scope: true,
-            templateUrl: "app/schoolApp/logout.tpl.html",
+            templateUrl: "app/schoolApp/logout/logout.tpl.html",
             controller: ['$scope', function($scope) {
 
                 $http.get('api/context/authentication').success(function(data) {

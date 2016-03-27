@@ -17,7 +17,7 @@ angular.module('overview').directive('breadcrumb', ['$location', '$cookieStore',
             restrict: 'E',
             replace: true,
             scope: true,
-            templateUrl: "app/overview/breadcrumb.tpl.html",
+            templateUrl: "app/overview/breadcrumb/breadcrumb.tpl.html",
             controller: ['$scope', function($scope) {
 				$scope.active = ActiveCache;
                 

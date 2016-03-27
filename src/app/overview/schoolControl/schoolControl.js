@@ -1,4 +1,5 @@
 angular.module('overview').directive('schoolControl', ['School', 'ActiveCache',
+
 	function (School, ActiveCache) {
 		return {
 			restrict: 'A',
@@ -7,7 +8,7 @@ angular.module('overview').directive('schoolControl', ['School', 'ActiveCache',
 				schools: "=",
 				viewData: "="
 			},
-			templateUrl: "app/overview/school-control.tpl.html",
+			templateUrl: "app/overview/schoolControl/schoolControl.tpl.html",
 			link: function(scope, element) {
 				element.bind('keypress', function(e) {
 					scope.$apply(function () {

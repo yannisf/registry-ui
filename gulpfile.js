@@ -89,17 +89,17 @@ gulp.task('scripts', function () {
     return gulp.src([
             'src/app/values/**/*.js',
             'src/app/typeaheads/**/*.js',
-            'src/app/overview/**/*.js',
+            'src/app/overview/_module.js', 'src/app/overview/**/*.js',
             'src/app/relationship/**/*.js',
             'src/app/child/**/*.js',
-            'src/app/guardian/**/*.js',
-            'src/app/schoolApp/**/*.js'
+            'src/app/guardian/_module.js', 'src/app/guardian/**/*.js',
+            'src/app/schoolApp/_module.js', 'src/app/schoolApp/**/*.js'
     ])
 //        .pipe(plugins.watch('src/**/*.js'))
         .pipe(plugins.jshint()).pipe(plugins.jshint.reporter('default'))
 //        .pipe(plugins.continuousConcat('application.js'))
         .pipe(plugins.concat('application.js'))
-        .pipe(plugins.uglify())
+//        .pipe(plugins.uglify())
         .pipe(gulp.dest('dist/scripts'))
 //        .on('data', function() {plugins.util.log('Scripts processed.')});
 });

@@ -2,15 +2,15 @@ angular.module('guardian', ['ngRoute', 'ui.bootstrap', 'uuid4', 'child', 'relati
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/guardian/create', {
-                templateUrl: 'app/guardian/edit.tpl.html',
+                templateUrl: 'app/guardian/editGuardian.tpl.html',
                 controller: 'createGuardianController'
             })
             .when('/guardian/:guardianId/edit', {
-                templateUrl: 'app/guardian/edit.tpl.html',
+                templateUrl: 'app/guardian/editGuardian.tpl.html',
                 controller: 'updateGuardianController'
             })
             .when('/guardian/:guardianId/view', {
-                templateUrl: 'app/guardian/view.tpl.html',
+                templateUrl: 'app/guardian/viewGuardian.tpl.html',
                 controller: 'updateGuardianController'
             });
         }

@@ -1,9 +1,10 @@
 angular.module('overview').directive('schools', ['uuid4', 'School', 'ActiveCache',
+
     function (uuid4, School, ActiveCache) {
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: "app/overview/schools.tpl.html",
+            templateUrl: "app/overview/schools/schools.tpl.html",
             controller: ['$scope', function($scope) {
                 $scope.data.schools = School.query({}, function() {
                 	if (ActiveCache.school) {

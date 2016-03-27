@@ -20,8 +20,8 @@ angular.module('child').controller('listGroupController', ['$scope', '$routePara
                 });
             });
         });
-    
-    
+
+
         $scope.goToChild = function ($event) {
             var clickedElement = angular.element($event.target);
             var childId = clickedElement.scope().child.id;

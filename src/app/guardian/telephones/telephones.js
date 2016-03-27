@@ -10,7 +10,7 @@ angular.module('guardian').directive('telephones', ['uuid4', 'ListService',
             scope: {
                 model: "=",
             },
-            templateUrl: "app/guardian/telephones.tpl.html",
+            templateUrl: "app/guardian/telephones/telephones.tpl.html",
             link: function(scope) {
                 scope.addTelephone = function () {
                     var telephone = { id: uuid4.generate() };

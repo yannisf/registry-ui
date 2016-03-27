@@ -1,6 +1,5 @@
-
-
 angular.module('overview').directive('departmentControl', ['Department', 'ActiveCache',
+
 	function (Department, ActiveCache) {
 		return {
 			restrict: 'A',
@@ -9,7 +8,7 @@ angular.module('overview').directive('departmentControl', ['Department', 'Active
 				departments: "=",
 				viewData: "="
 			},
-			templateUrl: "app/overview/department-control.tpl.html",
+			templateUrl: "app/overview/departmentControl/departmentControl.tpl.html",
 			link: function(scope, element) {
 				element.bind('keypress', function(e) {
 					scope.$apply(function () {

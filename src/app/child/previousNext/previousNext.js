@@ -6,7 +6,7 @@ angular.module('child') .directive('previousNext', ['$location', 'ActiveCache',
             replace: true,
             scope: {
             },
-            templateUrl: "app/child/previousNext.tpl.html",
+            templateUrl: "app/child/previousNext/previousNext.tpl.html",
             link: function(scope) {
                 scope.groupHasMoreThanOneChildren = ActiveCache.childIds.length > 1;
                 scope.nextChild = function () {
@@ -16,7 +16,7 @@ angular.module('child') .directive('previousNext', ['$location', 'ActiveCache',
                     }
                     $location.url('/child/' + next.id + '/view');
                 };
-    
+
                 scope.previousChild = function () {
                     var previous = findPreviousChild();
                     if (previous.rollover) {
@@ -24,7 +24,7 @@ angular.module('child') .directive('previousNext', ['$location', 'ActiveCache',
                     }
                     $location.url('/child/' + previous.id + '/view');
                 };
-    
+
                 function findNextChild() {
                     var result = {};
                     var numberOfChildren = ActiveCache.childIds.length;
@@ -38,7 +38,7 @@ angular.module('child') .directive('previousNext', ['$location', 'ActiveCache',
                     }
                     return result;
                 }
-    
+
                 function findPreviousChild() {
                     var result = {};
                     var numberOfChildren = ActiveCache.childIds.length;

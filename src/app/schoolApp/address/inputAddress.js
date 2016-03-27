@@ -1,6 +1,5 @@
-
-
 angular.module('schoolApp').directive('inputAddress', ['$rootScope', 'uuid4', 'ActiveCache', 'Address',
+
     function ($rootScope, uuid4, ActiveCache, Address) {
         return {
             replace: true,
@@ -9,7 +8,7 @@ angular.module('schoolApp').directive('inputAddress', ['$rootScope', 'uuid4', 'A
                 address: "=",
                 allowCopy: "="
             },
-            templateUrl: "app/schoolApp/input-address.tpl.html",
+            templateUrl: "app/schoolApp/inputAddress/inputAddress.tpl.html",
             link: function (scope) {
                 scope.typeaheads = $rootScope.typeaheads;
 

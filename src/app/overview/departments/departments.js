@@ -1,9 +1,10 @@
 angular.module('overview').directive('departments', ['uuid4', 'Department', 'ActiveCache',
+
     function (uuid4, Department, ActiveCache) {
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: "app/overview/departments.tpl.html",
+            templateUrl: "app/overview/departments/departments.tpl.html",
             controller: ['$scope', function($scope) {
 				if (ActiveCache.department) {
 					$scope.viewData.active.department = ActiveCache.department;

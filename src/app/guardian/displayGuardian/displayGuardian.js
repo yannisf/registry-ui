@@ -1,4 +1,5 @@
-angular.module('schoolApp').directive('displayGuardian', [
+angular.module('guardian').directive('displayGuardian', [
+
     function () {
         return {
             restrict: 'E',
@@ -7,7 +8,7 @@ angular.module('schoolApp').directive('displayGuardian', [
                 guardian: "=",
                 address: "="
             },
-            templateUrl: "app/schoolApp/displayGuardian.tpl.html"
+            templateUrl: "app/guardian/displayGuardian/displayGuardian.tpl.html"
         };
     }
 ]);

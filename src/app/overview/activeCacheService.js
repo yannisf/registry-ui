@@ -1,4 +1,5 @@
 angular.module('overview').service('ActiveCache', ['$http', '$q',
+
     function($http, $q) {
     	this.school = null;
     	this.department = null;

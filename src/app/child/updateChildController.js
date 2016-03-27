@@ -49,7 +49,7 @@ angular.module('child').controller('updateChildController', ['$scope', '$routePa
 
         $scope.confirmRemoveChild = function () {
             $uibModal.open({
-                templateUrl: 'app/child/remove-child.tpl.html',
+                templateUrl: 'app/child/removeChildModal/removeChildModal.tpl.html',
                 controller: 'removeChildModalController',
                 resolve: {
                     child: function () {
@@ -62,7 +62,7 @@ angular.module('child').controller('updateChildController', ['$scope', '$routePa
         $scope.confirmRemoveRelationship = function (relationship, $event) {
             $event.stopPropagation();
             $uibModal.open({
-                templateUrl: 'app/child/remove-relationship.tpl.html',
+                templateUrl: 'app/child/removeRelationshipModal/removeRelationshipModal.tpl.html',
                 controller: 'removeRelationshipModalController',
                 scope: $scope,
                 resolve: {

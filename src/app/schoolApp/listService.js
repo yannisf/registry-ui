@@ -1,4 +1,5 @@
 angular.module('schoolApp').service('ListService', ['$http',
+
     function ($http) {
         return {
             relationshipTypes: function () {

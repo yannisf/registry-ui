@@ -1,9 +1,10 @@
 angular.module('overview').directive('groups', ['uuid4', 'Group', 'ActiveCache',
+
     function (uuid4, Group, ActiveCache) {
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: "app/overview/groups.tpl.html",
+            templateUrl: "app/overview/groups/groups.tpl.html",
             controller: ['$scope', function($scope) {
 				if (ActiveCache.group) {
 					$scope.viewData.active.group = ActiveCache.group;
