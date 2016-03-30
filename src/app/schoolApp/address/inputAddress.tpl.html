@@ -26,7 +26,7 @@
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="address.streetName" 
                            ng-model="address.streetName" autocomplete="off"
-                           typeahead="streetName for streetName in typeaheads.getStreetNames($viewValue)"
+                           uib-typeahead="streetName for streetName in typeaheads.getStreetNames($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingStreetNames"/>
                     <img src="images/loader.png" ng-show="loadingStreetNames" class="loader-img"/>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="address.neighbourhood"
                            ng-model="address.neighbourhood" autocomplete="off"
-                           typeahead="neighbourhood for neighbourhood in typeaheads.getNeighbourhoods($viewValue)"
+                           uib-typeahead="neighbourhood for neighbourhood in typeaheads.getNeighbourhoods($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingNeighbourhoods"/>
                     <img src="images/loader.png" ng-show="loadingNeighbourhoods" class="loader-img"/>
                 </div>
@@ -67,7 +67,7 @@
 
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="address.city" ng-model="address.city"
-                           typeahead="city for city in typeaheads.getCities($viewValue)" typeahead-min-length="1"
+                           uib-typeahead="city for city in typeaheads.getCities($viewValue)" typeahead-min-length="1"
                            typeahead-wait-ms="500" typeahead-loading="loadingCities" autocomplete="off"/>
                     <img src="images/loader.png" ng-show="loadingCities" class="loader-img"/>
                 </div>

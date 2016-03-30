@@ -16,7 +16,7 @@
             <div class="col-md-4">
                 <input type="text" class="form-control loader-input" id="firstName" name="firstName" autocomplete="off"
                        focus ng-model="data.child.firstName" ng-required="!data.child.lastName"
-                       typeahead="firstName for firstName in typeaheads.getFirstNames($viewValue)"
+                       uib-typeahead="firstName for firstName in typeaheads.getFirstNames($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500"
                        typeahead-loading="loadingFirstNames"/>
                 <img src="images/loader.png" ng-show="loadingFirstNames" class="loader-img"/>
@@ -31,7 +31,7 @@
             <div class="col-md-4">
                 <input type="text" class="form-control loader-input" id="lastName" name="lastName"
                        ng-model="data.child.lastName" ng-required="!data.child.firstName"
-                       autocomplete="off" typeahead="lastName for lastName in typeaheads.getLastNames($viewValue)"
+                       autocomplete="off" uib-typeahead="lastName for lastName in typeaheads.getLastNames($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingLastNames"/>
                 <img src="images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
             </div>
@@ -95,7 +95,7 @@
 
             <div class="col-md-4">
                 <input type="text" class="form-control loader-input" id="nationality" ng-model="data.child.nationality"
-                       autocomplete="off" typeahead="nationality for nationality in typeaheads.getNationalities($viewValue)"
+                       autocomplete="off" uib-typeahead="nationality for nationality in typeaheads.getNationalities($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingNationalities"/>
                 <img src="images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
             </div>
