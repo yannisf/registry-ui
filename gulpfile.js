@@ -22,32 +22,27 @@ gulp.task('clean', function () {
 
 gulp.task('html', function () {
     return gulp.src('src/**/*.html')
-//        .pipe(plugins.watch('src/**/*.html'))
+        .pipe(plugins.watch('src/**/*.html'))
         .pipe(gulp.dest('dist/'))
 //        .on('finish', function() {plugins.util.log('HTML processed.')});
 });
 
 gulp.task('staticHtml', function () {
     return gulp.src('src/*.html')
-//        .pipe(plugins.watch('src/**/*.html'))
         .pipe(gulp.dest('dist/'))
-//        .on('finish', function() {plugins.util.log('HTML processed.')});
 });
 
 gulp.task('templates', function () {
     return gulp.src('src/app/**/*.html')
         .pipe(plugins.angularTemplatecache('application.tpl.js', {root: 'app', module:'schoolApp'}))
         .pipe(gulp.dest('dist/scripts'))
-//        .on('finish', function() {plugins.util.log('HTML processed.')});
 });
 
 gulp.task('styles', function () {
     return gulp.src('src/styles/main.scss')
-//        .pipe(plugins.watch('src/styles/main.scss'))
         .pipe(plugins.sass())
         .pipe(plugins.cleanCss())
         .pipe(gulp.dest('dist/styles'))
-//        .on('data', function() {plugins.util.log('Styles processed.')});
 });
 
 gulp.task('images', function () {
@@ -95,13 +90,10 @@ gulp.task('scripts', function () {
             'src/app/guardian/_module.js', 'src/app/guardian/**/*.js',
             'src/app/schoolApp/_module.js', 'src/app/schoolApp/**/*.js'
     ])
-//        .pipe(plugins.watch('src/**/*.js'))
         .pipe(plugins.jshint()).pipe(plugins.jshint.reporter('default'))
-//        .pipe(plugins.continuousConcat('application.js'))
         .pipe(plugins.concat('application.js'))
-//        .pipe(plugins.uglify())
+        .pipe(plugins.uglify())
         .pipe(gulp.dest('dist/scripts'))
-//        .on('data', function() {plugins.util.log('Scripts processed.')});
 });
 
 
