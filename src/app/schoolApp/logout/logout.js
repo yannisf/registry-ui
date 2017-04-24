@@ -7,13 +7,13 @@ angular.module('schoolApp').directive('logout', ['$rootScope', '$http', '$window
             templateUrl: "app/schoolApp/logout/logout.tpl.html",
             controller: ['$scope', function($scope) {
 
-                $http.get('api/context/authentication').success(function(data) {
+                $http.get('api/context/authentication').then(function(data) {
                     $scope.user = data.name;
                 });
 
                 $scope.logout = function() {
                     delete $http.defaults.headers.common["X-Requested-With"];
-                    $http.get('logout').success(
+                    $http.get('logout').then(
                         function() {
                             $window.location.replace($rootScope.applicationUrl);
                         }

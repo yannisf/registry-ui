@@ -82,18 +82,16 @@ gulp.task('vendor', function () {
 
 gulp.task('scripts', function () {
     return gulp.src([
-            'src/app/values/**/*.js',
-            'src/app/typeaheads/**/*.js',
+            'src/app/values/index.js',
+            'src/app/typeaheads/_module.js', 'src/app/typeaheads/**/*.js',
             'src/app/overview/_module.js', 'src/app/overview/**/*.js',
-            'src/app/relationship/**/*.js',
-            'src/app/child/**/*.js',
+            'src/app/relationship/_module.js', 'src/app/relationship/**/*.js',
+            'src/app/child/_module.js', 'src/app/child/**/*.js',
             'src/app/guardian/_module.js', 'src/app/guardian/**/*.js',
             'src/app/schoolApp/_module.js', 'src/app/schoolApp/**/*.js'
     ])
-        .pipe(plugins.jshint()).pipe(plugins.jshint.reporter('default'))
         .pipe(plugins.concat('application.js'))
-        .pipe(plugins.uglify())
-        .pipe(gulp.dest('dist/scripts'))
+        .pipe(gulp.dest('dist/scripts'));
 });
 
 

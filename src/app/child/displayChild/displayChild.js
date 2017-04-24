@@ -1,16 +1,10 @@
-angular.module('child').directive('displayChild', ['AddressService',
-    function (AddressService) {
-        return {
-            restrict: 'E',
-            replace: true,
-            scope: {
-                child: "=",
-                address: "="
-            },
-            templateUrl: "app/child/displayChild/displayChild.tpl.html",
-            link: function(scope) {
-                scope.isBlankAddress = AddressService.isBlank;
-            }
-        };
-    }
-]);
+angular.module('child').component('displayChild', {
+    bindings: {
+        child: "=",
+        address: "="
+    },
+    templateUrl: "app/child/displayChild/displayChild.tpl.html",
+    controller: ['AddressService', function (AddressService) {
+        this.isBlankAddress = AddressService.isBlank;
+    }]
+});
