@@ -1,13 +1,13 @@
-angular.module('child').controller('updateChildController', ['$scope', '$routeParams', '$window', '$location', '$uibModal', 'Child', 'Address', 'Relationship', 'ActiveCache',
-    function ($scope, $routeParams, $window, $location, $uibModal, Child, Address, Relationship, ActiveCache) {
+angular.module('child').controller('updateChildController', ['$scope', '$stateParams', '$window', '$location', '$uibModal', 'Child', 'Address', 'Relationship', 'ActiveCache',
+    function ($scope, $stateParams, $window, $location, $uibModal, Child, Address, Relationship, ActiveCache) {
 
         angular.extend($scope, {
             data: {
-                child: Child.get({id: $routeParams.childId}, function(response) {
+                child: Child.get({id: $stateParams.childId}, function(response) {
                     ActiveCache.child = response;
                 }),
-                address: Address.getForPerson({personId: $routeParams.childId}),
-                relationships: Relationship.query({childId: $routeParams.childId})
+                address: Address.getForPerson({personId: $stateParams.childId}),
+                relationships: Relationship.query({childId: $stateParams.childId})
             },
             viewData: {
                 submitLabel: 'Επεξεργασία',

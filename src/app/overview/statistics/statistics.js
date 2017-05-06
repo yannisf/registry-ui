@@ -1,14 +1,13 @@
-angular.module('overview').directive('groupStatistics', ['ActiveCache', 'Group',
-
-    function (ActiveCache, Group) {
-        return {
-            restrict: 'E',
-            replace: true,
-            scope: {groupId: '='},
-            templateUrl: "app/overview/statistics/statistics.tpl.html",
-            controller: ['$scope', function($scope) {
-                $scope.statistics = Group.statistics({id: $scope.groupId});
-            }]
+angular.module('overview').component('groupStatistics', {
+    bindings: {
+        groupId: '<'
+    },
+    templateUrl: "app/overview/statistics/statistics.tpl.html",
+    controller: ['ActiveCache', 'Group', function (ActiveCache, Group) {
+        this.$onInit = function () {
+            this.statistics = Group.statistics({
+                id: this.groupId
+            });
         };
-    }
-]);
+    }]
+});

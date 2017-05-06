@@ -1,17 +1,17 @@
-angular.module('guardian').controller('updateGuardianController', ['$location', '$scope', '$routeParams', 'ActiveCache', 'Guardian', 'Relationship', 'Address',
+angular.module('guardian').controller('updateGuardianController', ['$location', '$scope', '$stateParams', 'ActiveCache', 'Guardian', 'Relationship', 'Address',
             
-    function ($location, $scope, $routeParams, ActiveCache, Guardian, Relationship, Address) {
+    function ($location, $scope, $stateParams, ActiveCache, Guardian, Relationship, Address) {
         angular.extend($scope, {
             data: {
-                guardian: Guardian.get({id: $routeParams.guardianId}),
-                address: Address.getForPerson({personId: $routeParams.guardianId}),
+                guardian: Guardian.get({id: $stateParams.guardianId}),
+                address: Address.getForPerson({personId: $stateParams.guardianId}),
                 relationship: Relationship.get({
                     childId: ActiveCache.child.id,
-                    guardianId: $routeParams.guardianId
+                    guardianId: $stateParams.guardianId
                 })
             },
             viewData: {
-                guardianId: $routeParams.guardianId,
+                guardianId: $stateParams.guardianId,
                 submitLabel: "Επεξεργασία"
             }
         });
