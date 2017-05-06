@@ -1,6 +1,6 @@
-angular.module('overview').directive('groupControl', ['$location', 'Group', 'ActiveCache',
+angular.module('overview').directive('groupControl', ['$state', 'Group', 'ActiveCache',
 
-	function ($location, Group, ActiveCache) {
+	function ($state, Group, ActiveCache) {
 		return {
 			restrict: 'A',
 			scope: {
@@ -25,7 +25,7 @@ angular.module('overview').directive('groupControl', ['$location', 'Group', 'Act
 
 				$scope.toGroup = function() {
 					ActiveCache.group = $scope.group;
-					$location.url('/group/' + ActiveCache.group.id );
+					$state.go('group', {groupId: ActiveCache.group.id});
 				};
 
 				$scope.remove = function() {

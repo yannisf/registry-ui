@@ -1,8 +1,8 @@
 angular.module('child').component('previousNext', {
     bindings: {},
     templateUrl: "app/child/previousNext/previousNext.tpl.html",
-    controller: ['$location', 'ActiveCache',
-        function ($location, ActiveCache) {
+    controller: ['$state', 'ActiveCache',
+        function ($state, ActiveCache) {
             this.groupHasMoreThanOneChildren = ActiveCache.childIds.length > 1;
 
             this.nextChild = function () {
@@ -10,7 +10,7 @@ angular.module('child').component('previousNext', {
                 if (next.rollover) {
                     console.log("Ανακύκλωση καταλόγου. ");
                 }
-                $location.url('/child/' + next.id + '/view');
+                $state.go('viewChild', {childId: next.id})
             };
 
             this.previousChild = function () {
@@ -18,7 +18,7 @@ angular.module('child').component('previousNext', {
                 if (previous.rollover) {
                     console.log("Ανακύκλωση καταλόγου. ");
                 }
-                $location.url('/child/' + previous.id + '/view');
+                $state.go('viewChild', {childId: previous.id});
             };
 
             function findNextChild() {

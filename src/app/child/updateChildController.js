@@ -1,5 +1,5 @@
-angular.module('child').controller('updateChildController', ['$scope', '$stateParams', '$window', '$location', '$uibModal', 'Child', 'Address', 'Relationship', 'ActiveCache',
-    function ($scope, $stateParams, $window, $location, $uibModal, Child, Address, Relationship, ActiveCache) {
+angular.module('child').controller('updateChildController', ['$scope', '$stateParams', '$window', '$state', '$uibModal', 'Child', 'Address', 'Relationship', 'ActiveCache',
+    function ($scope, $stateParams, $window, $state, $uibModal, Child, Address, Relationship, ActiveCache) {
 
         angular.extend($scope, {
             data: {
@@ -16,13 +16,13 @@ angular.module('child').controller('updateChildController', ['$scope', '$statePa
         });
 
         $scope.cancel = function() {
-            $location.url('/child/' + ActiveCache.child.id + '/view');
+            $state.go('viewChild', {childId: ActiveCache.child.id});
         };
 
         $scope.submit = function () {
             if ($scope.childForm.$pristine) {
                 console.log('Form is pristine');
-                $location.url('/child/' + ActiveCache.child.id + '/view');
+                $state.go('viewChild', {childId: ActiveCache.child.id});
             } else if ($scope.childForm.$invalid) {
                 console.log('Form is invalid');
             } else {
@@ -30,7 +30,7 @@ angular.module('child').controller('updateChildController', ['$scope', '$statePa
                     $scope.data.child.$save({addressId: $scope.data.address.id, groupId: ActiveCache.group.id},
                         function() {
                             ActiveCache.child = $scope.data.child;
-                            $location.url('/child/' + ActiveCache.child.id + '/view');
+                            $state.go('viewChild', {childId: ActiveCache.child.id});
                         }
                     );
                 });
@@ -38,7 +38,7 @@ angular.module('child').controller('updateChildController', ['$scope', '$statePa
         };
 
         $scope.addGuardian = function () {
-            $location.path('/guardian/create');
+            $state.go('createGuardian')
         };
 
         $scope.goToGuardian = function ($event) {

@@ -1,6 +1,6 @@
-angular.module('guardian').controller('updateGuardianController', ['$location', '$scope', '$stateParams', 'ActiveCache', 'Guardian', 'Relationship', 'Address',
+angular.module('guardian').controller('updateGuardianController', ['$state', '$scope', '$stateParams', 'ActiveCache', 'Guardian', 'Relationship', 'Address',
             
-    function ($location, $scope, $stateParams, ActiveCache, Guardian, Relationship, Address) {
+    function ($state, $scope, $stateParams, ActiveCache, Guardian, Relationship, Address) {
         angular.extend($scope, {
             data: {
                 guardian: Guardian.get({id: $stateParams.guardianId}),
@@ -31,7 +31,7 @@ angular.module('guardian').controller('updateGuardianController', ['$location', 
                     guardianId: $scope.data.guardian.id
                 });
             }).then(function() {
-                $location.url('/child/' + ActiveCache.child.id + '/view');
+                $state.go('viewChild', {childId: ActiveCache.child.id});
             });
         };
     }
