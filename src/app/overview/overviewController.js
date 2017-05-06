@@ -1,7 +1,7 @@
 angular.module('overview')
 
-    .controller('overviewController', ['$scope', '$cookieStore', '$location', 'uuid4', 'School', 'Department', 'Group', 'ActiveCache',
-        function ($scope, $cookieStore, $location, uuid4, School, Department, Group, ActiveCache) {
+    .controller('overviewController', ['$scope', '$cookieStore', 'uuid4', 'School', 'Department', 'Group', 'ActiveCache',
+        function ($scope, $cookieStore, uuid4, School, Department, Group, ActiveCache) {
 
             console.log('Initializing overview controller');
 

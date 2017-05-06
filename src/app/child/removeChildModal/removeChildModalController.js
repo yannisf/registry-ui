@@ -1,9 +1,9 @@
-angular.module('child').controller('removeChildModalController', ['$location', '$rootScope', '$scope', '$uibModalInstance', 'child', 'ActiveCache',
-    function ($location, $rootScope, $scope, $uibModalInstance, child, ActiveCache) {
+angular.module('child').controller('removeChildModalController', ['$state', '$rootScope', '$scope', '$uibModalInstance', 'child', 'ActiveCache',
+    function ($state, $rootScope, $scope, $uibModalInstance, child, ActiveCache) {
         $scope.removeChild = function () {
             child.$remove(function() {
                 ActiveCache.child = null;
-                $location.url('/group/' + ActiveCache.group.id);
+                $state.go('group', {groupId: ActiveCache.group.id});
                 $scope.dismiss();
             });
         };

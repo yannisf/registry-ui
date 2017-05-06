@@ -1,6 +1,6 @@
-angular.module('schoolApp').directive('navbar', ['$location', '$cookieStore', 'ActiveCache',
+angular.module('schoolApp').directive('navbar', ['$state', '$cookieStore', 'ActiveCache',
 
-    function ($location, $cookieStore, ActiveCache) {
+    function ($state, $cookieStore, ActiveCache) {
         return {
             restrict: 'E',
             replace: true,
@@ -14,11 +14,11 @@ angular.module('schoolApp').directive('navbar', ['$location', '$cookieStore', 'A
                 $scope.toOverview = function() {
                     ActiveCache.clearChild();
                     $cookieStore.remove('group');
-                    $location.url('/overview');
+                    $state.go('overview');
                 };
                 
                 $scope.toGroup = function() {
-                    $location.url('/group/' + ActiveCache.group.id);
+                    $state.go('group', {groupId: ActiveCache.group.id});
                 };
             }]
         };

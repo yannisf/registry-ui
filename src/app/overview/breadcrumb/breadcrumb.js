@@ -1,5 +1,5 @@
-angular.module('overview').directive('breadcrumb', ['$location', '$cookieStore', 'ActiveCache',
-    function ($location, $cookieStore, ActiveCache) {
+angular.module('overview').directive('breadcrumb', ['$state', '$cookieStore', 'ActiveCache',
+    function ($state, $cookieStore, ActiveCache) {
 
         function formatName(child) {
             var name = child.firstName ? child.firstName + " " : "";
@@ -30,22 +30,22 @@ angular.module('overview').directive('breadcrumb', ['$location', '$cookieStore',
                 $scope.toSchool = function () {
                     ActiveCache.clearDepartment();
                     $cookieStore.remove('group');
-                    $location.url('/overview');
+                    $state.go('overview');
                 };
 
                 $scope.toDepartment = function () {
                     ActiveCache.clearGroup();
                     $cookieStore.remove('group');
-                    $location.url('/overview');
+                    $state.go('overview');
                 };
 
                 $scope.toGroup = function () {
                     ActiveCache.clearChild();
-                    $location.url('/group/' + ActiveCache.group.id);
+                    $state.go('overview', {groupId: ActiveCache.group.id});
                 };
 
                 $scope.toChild = function () {
-                    $location.url('/child/' + ActiveCache.child.id + '/view');
+                    $state.go('viewChild', {childId: ActiveCache.child.id});
                 };
 
             }]
