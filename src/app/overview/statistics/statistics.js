@@ -6,10 +6,8 @@ angular.module('overview').directive('groupStatistics', ['ActiveCache', 'Group',
             replace: true,
             scope: {groupId: '='},
             templateUrl: "app/overview/statistics/statistics.tpl.html",
-            bindToController: true,
-            controllerAs: 'ctrl',
-            controller: ['$scope', function() {
-                this.statistics = Group.statistics({id: this.groupId});
+            controller: ['$scope', function($scope) {
+                $scope.statistics = Group.statistics({id: $scope.groupId});
             }]
         };
     }

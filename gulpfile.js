@@ -70,7 +70,7 @@ gulp.task('fonts', ['opensans-fonts', 'bootstrap-fonts']);
 
 gulp.task('vendor', function () {
     return gulp.src(['bower_components/angular/angular.min.js',
-            'bower_components/angular-route/angular-route.min.js',
+            'bower_components/angular-ui-router/release/angular-ui-router.min.js',
             'bower_components/angular-resource/angular-resource.min.js',
             'bower_components/angular-cookies/angular-cookies.min.js',
             'bower_components/angular-ui-mask/dist/mask.min.js',

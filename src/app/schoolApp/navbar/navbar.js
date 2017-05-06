@@ -9,6 +9,8 @@ angular.module('schoolApp').directive('navbar', ['$location', '$cookieStore', 'A
             controller: ['$scope', function($scope) {
                 $scope.active = ActiveCache;
                 
+                
+                //Deprecated, now using ui-sref
                 $scope.toOverview = function() {
                     ActiveCache.clearChild();
                     $cookieStore.remove('group');

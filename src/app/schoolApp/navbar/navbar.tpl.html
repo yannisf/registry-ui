@@ -9,14 +9,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span class="navbar-brand"><strong>Kατάλογος</strong></span>
+            <span class="navbar-brand">
+                <strong>Kατάλογος</strong>
+                <small>dev</small>
+            </span>
         </div>
 
         <div class="collapse navbar-collapse" collapse="navCollapsed">
 
             <ul class="nav navbar-nav" ng-if="credentials.authenticated">
 
-                <li><a href ng-click="toOverview()">Επισκόπιση</a></li>
+                <li><a ui-sref="overview">Επισκόπιση</a></li>
 
                 <li ng-if="active.group" uib-dropdown>
                     <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>

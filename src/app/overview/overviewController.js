@@ -1,46 +1,55 @@
-angular.module('overview').controller('overviewController', ['$scope', '$cookieStore', '$location', 'uuid4', 'School', 'Department', 'Group', 'ActiveCache',
-    function ($scope, $cookieStore, $location, uuid4, School, Department, Group, ActiveCache) {
-        angular.extend($scope, {
-            data: {
-                schools: [],
-                departments: [],
-                groups: []
-            },
-            viewData: {
-                active: ActiveCache
-            }
-        });
+angular.module('overview')
 
-        if($cookieStore.get('group')) {
-            var groupId = $cookieStore.get('group');
-            $location.path('/group/' + groupId);
+    .controller('overviewController', ['$scope', '$cookieStore', '$location', 'uuid4', 'School', 'Department', 'Group', 'ActiveCache',
+        function ($scope, $cookieStore, $location, uuid4, School, Department, Group, ActiveCache) {
+
+            console.log('Initializing overview controller');
+
+            angular.extend($scope, {
+                data: {
+                    schools: [],
+                    departments: [],
+                    groups: []
+                },
+                viewData: {
+                    active: ActiveCache
+                }
+            });
+
+            // if ($cookieStore.get('group')) {
+                // var groupId = $cookieStore.get('group');
+                // $location.path('/group/' + groupId);
+            // }
+
+            $scope.$watch('viewData.active.school', function (newval) {
+                if (newval) {
+                    $scope.data.departments = Department.query({
+                        schoolId: newval.id
+                    });
+                }
+            });
+
+            $scope.$watch('viewData.active.department', function (newval) {
+                if (newval) {
+                    $scope.data.groups = Group.query({
+                        departmentId: newval.id
+                    });
+                }
+            });
+
+            $scope.setActiveSchool = function (school) {
+                $scope.viewData.active.school = school;
+                ActiveCache.clearDepartment();
+            };
+
+            $scope.setActiveDepartment = function (department) {
+                $scope.viewData.active.department = department;
+                ActiveCache.clearGroup();
+            };
+
+            $scope.setActiveGroup = function (group) {
+                $scope.viewData.active.group = group;
+                ActiveCache.clearChild();
+            };
         }
-
-        $scope.$watch('viewData.active.school', function(newval) {
-            if (newval) {
-                $scope.data.departments = Department.query({schoolId: newval.id});
-            }
-        });
-
-        $scope.$watch('viewData.active.department', function(newval) {
-            if (newval) {
-                $scope.data.groups = Group.query({departmentId: newval.id});
-            }
-        });
-
-        $scope.setActiveSchool = function(school) {
-            $scope.viewData.active.school = school;
-            ActiveCache.clearDepartment();
-        };
-
-        $scope.setActiveDepartment = function(department) {
-            $scope.viewData.active.department = department;
-            ActiveCache.clearGroup();
-        };
-
-        $scope.setActiveGroup = function(group) {
-            $scope.viewData.active.group = group;
-            ActiveCache.clearChild();
-        };
-    }
-]);
+    ]);

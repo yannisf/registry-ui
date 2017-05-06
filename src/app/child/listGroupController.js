@@ -1,18 +1,20 @@
-angular.module('child').controller('listGroupController', ['$scope', '$routeParams', '$cookieStore', 'ActiveCache', 'Group',
-    function ($scope, $routeParams, $cookieStore, ActiveCache, Group) {
+angular.module('child').controller('listGroupController', ['$scope', '$stateParams', '$cookieStore', 'ActiveCache', 'Group',
+    function ($scope, $stateParams, $cookieStore, ActiveCache, Group) {
         angular.extend($scope, {
             data: {
                children: []
             },
             viewData: {
-                groupId: $routeParams.groupId,
+                groupId: $stateParams.groupId,
                 noChildren: false
             }
         });
 
-        ActiveCache.resolveGroup($routeParams.groupId).then(function() {
-            $cookieStore.put('group', $routeParams.groupId);
-            $scope.data.children = Group.children({id: $routeParams.groupId}, function(response) {
+        console.log('groupId in listGroupController:', $scope.viewData.groupId);
+
+        ActiveCache.resolveGroup($stateParams.groupId).then(function() {
+            // $cookieStore.put('group', $stateParams.groupId);
+            $scope.data.children = Group.children({id: $stateParams.groupId}, function(response) {
                  $scope.viewData.noChildren = response.length === 0;
                  ActiveCache.children = response;
                  ActiveCache.childIds = response.map(function (child) {
