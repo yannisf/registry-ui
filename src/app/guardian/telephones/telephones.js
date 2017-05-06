@@ -1,37 +1,29 @@
-angular.module('guardian').directive('telephones', ['uuid4', 'ListService',
+angular.module('guardian').component('telephones', {
+    bindings: {
+        model: "=",
+    },
+    templateUrl: "app/guardian/telephones/telephones.tpl.html",
+    controller: ['uuid4', 'ListService', function (uuid4, ListService) {
 
-    function (uuid4, ListService) {
-
-        var telephoneTypes;
-
-        return {
-            restrict: 'E',
-            replace: true,
-            scope: {
-                model: "=",
-            },
-            templateUrl: "app/guardian/telephones/telephones.tpl.html",
-            link: function(scope) {
-                scope.addTelephone = function () {
-                    var telephone = { id: uuid4.generate() };
-                    scope.model.push(telephone);
-                };
-
-                scope.removeTelephone = function (telephoneIndex) {
-                    scope.model.splice(telephoneIndex, 1);
-                };
-
-                if (telephoneTypes) {
-                    scope.telephoneTypes = telephoneTypes;
-                } else {
-                    ListService.telephoneTypes().then(
-                        function (data) {
-                            telephoneTypes = data;
-                            scope.telephoneTypes = telephoneTypes;
-                        }
-                    );
+        this.$onInit = function() {
+            var _self = this;
+            ListService.telephoneTypes().then(
+                function (data) {
+                    _self.telephoneTypes = data;
                 }
-            }
+            );
+        }
+
+        this.addTelephone = function () {
+            var telephone = {
+                id: uuid4.generate()
+            };
+            this.model.push(telephone);
         };
-    }
-]);
+
+        this.removeTelephone = function (telephoneIndex) {
+            this.model.splice(telephoneIndex, 1);
+        };
+
+    }]
+});

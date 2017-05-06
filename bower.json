@@ -6,13 +6,13 @@
   "dependencies": {
     "angular": "1.6.4",
     "angular-resource": "1.6.4",
-    "angular-route": "1.6.4",
     "angular-cookies": "1.6.4",
     "angular-ui-bootstrap": "2.5.0",
     "angular-uuid4": "0.3.1",
     "bootstrap-sass": "3.3.x",
     "bootswatch": "3.3.6",
     "components-font-awesome": "4.5.x",
-    "open-sans-fontface": "1.4.2"
+    "open-sans-fontface": "1.4.2",
+    "angular-ui-router": "^0.4.2"
   }
 }

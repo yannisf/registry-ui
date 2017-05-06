@@ -1,17 +1,22 @@
-angular.module('guardian', ['ngRoute', 'ui.bootstrap', 'uuid4', 'child', 'relationship'])
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
-            .when('/guardian/create', {
+angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'child', 'relationship'])
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider
+            .state({
+                name: 'createGuardian',
+                url: '/guardian/create',
                 templateUrl: 'app/guardian/editGuardian.tpl.html',
                 controller: 'createGuardianController'
             })
-            .when('/guardian/:guardianId/edit', {
+            .state({
+                name: 'editGuardian',
+                url: '/guardian/:guardianId/edit',
                 templateUrl: 'app/guardian/editGuardian.tpl.html',
                 controller: 'updateGuardianController'
             })
-            .when('/guardian/:guardianId/view', {
+            .state({
+                name: 'viewGuardian',
+                url: '/guardian/:guardianId/view',
                 templateUrl: 'app/guardian/viewGuardian.tpl.html',
                 controller: 'updateGuardianController'
-            });
-        }
-    ]);
+            })
+    }]);

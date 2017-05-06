@@ -1,12 +1,4 @@
-angular.module('schoolApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'ui.mask', 'uuid4', 'values', 'child', 'guardian', 'typeaheads', 'overview'])
-
-    .config(['$routeProvider',
-        function ($routeProvider) {
-            $routeProvider.otherwise({
-                redirectTo: '/overview'
-            });
-        }
-    ])
+angular.module('schoolApp', ['ngResource', 'ui.bootstrap', 'ui.mask', 'uuid4', 'values', 'child', 'guardian', 'typeaheads', 'overview'])
 
     .config(['$httpProvider',
         function ($httpProvider) {
