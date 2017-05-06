@@ -1,61 +1,57 @@
-angular.module('overview').directive('schoolControl', ['School', 'ActiveCache',
+angular.module('overview').directive('schoolControl',
 
-	function (School, ActiveCache) {
+	function () {
 		return {
 			restrict: 'A',
 			scope: {
 				school: "=schoolControl",
 				schools: "=",
-				viewData: "="
+				active: "="
 			},
+			bindToController: true,
+			controllerAs: '$ctrl',
 			templateUrl: "app/overview/schoolControl/schoolControl.tpl.html",
-			link: function(scope, element) {
-				element.bind('keypress', function(e) {
-					scope.$apply(function () {
-						if (e.keyCode === 13) {
-							scope.update();
-						} else if (e.keyCode === 27) {
-							scope.cancel();
-						}
-					});
-				});
-			},
-			controller: ['$scope', function($scope) {
-				$scope.working = false;
+			controller: ['School', 'ActiveCache', function (School, ActiveCache) {
 
-				$scope.remove = function() {
-					$scope.working = true;
-					$scope.school.$remove({}, function() {
-						var index = $scope.schools.indexOf($scope.school);
-						$scope.schools.splice(index, 1);
-						if ($scope.school.id === ActiveCache.school.id) {
-							ActiveCache.school = null;
-						}
-						$scope.working = false;
-					},
-					function() {
-						$scope.working = false;
-					});
+				this.$onInit = function () {
+					this.oldValue = this.school.name;
 				};
 
-				var oldValue = $scope.school.name;
-				$scope.edit = function() {
-					$scope.editMode = true;
+				this.working = false;
+
+				this.remove = function () {
+					this.working = true;
+					this.school.$remove({}, () => {
+							let index = this.schools.indexOf(this.school);
+							this.schools.splice(index, 1);
+							//TODO
+							// if (this.school.id === ActiveCache.school.id) {
+							// ActiveCache.school = null;
+							// }
+							this.working = false;
+						},
+						() => {
+							this.working = false;
+						});
 				};
 
-				$scope.cancel = function() {
-					$scope.editMode = false;
-					$scope.school.name = oldValue;
+				this.edit = function () {
+					this.editMode = true;
 				};
 
-				$scope.update = function() {
-					$scope.editMode = false;
-					$scope.working = true;
-					$scope.school.$save({}, function() {
-						$scope.working = false;
+				this.cancel = function () {
+					this.editMode = false;
+					this.school.name = this.oldValue;
+				};
+
+				this.update = function () {
+					this.editMode = false;
+					this.working = true;
+					this.school.$save({}, () => {
+						this.working = false;
 					});
 				};
 			}]
 		};
 	}
-]);
+);

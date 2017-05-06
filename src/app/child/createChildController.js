@@ -16,7 +16,7 @@
             ActiveCache.child = null;
 
             $scope.submit = function() {
-                $scope.data.address.$save(function () {
+                $scope.data.address.save(function () {
                     $scope.data.child.$save({addressId: $scope.data.address.id, groupId: ActiveCache.group.id},
                         function() {
                             ActiveCache.child = $scope.data.child;

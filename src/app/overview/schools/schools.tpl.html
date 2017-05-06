@@ -5,25 +5,23 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">Σχολεία
-                <button class="btn btn-xs btn-default" ng-click="addSchool()" title="Νέο σχολείο">
+                <button class="btn btn-xs btn-default" ng-click="$ctrl.addSchool()" title="Νέο σχολείο">
                         <span class="glyphicon glyphicon-plus"></span>
                 </button>
             </div>
 
-            <div class="panel-body" ng-if="!data.schools.length">
-                <div class="overview-msg" ng-show="data.schools.$resolved">
+            <div class="panel-body" ng-if="$ctrl.schools.length === 0">
+                <div class="overview-msg" ng-show="$ctrl.schools.$resolved">
                     Δεν έχει εισαχθεί κανένα σχολείο
                 </div>
             </div>
 
-            <img src="images/loader.png"  ng-hide="data.schools.$resolved" class="center-block loader-medium"/>
+            <img src="images/loader.png" ng-hide="$ctrl.schools.$resolved" class="center-block loader-medium" />
 
-            <table class="table" ng-if="data.schools.length" ng-show="data.schools.$resolved">
+            <table class="table" ng-if="$ctrl.schools.length" ng-show="$ctrl.schools.$resolved">
                 <tbody>
-                    <tr class="clickable" ng-repeat="school in data.schools" focus-and-select
-                        school-control="school" schools="data.schools" view-data="viewData"
-                        ng-click="setActiveSchool(school)"
-                        ng-class="{ 'active': school.id === viewData.active.school.id}">
+                    <tr class="clickable" ng-repeat="school in $ctrl.schools" focus-and-select school-control="school" schools="$ctrl.schools"
+                        active="$ctrl.active" ng-click="$ctrl.setActiveSchool(school)" ng-class="{ 'active': school.id === $ctrl.active.school.id}">
                     </tr>
                 </tbody>
             </table>

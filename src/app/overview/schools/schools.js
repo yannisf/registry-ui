@@ -1,26 +1,27 @@
-angular.module('overview').directive('schools', ['uuid4', 'School', 'ActiveCache',
+angular.module('overview').component('schools', {
+    templateUrl: "app/overview/schools/schools.tpl.html",
+    controller: ['uuid4', 'School', 'ActiveCache',
+        function (uuid4, School, ActiveCache) {
 
-    function (uuid4, School, ActiveCache) {
-        return {
-            restrict: 'E',
-            replace: true,
-            templateUrl: "app/overview/schools/schools.tpl.html",
-            controller: ['$scope', function($scope) {
-                $scope.data.schools = School.query({}, function() {
-                	if (ActiveCache.school) {
-                		$scope.viewData.active.school = ActiveCache.school;
-                	}
+            this.$onInit = function () {
+                this.schools = School.query({}, () => {
+                    if (ActiveCache.school) {
+                        this.active.school = ActiveCache.school;
+                    }
                 });
+            };
 
-                $scope.addSchool = function() {
-                    $scope.data.schools.$resolved = false;
-                    var school = new School({id: uuid4.generate(), name: 'Νεο σχολείο'});
-                    $scope.setActiveSchool(null);
-                    school.$save({}, function() {
-                        $scope.data.schools = School.query();
-                    });
-                };
-            }]
-        };
-    }
-]);
+            this.addSchool = function () {
+                this.schools.$resolved = false;
+                let school = new School({
+                    id: uuid4.generate(),
+                    name: 'Νεο σχολείο'
+                });
+                //TODO: this.setActiveSchool(null);
+                school.$save({}, () => {
+                    this.schools = School.query();
+                });
+            };
+        }
+    ]
+});

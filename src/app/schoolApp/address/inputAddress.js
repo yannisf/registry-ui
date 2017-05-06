@@ -1,31 +1,29 @@
-angular.module('schoolApp').directive('inputAddress', ['$rootScope', 'uuid4', 'ActiveCache', 'Address',
+angular.module('schoolApp').component('inputAddress', {
+    bindings: {
+        address: "=",
+        allowCopy: "="
+    },
+    templateUrl: "app/schoolApp/address/inputAddress.tpl.html",
+    controller: ['$rootScope', 'uuid4', 'ActiveCache', 'Address',
+        function ($scope, $rootScope, uuid4, ActiveCache, Address) {
+            this.typeaheads = $rootScope.typeaheads;
 
-    function ($rootScope, uuid4, ActiveCache, Address) {
-        return {
-            replace: true,
-            restrict: 'E',
-            scope: {
-                address: "=",
-                allowCopy: "="
-            },
-            templateUrl: "app/schoolApp/address/inputAddress.tpl.html",
-            link: function (scope) {
-                scope.typeaheads = $rootScope.typeaheads;
+            this.isAddressOpen = false;
 
-                scope.viewData = {
-                    isAddressOpen: false
+            this.clear = function () {
+                this.address = {
+                    id: this.address.id
                 };
+            };
 
-                scope.clear = function() {
-                    scope.address = {id: scope.address.id};
-                };
-
-                scope.copyFromChild = function() {
-                    var id = scope.address.id;
-                    scope.address = Address.getForPerson({personId: ActiveCache.child.id}, function() {
-                        scope.address.id = id;
-                    });
-                };
-            }
-        };
-    }]);
+            this.copyFromChild = function () {
+                var id = this.address.id;
+                this.address = Address.getForPerson({
+                    personId: ActiveCache.child.id
+                }, function () {
+                    this.address.id = id;
+                });
+            };
+        }
+    ]
+});

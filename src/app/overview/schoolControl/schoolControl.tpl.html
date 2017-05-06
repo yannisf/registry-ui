@@ -1,23 +1,23 @@
 <td>
     <button type="button" class="btn btn-xs btn-link">
-        <span ng-dblclick="edit()" ng-show="!editMode">{{school.name}}</span>
+        <span ng-dblclick="$ctrl.edit()" ng-show="!$ctrl.editMode">{{$ctrl.school.name}}</span>
     </button>
-    <input type="text" ng-model="school.name" ng-show="editMode"/>
+    <input type="text" ng-model="$ctrl.school.name" ng-show="$ctrl.editMode"/>
 
     <div class="controls">
-        <button class="btn btn-xs btn-primary" title="Επεξεργασία" ng-show="!editMode && !working" ng-click="edit()">
+        <button class="btn btn-xs btn-primary" title="Επεξεργασία" ng-show="!$ctrl.editMode && !$ctrl.working" ng-click="$ctrl.edit()">
             <span class="edit"></span>
         </button>
-        <button class="btn btn-xs btn-danger" title = "Διαγραφή" ng-disabled="school.numberOfDepartments"
-                ng-show="!working && !editMode" ng-click="remove()">
+        <button class="btn btn-xs btn-danger" title = "Διαγραφή" ng-disabled="$ctrl.school.numberOfDepartments"
+                ng-show="!$ctrl.working && !$ctrl.editMode" ng-click="$ctrl.remove()">
             <span class="remove"></span>
         </button>
     </div>
 
-    <button class="btn btn-xs btn-success" title="Αποθήκευση" ng-show="editMode" ng-click="update()">
+    <button class="btn btn-xs btn-success" title="Αποθήκευση" ng-show="$ctrl.editMode" ng-click="$ctrl.update()">
         <span class="ok"></span>
     </button>
-    <button class="cancel-link" title="Ακύρωση" ng-show="editMode" ng-click="cancel()">Άκυρο</button>
+    <button class="cancel-link" title="Ακύρωση" ng-show="$ctrl.editMode" ng-click="$ctrl.cancel()">Άκυρο</button>
 
-    <img src="images/loader.png" class="loader-small" ng-show="working"/>
+    <img src="images/loader.png" class="loader-small" ng-show="$ctrl.working"/>
 </td>
