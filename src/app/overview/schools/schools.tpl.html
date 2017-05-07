@@ -10,18 +10,18 @@
                 </button>
             </div>
 
-            <div class="panel-body" ng-if="$ctrl.schools.length === 0">
-                <div class="overview-msg" ng-show="$ctrl.schools.$resolved">
-                    Δεν έχει εισαχθεί κανένα σχολείο
-                </div>
+            <div class="panel-body" ng-if="!$ctrl.showSchools()">
+                <div class="overview-msg">Δεν έχει εισαχθεί κανένα σχολείο</div>
             </div>
 
-            <img src="images/loader.png" ng-hide="$ctrl.schools.$resolved" class="center-block loader-medium" />
+            <img src="images/loader.png" ng-hide="$ctrl.schoolsResolved()" class="center-block loader-medium" />
 
-            <table class="table" ng-if="$ctrl.schools.length" ng-show="$ctrl.schools.$resolved">
+            <table class="table" ng-if="$ctrl.showSchools()">
                 <tbody>
-                    <tr class="clickable" ng-repeat="school in $ctrl.schools" focus-and-select school-control="school" schools="$ctrl.schools"
-                        active="$ctrl.active" ng-click="$ctrl.setActiveSchool(school)" ng-class="{ 'active': school.id === $ctrl.active.school.id}">
+                    <tr class="clickable" ng-repeat="school in $ctrl.overviewCtrl.schools" focus-and-select 
+                        school-control="school" schools="$ctrl.overviewCtrl.schools"
+                        ng-click="$ctrl.setActiveSchool(school)" 
+                        ng-class="{ 'active': $ctrl.isActiveSchool(school)}">
                     </tr>
                 </tbody>
             </table>

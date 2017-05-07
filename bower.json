@@ -13,6 +13,6 @@
     "bootswatch": "3.3.6",
     "components-font-awesome": "4.5.x",
     "open-sans-fontface": "1.4.2",
-    "angular-ui-router": "^0.4.2"
+    "angular-ui-router": "1.0.1"
   }
 }

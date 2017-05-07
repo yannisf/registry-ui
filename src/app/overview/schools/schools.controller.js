@@ -1,22 +1,42 @@
 function SchoolsCtrl(uuid4, School, ActiveCache) {
 
     this.$onInit = function () {
-        this.schools = School.query({}, () => {
-            if (ActiveCache.school) {
-                this.active.school = ActiveCache.school;
-            }
-        });
+        console.log('Initializing SchoolsCtrl', this);
+        this.overviewCtrl.schools = School.query();
     };
 
+    this.showSchools = function () {
+        return this.schoolsResolved() &&
+            this.hasSchools();
+    }
+
+    this.schoolsResolved = function () {
+        return this.overviewCtrl.schools.$resolved;
+    }
+
+    this.hasSchools = function () {
+        return this.overviewCtrl.schools.length > 0;
+    }
+
+    this.setActiveSchool = function (school) {
+        this.overviewCtrl.setActiveSchool(school);
+    };
+
+    this.isActiveSchool = function (school) {
+        if (ActiveCache.school) {
+            return school.id === ActiveCache.school.id;
+        }
+    }
+
     this.addSchool = function () {
-        this.schools.$resolved = false;
+        this.overviewCtrl.schools.$resolved = false;
         let school = new School({
             id: uuid4.generate(),
             name: 'Νεο σχολείο'
         });
-        //TODO: this.setActiveSchool(null);
+        this.setActiveSchool(null);
         school.$save({}, () => {
-            this.schools = School.query();
+            this.overviewCtrl.schools = School.query();
         });
     };
 }

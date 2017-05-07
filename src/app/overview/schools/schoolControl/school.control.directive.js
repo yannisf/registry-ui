@@ -1,14 +1,13 @@
-function SchoolControlDir() {
+function schoolControlDir() {
     return {
         restrict: 'A',
         scope: {
             school: "=schoolControl",
-            schools: "=",
-            active: "="
+            schools: "="
         },
+        templateUrl: "app/overview/schools/schoolControl/school.control.tpl.html",
         bindToController: true,
         controllerAs: '$ctrl',
-        templateUrl: "app/overview/schoolControl/school.control.tpl.html",
         controller: 'SchoolControlCtrl'
     };
 }
