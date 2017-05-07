@@ -5,31 +5,29 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">Χρονιές
-                <button class="btn btn-xs btn-default" title="Νέα χρονιά" ng-click="$ctrl.addGroup()" ng-disabled="!$ctrl.active.department">
+                <button class="btn btn-xs btn-default" title="Νέα χρονιά" ng-click="$ctrl.addGroup()" ng-disabled="!$ctrl.hasActiveDepartment()">
                     <span class="glyphicon glyphicon-plus"></span>
                 </button>
             </div>
 
-            <div class="panel-body" ng-if="!($ctrl.groups.$resolved && $ctrl.active.department && $ctrl.groups.length)">
-                <div class="overview-msg" ng-if="!$ctrl.active.department">
+            <div class="panel-body" ng-if="!$ctrl.showGroups()">
+                <div class="overview-msg" ng-if="!$ctrl.hasActiveDepartment()">
                     Επιλέξτε πρώτα τμήμα
                 </div>
 
-                <div class="overview-msg" ng-if="$ctrl.groups.$resolved && $ctrl.active.department && !$ctrl.groups.length">
+                <div class="overview-msg" ng-if="$ctrl.hasActiveDepartment() && $ctrl.groupsResolved() && !$ctrl.hasGroups()">
                     Δεν έχει εισαχθεί καμιά χρονιά
                 </div>
             </div>
 
-            <img src="images/loader.png" class="center-block loader-medium" ng-hide="!$ctrl.active.department || $ctrl.groups.$resolved"
-            />
-            <table class="table" ng-if="$ctrl.groups.$resolved && $ctrl.active.department && $ctrl.groups.length">
+            <img src="images/loader.png" class="center-block loader-medium" ng-hide="!$ctrl.hasActiveDepartment() || $ctrl.groupsResolved()"/>
 
+            <table class="table" ng-if="$ctrl.showGroups()">
                 <tbody>
-                    <tr class="clickable" ng-repeat="group in $ctrl.groups" focus-and-select group-control="group" groups="$ctrl.groups" active="$ctrl.active"
-                        ng-click="$ctrl.setActiveGroup(group)" ng-class="{'active': $ctrl.group.id === $ctrl.active.group.id }">
+                    <tr class="clickable" ng-repeat="group in $ctrl.overviewCtrl.groups" focus-and-select group-control="group" groups="$ctrl.overviewCtrl.groups" 
+                        ng-click="$ctrl.setActiveGroup(group)" ng-class="{'active': $ctrl.isActiveGroup(group) }">
                     </tr>
                 </tbody>
-
             </table>
 
         </div>

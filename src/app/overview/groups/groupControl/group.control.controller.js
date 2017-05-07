@@ -1,7 +1,8 @@
 function GroupControlCtrl($state, Group, ActiveCache) {
 
     this.$onInit = function () {
-        this.oldValue = this.group.name;
+        console.log('Initializing GroupControlCtrl', this);
+        this.originalName = this.group.name;
     };
 
     this.working = false;
@@ -21,7 +22,7 @@ function GroupControlCtrl($state, Group, ActiveCache) {
             if (this.group.id === ActiveCache.group.id) {
                 ActiveCache.group = null;
             }
-            this.active.department.numberOfGroups--;
+            ActiveCache.department.numberOfGroups--;
             this.working = false;
         });
     };
@@ -32,14 +33,14 @@ function GroupControlCtrl($state, Group, ActiveCache) {
 
     this.cancel = function () {
         this.editMode = false;
-        this.group.name = this.oldValue;
+        this.group.name = this.originalName;
     };
 
     this.update = function () {
         this.working = true;
         this.editMode = false;
         this.group.$save({
-            departmentId: this.active.department.id
+            departmentId: ActiveCache.department.id
         }, () => {
             this.working = false;
         });

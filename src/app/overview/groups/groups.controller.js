@@ -7,24 +7,50 @@ function GroupsCtrl(uuid4, Group, ActiveCache) {
         }
     };
 
+    this.showGroups = function () {
+        return this.hasActiveDepartment() &&
+            this.groupsResolved() &&
+            this.hasGroups();
+    }
+
+    this.hasActiveDepartment = function () {
+        return ActiveCache.department != null;
+    }
+
+    this.groupsResolved = function () {
+        return this.overviewCtrl.groups.$resolved;
+    }
+
+    this.hasGroups = function () {
+        return this.overviewCtrl.groups.length > 0;
+    }
+
+    this.setActiveGroup = function (group) {
+        this.overviewCtrl.setActiveGroup(group);
+    };
+
+    this.isActiveGroup = function (group) {
+        if (ActiveCache.group) {
+            return group.id === ActiveCache.group.id;
+        }
+    }
 
     this.addGroup = function () {
-        this.groups.$resolved = false;
+        this.overviewCtrl.groups.$resolved = false;
         let group = new Group({
             id: uuid4.generate(),
             name: 'Νεα χρόνια'
         });
         group.$save({
-            departmentId: this.active.department.id
+            departmentId: ActiveCache.department.id
         }, () => {
-            this.groups = Group.query({
-                departmentId: this.active.department.id
+            this.overviewCtrl.groups = Group.query({
+                departmentId: ActiveCache.department.id
             }, () => {
-                this.active.department.numberOfGroups++;
+                ActiveCache.department.numberOfGroups++;
             });
         });
     };
-    
 }
 
 GroupsCtrl.$inject = ['uuid4', 'Group', 'ActiveCache'];

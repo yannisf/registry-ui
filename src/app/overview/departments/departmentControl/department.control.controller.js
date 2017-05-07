@@ -33,7 +33,7 @@ function DepartmentControlCtrl(Department, ActiveCache) {
         this.editMode = false;
         this.working = true;
         this.department.$save({
-            schoolId: this.active.school.id
+            schoolId: ActiveCache.school.id
         }, () => {
             this.working = false;
         });

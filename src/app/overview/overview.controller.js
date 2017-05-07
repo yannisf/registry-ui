@@ -18,14 +18,13 @@ function OverviewCtrl($rootScope, $cookieStore, uuid4, School, Department, Group
         console.log('setActiveSchool', school);
         ActiveCache.school = school;
         ActiveCache.clearDepartment();
-        this.departments = Department.query({
-            schoolId: school.id
-        });
+        this.departments = Department.query({schoolId: school.id});
     };
 
     this.setActiveDepartment = function (department) {
         ActiveCache.department = department;
         ActiveCache.clearGroup();
+        this.groups = Group.query({departmentId: department.id});
     };
 
     this.setActiveGroup = function (group) {
