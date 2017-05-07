@@ -17,31 +17,31 @@
 
         <div class="collapse navbar-collapse" collapse="navCollapsed">
 
-            <ul class="nav navbar-nav" ng-if="credentials.authenticated">
+            <ul class="nav navbar-nav">
 
                 <li><a ui-sref="overview">Επισκόπιση</a></li>
 
-                <li ng-if="active.group" uib-dropdown>
+                <li ng-if="$ctrl.active.group" uib-dropdown>
                     <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
                         Tάξη<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
-                        <li><a href ng-click="toGroup()">Παιδιά</a></li>
-                        <li><a href ng-click="go('/child/create')">Νέο παιδί</a> </li>
+                        <li><a href ng-click="$ctrl.toGroup()">Παιδιά</a></li>
+                        <li><a ui-sref="createChild">Νέο παιδί</a> </li>
                     </ul>
                 </li>
 
-                <li ng-if="active.group" uib-dropdown>
+                <li ng-if="$ctrl.active.group" uib-dropdown>
                     <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
                         Εκτυπώσεις <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
-                        <li><a href="api/child/report/pdf/first?class={{active.group.id}}" target="_blank">Μικρά ονόματα</a></li>
-                        <li><a href="api/child/report/pdf/full?class={{active.group.id}}" target="_blank">Ολόκληρα ονόματα</a></li>
-                        <li><a href="api/child/report/pdf/smallTags?class={{active.group.id}}" target="_blank">Ταμπέλες ονομάτων (μικρές)</a></li>
-                        <li><a href="api/child/report/pdf/bigTags?class={{active.group.id}}" target="_blank">Ταμπέλες ονομάτων (μεγάλες)</a></li>
-                        <li><a href="api/communication/{{active.group.id}}?format=a4" target="_blank">Πίνακας Επικοινωνίας (A4)</a></li>
-                        <li><a href="api/communication/{{active.group.id}}?format=a3" target="_blank">Πίνακας Επικοινωνίας (A3)</a></li>
+                        <li><a href="api/child/report/pdf/first?class={{$ctrl.active.group.id}}" target="_blank">Μικρά ονόματα</a></li>
+                        <li><a href="api/child/report/pdf/full?class={{$ctrl.active.group.id}}" target="_blank">Ολόκληρα ονόματα</a></li>
+                        <li><a href="api/child/report/pdf/smallTags?class={{$ctrl.active.group.id}}" target="_blank">Ταμπέλες ονομάτων (μικρές)</a></li>
+                        <li><a href="api/child/report/pdf/bigTags?class={{$ctrl.active.group.id}}" target="_blank">Ταμπέλες ονομάτων (μεγάλες)</a></li>
+                        <li><a href="api/communication/{{$ctrl.active.group.id}}?format=a4" target="_blank">Πίνακας Επικοινωνίας (A4)</a></li>
+                        <li><a href="api/communication/{{$ctrl.active.group.id}}?format=a3" target="_blank">Πίνακας Επικοινωνίας (A3)</a></li>
                     </ul>
                 </li>
 

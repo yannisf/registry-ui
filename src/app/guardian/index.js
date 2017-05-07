@@ -4,19 +4,16 @@ angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'child', 'rela
             .state({
                 name: 'createGuardian',
                 url: '/guardian/create',
-                templateUrl: 'app/guardian/editGuardian.tpl.html',
-                controller: 'createGuardianController'
+                component: 'createGuardian'
             })
             .state({
                 name: 'editGuardian',
                 url: '/guardian/:guardianId/edit',
-                templateUrl: 'app/guardian/editGuardian.tpl.html',
-                controller: 'updateGuardianController'
+                component: 'editGuardian'
             })
             .state({
                 name: 'viewGuardian',
                 url: '/guardian/:guardianId/view',
-                templateUrl: 'app/guardian/viewGuardian.tpl.html',
-                controller: 'updateGuardianController'
+                component: 'viewGuardian'
             })
     }]);

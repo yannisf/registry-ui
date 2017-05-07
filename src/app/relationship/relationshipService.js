@@ -1,11 +1,9 @@
-angular.module('relationship').service('RelationshipService', ['$rootScope', 'ActiveCache', 'Relationship',
-    function ($rootScope, ActiveCache, Relationship) {
-        var fetchRelationships = function(childId) {
-            return Relationship.fetchRelationships({childId: childId});
-        };
-
-        return {
-            fetchRelationships: fetchRelationships,
+angular.module('relationship').service('RelationshipService', ['Relationship',
+    function (Relationship) {
+        this.fetchRelationships = function (childId) {
+            return Relationship.fetchRelationships({
+                childId: childId
+            });
         };
     }
 ]);
