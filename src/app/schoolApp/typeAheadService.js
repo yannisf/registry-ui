@@ -1,4 +1,4 @@
-angular.module('typeaheads').service('typeAheadService', ['$http',
+angular.module('schoolApp').service('typeAheadService', ['$http',
 
     function ($http) {
         return {
@@ -7,22 +7,18 @@ angular.module('typeaheads').service('typeAheadService', ['$http',
                     params: {
                         search: startsWith
                     }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
+                }).then((response) => {
+                    return response.data;
+                });
             },
             getLastNames: function (startsWith) {
                 return $http.get('api/typeahead/lastnames', {
                     params: {
                         search: startsWith
                     }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
+                }).then((response) => {
+                    return response.data;
+                });
             },
             getProfessions: function (startsWith) {
                 return $http.get('api/typeahead/professions', {

@@ -1,4 +1,4 @@
-function UpdateChildCtrl($stateParams, $state, $uibModal, Child, Address, ActiveCache) {
+function UpdateChildCtrl($stateParams, $state, $uibModal, typeAheadService, Child, Address, ActiveCache) {
 
     this.$onInit = function () {
         this.child = Child.get({
@@ -12,6 +12,7 @@ function UpdateChildCtrl($stateParams, $state, $uibModal, Child, Address, Active
         });
 
         this.submitLabel = 'Επεξεργασία';
+        this.typeaheads = typeAheadService;
     };
 
     this.cancel = function () {
@@ -44,4 +45,4 @@ function UpdateChildCtrl($stateParams, $state, $uibModal, Child, Address, Active
     };
 }
 
-UpdateChildCtrl.$inject = ['$stateParams', '$state', '$uibModal', 'Child', 'Address', 'ActiveCache'];
+UpdateChildCtrl.$inject = ['$stateParams', '$state', '$uibModal', 'typeAheadService', 'Child', 'Address', 'ActiveCache'];

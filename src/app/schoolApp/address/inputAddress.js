@@ -4,11 +4,14 @@ angular.module('schoolApp').component('inputAddress', {
         allowCopy: "="
     },
     templateUrl: "app/schoolApp/address/inputAddress.tpl.html",
-    controller: ['$rootScope', 'uuid4', 'ActiveCache', 'Address',
-        function ($scope, $rootScope, uuid4, ActiveCache, Address) {
-            this.typeaheads = $rootScope.typeaheads;
+    controller: ['uuid4', 'typeAheadService', 'ActiveCache', 'Address',
+        function (uuid4, typeAheadService, ActiveCache, Address) {
 
-            this.isAddressOpen = false;
+            this.$onInit = function () {
+                this.typeaheads = typeAheadService;
+                this.isAddressOpen = false;
+            };
+
 
             this.clear = function () {
                 for (var property in this.address) {

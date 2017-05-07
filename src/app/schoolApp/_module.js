@@ -1,4 +1,4 @@
-angular.module('schoolApp', ['ngResource', 'ui.bootstrap', 'ui.mask', 'uuid4', 'values', 'child', 'guardian', 'typeaheads', 'overview'])
+angular.module('schoolApp', ['ngResource', 'ui.bootstrap', 'ui.mask', 'uuid4', 'values', 'child', 'guardian', 'overview'])
 
     .config(['$httpProvider',
         function ($httpProvider) {

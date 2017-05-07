@@ -1,4 +1,4 @@
-function CreateChildCtrl($state, uuid4, ActiveCache, Child, Address) {
+function CreateChildCtrl($state, uuid4, typeAheadService, ActiveCache, Child, Address) {
 
     this.$onInit = function () {
         ActiveCache.child = null;
@@ -9,7 +9,10 @@ function CreateChildCtrl($state, uuid4, ActiveCache, Child, Address) {
             id: uuid4.generate()
         });
         this.submitLabel = 'Εισαγωγή';
+
+        this.typeaheads = typeAheadService;
     };
+    
 
     this.submit = function () {
         this.address.$save(() => {
@@ -32,4 +35,4 @@ function CreateChildCtrl($state, uuid4, ActiveCache, Child, Address) {
     };
 }
 
-CreateChildCtrl.$inject = ['$state', 'uuid4', 'ActiveCache', 'Child', 'Address'];
+CreateChildCtrl.$inject = ['$state', 'uuid4', 'typeAheadService', 'ActiveCache', 'Child', 'Address'];
