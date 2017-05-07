@@ -3,8 +3,12 @@ angular.module('child').component('displayChild', {
         child: "=",
         address: "="
     },
-    templateUrl: "app/child/displayChild/displayChild.tpl.html",
+    templateUrl: "app/child/displayChild/display.child.tpl.html",
     controller: ['AddressService', function (AddressService) {
-        this.isBlankAddress = AddressService.isBlank;
+
+        this.isBlankAddress = function(address) {
+            return AddressService.isBlank(address);
+        } 
+        
     }]
 });

@@ -1,7 +1,7 @@
 function GroupsCtrl(uuid4, Group, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing GroupsCtrl', this);
+        // console.log('Initializing GroupsCtrl', this);
     };
 
     this.showGroups = function () {
@@ -41,6 +41,7 @@ function GroupsCtrl(uuid4, Group, ActiveCache) {
         group.$save({
             departmentId: ActiveCache.department.id
         }, () => {
+            this.setActiveGroup(group);
             this.overviewCtrl.groups = Group.query({
                 departmentId: ActiveCache.department.id
             }, () => {

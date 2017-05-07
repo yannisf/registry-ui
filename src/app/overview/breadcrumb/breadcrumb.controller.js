@@ -1,7 +1,7 @@
 function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing BreadcrumbCtrl', this);
+        // console.log('Initializing BreadcrumbCtrl', this);
     };
 
     this.getSchool = function () {
@@ -17,18 +17,7 @@ function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
     }
 
     this.getChildName = function () {
-        let child = ActiveCache.child;
-        if (child) {
-            let name = child.firstName ? child.firstName + " " : "";
-            if (child.callName) {
-                name += "(" + child.callName + ") ";
-            }
-            name = (name + " " + (child.lastName ? child.lastName + " " : "")).trim();
-            if (name.length === 0) {
-                name = null;
-            }
-            return name;
-        }
+        return ActiveCache.getChildName();
     }
 
     this.toSchool = function () {

@@ -1,7 +1,7 @@
 <div class="page-header">
-    <h2> {{viewData.submitLabel}}
+    <h2> {{$ctrl.submitLabel}}
         <small>
-            <person-name person="data.child"></person-name>
+            {{$ctrl.getChildName()}}
         </small>
     </h2>
 </div>
@@ -15,7 +15,7 @@
     
             <div class="col-md-4">
                 <input type="text" class="form-control loader-input" id="firstName" name="firstName" autocomplete="off"
-                       focus ng-model="data.child.firstName" ng-required="!data.child.lastName"
+                       focus ng-model="$ctrl.child.firstName" ng-required="!$ctrl.child.lastName"
                        uib-typeahead="firstName for firstName in typeaheads.getFirstNames($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500"
                        typeahead-loading="loadingFirstNames"/>
@@ -30,7 +30,7 @@
 
             <div class="col-md-4">
                 <input type="text" class="form-control loader-input" id="lastName" name="lastName"
-                       ng-model="data.child.lastName" ng-required="!data.child.firstName"
+                       ng-model="$ctrl.child.lastName" ng-required="!$ctrl.child.firstName"
                        autocomplete="off" uib-typeahead="lastName for lastName in typeaheads.getLastNames($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingLastNames"/>
                 <img src="images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
@@ -43,7 +43,7 @@
             <label for="callName" class="col-md-2 control-label">Χαϊδευτικό</label>
 
             <div class="col-md-4">
-                <input type="text" class="form-control" id="callName" ng-model="data.child.callName"/>
+                <input type="text" class="form-control" id="callName" ng-model="$ctrl.child.callName"/>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
             <label for="dateOfBirth" class="col-md-2 control-label">Ημ/νία γεν.</label>
 
             <div class="col-md-4">
-                <input type="text" class="form-control" id="dateOfBirth" ng-model="data.child.dateOfBirth"
+                <input type="text" class="form-control" id="dateOfBirth" ng-model="$ctrl.child.dateOfBirth"
                        placeholder="ΗΗ-ΜΜ-ΧΧΧΧ"/>
             </div>
         </div>
@@ -65,10 +65,10 @@
 
             <div class="col-md-4">
                 <label class="radio-inline">
-                    <input type="radio" ng-model="data.child.level" value="PRE_SCHOOL_LEVEL_B"/> Νήπιο
+                    <input type="radio" ng-model="$ctrl.child.level" value="PRE_SCHOOL_LEVEL_B"/> Νήπιο
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" ng-model="data.child.level" value="PRE_SCHOOL_LEVEL_A"/> Προνήπιο
+                    <input type="radio" ng-model="$ctrl.child.level" value="PRE_SCHOOL_LEVEL_A"/> Προνήπιο
                 </label>
             </div>
         </div>
@@ -80,8 +80,7 @@
             <label for="gender" class="col-md-2 control-label">Φύλο</label>
 
             <div class="col-md-4">
-                <select class="form-control" id="gender" ng-model="data.child.gender"
-                        ng-keyup="$event.keyCode == 13 ? alert('Hi') : null">
+                <select class="form-control" id="gender" ng-model="$ctrl.child.gender">
                     <option value="MALE">Αγόρι</option>
                     <option value="FEMALE">Κορίτσι</option>
                 </select>
@@ -94,7 +93,7 @@
             <label for="nationality" class="col-md-2 control-label">Υπηκοότητα</label>
 
             <div class="col-md-4">
-                <input type="text" class="form-control loader-input" id="nationality" ng-model="data.child.nationality"
+                <input type="text" class="form-control loader-input" id="nationality" ng-model="$ctrl.child.nationality"
                        autocomplete="off" uib-typeahead="nationality for nationality in typeaheads.getNationalities($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingNationalities"/>
                 <img src="images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
@@ -107,20 +106,20 @@
             <label for="notes" class="col-md-2 control-label">Σημειώσεις</label>
 
             <div class="col-md-4">
-                <textarea rows="3" class="form-control" id="notes" ng-model="data.child.notes"></textarea>
+                <textarea rows="3" class="form-control" id="notes" ng-model="$ctrl.child.notes"></textarea>
             </div>
         </div>
     </div>
 
-    <input-address address="data.address" share-option="false"></input-address>
+    <input-address address="$ctrl.address" share-option="false"></input-address>
 
     <div class="row">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button class="btn btn-success" ng-click="submit()" ng-disabled="childForm.$invalid" type="submit">
+                <button class="btn btn-success" ng-click="$ctrl.submit()" ng-disabled="childForm.$invalid" type="submit">
                     Αποθήκευση
                 </button>
-                <button class="btn btn-primary" ng-click="cancel()">Ακύρωση</button>
+                <button class="btn btn-primary" ng-click="$ctrl.cancel()">Ακύρωση</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
 function groupControlDir() {
-    console.log('Initializing groupControlDir');
     return {
         restrict: 'A',
         scope: {

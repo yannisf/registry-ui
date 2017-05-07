@@ -1,8 +1,20 @@
-function GroupControlCtrl($state, Group, ActiveCache) {
+function GroupControlCtrl($scope, $element, $state, Group, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing GroupControlCtrl', this);
+        // console.log('Initializing GroupControlCtrl', this);
         this.originalName = this.group.name;
+
+        $element.on('keyup', ($event) => {
+            $scope.$apply(() => {
+                console.log('$event handling');
+                if ($event.keyCode === 13) {
+                    this.update();
+                } else if ($event.keyCode === 27) {
+                    this.cancel();
+                }
+            })
+        });
+
     };
 
     this.working = false;
@@ -48,4 +60,4 @@ function GroupControlCtrl($state, Group, ActiveCache) {
 
 }
 
-GroupControlCtrl.$inject = ['$state', 'Group', 'ActiveCache'];
+GroupControlCtrl.$inject = ['$scope', '$element', '$state', 'Group', 'ActiveCache'];

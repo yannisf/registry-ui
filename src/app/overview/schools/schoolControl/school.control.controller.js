@@ -1,7 +1,19 @@
-function SchoolControlCtrl(School, ActiveCache) {
+function SchoolControlCtrl($scope, $element, School, ActiveCache) {
 
     this.$onInit = function () {
         this._oldName = this.school.name;
+
+        $element.on('keyup', ($event) => {
+            $scope.$apply(() => {
+                console.log('$event handling');
+                if ($event.keyCode === 13) {
+                    this.update();
+                } else if ($event.keyCode === 27) {
+                    this.cancel();
+                }
+            })
+        });
+        
     };
 
     this.working = false;
@@ -40,4 +52,4 @@ function SchoolControlCtrl(School, ActiveCache) {
     };
 }
 
-SchoolControlCtrl.$inject = ['School', 'ActiveCache']
+SchoolControlCtrl.$inject = ['$scope', '$element', 'School', 'ActiveCache']

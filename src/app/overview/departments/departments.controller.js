@@ -1,7 +1,7 @@
 function DepartmentsCtrl(uuid4, Department, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing DepartmentsCtrl', this);
+        // console.log('Initializing DepartmentsCtrl', this);
     }
 
     this.showDepartments = function () {
@@ -28,8 +28,6 @@ function DepartmentsCtrl(uuid4, Department, ActiveCache) {
     };
 
     this.isActiveDepartment = function (department) {
-        console.log('isActiveDepartment', department)
-        console.log('ActiveCache.department', ActiveCache.department)
         if (ActiveCache.department) {
             return department.id === ActiveCache.department.id;
         }
@@ -41,10 +39,10 @@ function DepartmentsCtrl(uuid4, Department, ActiveCache) {
             id: uuid4.generate(),
             name: 'Νεο τμήμα'
         });
-        this.setActiveDepartment(null);
         department.$save({
             schoolId: ActiveCache.school.id
         }, () => {
+            this.setActiveDepartment(department);
             this.overviewCtrl.departments = Department.query({
                 schoolId: ActiveCache.school.id
             }, () => {

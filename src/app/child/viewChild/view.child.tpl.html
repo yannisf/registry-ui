@@ -1,28 +1,28 @@
-<img src="images/loader.png" ng-hide="data.child.$resolved" class="loader-area"/>
+<img src="images/loader.png" ng-hide="$ctrl.child.$resolved" class="loader-area"/>
 
-<div ng-show="data.child.$resolved">
+<div ng-show="$ctrl.child.$resolved">
 
     
     <div class="page-header">
         <h2>
-            <person-name person="data.child"></person-name>
+            {{$ctrl.getChildName()}}
             <previous-next></previous-next>
         </h2>
     </div>
     
-    <display-child child="data.child" address="data.address"></display-child>
+    <display-child child="$ctrl.child" address="$ctrl.address"></display-child>
     
     <fieldset>
         <legend>
-            Σχέσεις <span class="badge" ng-if="data.relationships.length > 0">{{data.relationships.length}}</span>
-            <img src="images/loader.png" ng-hide="data.relationships.$resolved" class="loader-small"/>
+            Σχέσεις <span class="badge" ng-if="$ctrl.relationships.length > 0">{{$ctrl.relationships.length}}</span>
+            <img src="images/loader.png" ng-hide="$ctrl.relationships.$resolved" class="loader-small"/>
         </legend>
 
-        <div ng-show="data.relationships.$resolved">
+        <div ng-show="$ctrl.relationships.$resolved">
             
-            <div ng-if="data.relationships.length == 0" class="submessage">Δεν έχει εισαχθεί καμιά σχέση ακόμα</div>
+            <div ng-if="$ctrl.relationships.length === 0" class="submessage">Δεν έχει εισαχθεί καμιά σχέση ακόμα</div>
         
-            <table class="table table-hover" ng-if="data.relationships.length > 0">
+            <table class="table table-hover" ng-if="$ctrl.relationships.length > 0">
                 <thead>
                 <tr>
                     <th>Όνομα</th>
@@ -31,8 +31,8 @@
                     <th>&nbsp;</th>
                 </tr>
                 </thead>
-                <tbody ng-click="goToGuardian($event)">
-                <tr ng-repeat="relationship in data.relationships" class="clickable">
+                <tbody ng-click="$ctrl.goToGuardian($event)">
+                <tr ng-repeat="relationship in $ctrl.relationships" class="clickable">
                     <td>{{relationship.guardian.firstName}} {{relationship.guardian.lastName}}</td>
                     <td>{{relationship.metadata.type | relationshipFilter}}</td>
                     <td>
@@ -42,7 +42,7 @@
                         <button class="btn btn-primary btn-xs" ng-click="go('/guardian/' + relationship.guardian.id + '/edit', $event)">
                             <span class="glyphicon glyphicon-edit"></span> Επεξεργασία
                         </button>
-                        <button class="btn btn-danger btn-xs" ng-click="confirmRemoveRelationship(relationship, $event)">
+                        <button class="btn btn-danger btn-xs" ng-click="$ctrl.confirmRemoveRelationship($ctrl.relationship, $event)">
                             <span class="glyphicon glyphicon-remove"></span> Διαγραφή
                         </button>
                     </td>
@@ -56,16 +56,16 @@
     
     <div style="padding-top: 1em">
 
-        <a class="btn btn-md btn-primary" href="api/child/{{data.child.id}}/cards" role="button">
+        <a class="btn btn-md btn-primary" href="api/child/{{$ctrl.child.id}}/cards" role="button">
             <span class="glyphicon glyphicon-print"></span> Καρτέλες
         </a>
-        <button class="btn btn-primary btn-md" ng-click="addGuardian()">
+        <button class="btn btn-primary btn-md" ng-click="$ctrl.addGuardian()">
             <span class="glyphicon glyphicon-flash"></span> Νέα σχέση
         </button>
-        <button class="btn btn-md btn-primary" ng-click="go('/child/' + data.child.id  + '/update')">
+        <a class="btn btn-md btn-primary" ui-sref="updateChild({childId: $ctrl.child.id})">
             <span class="glyphicon glyphicon-edit"></span> Επεξεργασία
-        </button>
-        <button class="btn btn-md btn-danger" ng-click="confirmRemoveChild()">
+        </a>
+        <button class="btn btn-md btn-danger" ng-click="$ctrl.confirmRemoveChild()">
             <span class="glyphicon glyphicon-remove"></span> Διαγραφή
         </button>
     </div>

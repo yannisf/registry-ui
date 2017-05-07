@@ -1,8 +1,7 @@
 function OverviewCtrl($cookieStore,School, Department, Group, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing OverviewCtrl', this);
-        console.log('OverviewCtrl: ActiveCache', ActiveCache);
+        // console.log('Initializing OverviewCtrl', this);
         if (ActiveCache.department) {
             this.departments = Department.query({schoolId: ActiveCache.school.id});
             this.groups = Group.query({departmentId: ActiveCache.department.id});
@@ -22,14 +21,12 @@ function OverviewCtrl($cookieStore,School, Department, Group, ActiveCache) {
     // }
 
     this.setActiveSchool = function (school) {
-        console.log('setActiveSchool', school);
         ActiveCache.school = school;
         ActiveCache.clearDepartment();
         this.departments = Department.query({schoolId: school.id});
     };
 
     this.setActiveDepartment = function (department) {
-        console.log('OverviewCtrl/setActiveDepartment: department', department);
         ActiveCache.department = department;
         ActiveCache.clearGroup();
         this.groups = Group.query({departmentId: department.id});

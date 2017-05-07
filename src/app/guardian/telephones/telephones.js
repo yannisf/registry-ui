@@ -6,16 +6,14 @@ angular.module('guardian').component('telephones', {
     controller: ['uuid4', 'ListService', function (uuid4, ListService) {
 
         this.$onInit = function() {
-            var _self = this;
-            ListService.telephoneTypes().then(
-                function (data) {
-                    _self.telephoneTypes = data;
+            ListService.telephoneTypes().then((data) => {
+                    this.telephoneTypes = data;
                 }
             );
         }
 
         this.addTelephone = function () {
-            var telephone = {
+            let telephone = {
                 id: uuid4.generate()
             };
             this.model.push(telephone);

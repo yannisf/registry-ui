@@ -1,7 +1,7 @@
 function SchoolsCtrl(uuid4, School, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing SchoolsCtrl', this);
+        // console.log('Initializing SchoolsCtrl', this);
         this.overviewCtrl.schools = School.query();
     };
 
@@ -34,8 +34,8 @@ function SchoolsCtrl(uuid4, School, ActiveCache) {
             id: uuid4.generate(),
             name: 'Νεο σχολείο'
         });
-        this.setActiveSchool(null);
         school.$save({}, () => {
+            this.setActiveSchool(school);
             this.overviewCtrl.schools = School.query();
         });
     };

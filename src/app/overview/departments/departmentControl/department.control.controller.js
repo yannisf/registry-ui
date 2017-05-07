@@ -1,10 +1,22 @@
-function DepartmentControlCtrl(Department, ActiveCache) {
+function DepartmentControlCtrl($scope, $element, Department, ActiveCache) {
 
     this.working = false;
 
     this.$onInit = function () {
-        console.log('Initializing DepartmentControlCtrl');
+        // console.log('Initializing DepartmentControlCtrl');
         this._oldName = this.department.name;
+
+        $element.on('keyup', ($event) => {
+            $scope.$apply(() => {
+                console.log('$event handling');
+                if ($event.keyCode === 13) {
+                    this.update();
+                } else if ($event.keyCode === 27) {
+                    this.cancel();
+                }
+            })
+        });
+
     };
 
     this.remove = function () {
@@ -40,4 +52,4 @@ function DepartmentControlCtrl(Department, ActiveCache) {
     };
 }
 
-DepartmentControlCtrl.$inject = ['Department', 'ActiveCache'];
+DepartmentControlCtrl.$inject = ['$scope', '$element', 'Department', 'ActiveCache'];

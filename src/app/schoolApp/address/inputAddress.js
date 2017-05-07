@@ -11,9 +11,13 @@ angular.module('schoolApp').component('inputAddress', {
             this.isAddressOpen = false;
 
             this.clear = function () {
-                this.address = {
-                    id: this.address.id
-                };
+                for (var property in this.address) {
+                    if (this.address.hasOwnProperty(property) && !property.startsWith('$')) {
+                        if (property !== 'id') {
+                            this.address[property] = null;
+                        }
+                    }
+                }
             };
 
             this.copyFromChild = function () {

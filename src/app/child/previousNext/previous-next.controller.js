@@ -1,8 +1,24 @@
-function PreviousNextCtrl($state, ActiveCache) {
+function PreviousNextCtrl($state, $transitions, $document, ActiveCache) {
 
     this.$onInit = function () {
-        console.log('Initializing PreviousNextCtrl', this);
+        // console.log('Initializing PreviousNextCtrl', this);
         this.groupHasMoreThanOneChildren = ActiveCache.childIds.length > 1;
+
+        $document.on("keyup", ($event) => {
+            console.log('keyup');
+            if ($event.keyCode === 39) {
+                this.nextChild();
+            } else if ($event.keyCode === 37) {
+                this.previousChild();
+            }
+        });
+
+        let unregister = $transitions.onExit({}, () => {
+            console.log('canceling keyup');
+            $document.off("keyup");
+            unregister();
+        });
+
     };
 
     this.nextChild = function () {
@@ -54,4 +70,4 @@ function PreviousNextCtrl($state, ActiveCache) {
     }
 }
 
-PreviousNextCtrl.$inject = ['$state', 'ActiveCache'];
+PreviousNextCtrl.$inject = ['$state', '$transitions', '$document', 'ActiveCache'];

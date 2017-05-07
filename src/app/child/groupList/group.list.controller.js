@@ -5,7 +5,7 @@ function GroupListCtrl($state, $stateParams, $cookieStore, ActiveCache, Group) {
     this.noChildren = false;
 
     this.$onInit = function () {
-        console.log('Initializing GroupListCtrl:', this);
+        // console.log('Initializing GroupListCtrl:', this);
         ActiveCache.resolveGroup($stateParams.groupId).then(() => {
             // $cookieStore.put('group', $stateParams.groupId);
             this.children = Group.children({

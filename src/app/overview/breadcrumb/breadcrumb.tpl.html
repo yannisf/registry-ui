@@ -1,5 +1,5 @@
 <div>
-    <div ng-if="!ctrl.getSchool()" style="line-height: 20px; padding: 8px 15px; margin-bottom: 20px">&nbsp;</div>
+    <div ng-if="!$ctrl.getSchool()" style="line-height: 20px; padding: 8px 15px; margin-bottom: 20px">&nbsp;</div>
     <ol class="breadcrumb" ng-if="$ctrl.getSchool()">
         <li ng-if="$ctrl.getSchool()"><a href ng-click="$ctrl.toSchool()">{{$ctrl.getSchool().name}}</a></li>
         <li ng-if="$ctrl.getDepartment()"><a href ng-click="$ctrl.toDepartment()">{{$ctrl.getDepartment().name}}</a></li>

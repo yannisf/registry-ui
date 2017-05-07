@@ -9,19 +9,16 @@ angular.module('child', ['ngResource', 'ui.router', 'ui.bootstrap', 'uuid4', 're
             .state({
                 name: 'createChild',
                 url: '/child/create',
-                templateUrl: 'app/child/editChild.tpl.html',
-                controller: 'createChildController'
+                component: 'createChild'
             })
             .state({
                 name: 'updateChild',
                 url: '/child/:childId/update',
-                templateUrl: 'app/child/editChild.tpl.html',
-                controller: 'updateChildController'
+                component: 'updateChild'
             })
             .state({
                 name: 'viewChild',
                 url: '/child/:childId/view',
-                templateUrl: 'app/child/viewChild.tpl.html',
-                controller: 'updateChildController'
+                component: 'viewChild'
             });
     }]);
