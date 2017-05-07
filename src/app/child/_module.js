@@ -4,8 +4,7 @@ angular.module('child', ['ngResource', 'ui.router', 'ui.bootstrap', 'uuid4', 're
             .state({
                 name: 'group',
                 url: '/group/:groupId',
-                templateUrl: 'app/child/listGroup.tpl.html',
-                controller: 'listGroupController'
+                component: 'groupList'
             })
             .state({
                 name: 'createChild',

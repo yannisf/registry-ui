@@ -5,6 +5,7 @@ angular.module('child').controller('updateChildController', ['$scope', '$statePa
             data: {
                 child: Child.get({id: $stateParams.childId}, function(response) {
                     ActiveCache.child = response;
+                    console.log('updateChildController:ActiveCache', ActiveCache);
                 }),
                 address: Address.getForPerson({personId: $stateParams.childId}),
                 relationships: Relationship.query({childId: $stateParams.childId})

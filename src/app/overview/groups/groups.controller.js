@@ -2,9 +2,6 @@ function GroupsCtrl(uuid4, Group, ActiveCache) {
 
     this.$onInit = function () {
         console.log('Initializing GroupsCtrl', this);
-        if (ActiveCache.group) {
-            this.active.group = ActiveCache.group;
-        }
     };
 
     this.showGroups = function () {

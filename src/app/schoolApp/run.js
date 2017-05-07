@@ -1,12 +1,6 @@
 angular.module('schoolApp').run(['$rootScope', '$http', '$location', '$window', 'ListService',
     function ($rootScope, $http, $location, $window, ListService) {
         angular.extend($rootScope, {
-            go: function (path, $event) {
-                if ($event) {
-                    $event.stopPropagation();
-                }
-                $location.path(path);
-            },
             relationshipTypes: []
         });
 

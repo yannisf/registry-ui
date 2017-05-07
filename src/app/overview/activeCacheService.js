@@ -15,11 +15,10 @@ angular.module('overview').service('ActiveCache', ['$http', '$q',
     	        });
     	    } else {
     	        this.clearSchool();
-    	        var self = this;
-    	        return $http.get('api/overview/group/' + groupId + '/info').then(function (response) {
-    	            self.school = response.data.school;
-    	            self.department = response.data.department;
-    	            self.group = response.data.group;
+    	        return $http.get('api/overview/group/' + groupId + '/info').then((response) => {
+    	            this.school = response.data.school;
+    	            this.department = response.data.department;
+    	            this.group = response.data.group;
     	        });
     	    }
     	};

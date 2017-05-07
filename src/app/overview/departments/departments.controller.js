@@ -15,7 +15,8 @@ function DepartmentsCtrl(uuid4, Department, ActiveCache) {
     }
 
     this.deparmentsResolved = function () {
-        return this.overviewCtrl.departments.$resolved;
+        let departments =  this.overviewCtrl.departments;
+        return !angular.isDefined(departments.$resolved) || departments.$resolved;
     }
 
     this.hasDepartments = function () {
@@ -27,6 +28,8 @@ function DepartmentsCtrl(uuid4, Department, ActiveCache) {
     };
 
     this.isActiveDepartment = function (department) {
+        console.log('isActiveDepartment', department)
+        console.log('ActiveCache.department', ActiveCache.department)
         if (ActiveCache.department) {
             return department.id === ActiveCache.department.id;
         }
