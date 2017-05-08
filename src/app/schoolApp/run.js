@@ -1,8 +1,5 @@
-angular.module('schoolApp').run(['$rootScope', '$http', '$location', '$window', 'ListService',
-    function ($rootScope, $http, $location, $window, ListService) {
-        angular.extend($rootScope, {
-            relationshipTypes: []
-        });
+angular.module('schoolApp').run(['$rootScope', '$http', '$location', '$window',
+    function ($rootScope, $http, $location, $window) {
 
         $rootScope.applicationUrl = $window.location.toString().substring(0, $window.location.toString().indexOf('#'));
 
@@ -12,10 +9,6 @@ angular.module('schoolApp').run(['$rootScope', '$http', '$location', '$window', 
                 username: data.name,
                 authorities: data.authorities
             };
-        });
-
-        ListService.relationshipTypes().then(function (data) {
-            $rootScope.relationshipTypes = data;
         });
 
     }

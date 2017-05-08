@@ -1,11 +1,22 @@
 angular.module('schoolApp').service('ListService', ['$http', function ($http) {
 
+    var cachedRelationalTypes = null;
+    var cachedTelephoneTypes = null;
+
     this.relationshipTypes = function () {
-        return $http.get('api/types/relationship').then((response) => response.data);
+        if (cachedRelationalTypes === null) {
+            cachedRelationalTypes = $http.get('api/types/relationship')
+                .then((response) => response.data);
+        }
+        return cachedRelationalTypes;
     };
 
     this.telephoneTypes = function () {
-        return $http.get('api/types/telephone').then((response) => response.data);
+        if ( cachedTelephoneTypes === null) {
+            cachedTelephoneTypes =  $http.get('api/types/telephone')
+            .then((response) => response.data);
+        }
+        return cachedTelephoneTypes;
     };
 
 }]);
