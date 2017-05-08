@@ -1,36 +1,49 @@
-angular.module('guardian').controller('createGuardianController', ['$state', '$scope', 'uuid4', 'ActiveCache', 'Guardian', 'Address', 'Relationship',
-    
-    function ($state, $scope, uuid4, ActiveCache, Guardian, Address, Relationship) {
-        angular.extend($scope, {
-            data: {
-                guardian: new Guardian( { id: uuid4.generate(), telephones: [] } ),
-                address: new Address( { id: uuid4.generate() } ),
-                relationship: new Relationship( { id: uuid4.generate(), metadata: { type: null } } )
-            },
-            viewData: {
-                submitLabel: "Δημιουργία",
-                sharedAddress: false
+function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListService) {
+
+    this.$onInit = function () {
+        this.guardian = new Guardian({
+            id: uuid4.generate(),
+            telephones: []
+        });
+
+        this.address = new Address({
+            id: uuid4.generate()
+        });
+
+        this.relationship = new Relationship({
+            id: uuid4.generate(),
+            metadata: {
+                type: null
             }
         });
 
-        $scope.cancel = function () {
-            $scope.go('/child/' + ActiveCache.child.id + '/view');
-        };
+        this.submitLabel = "Δημιουργία";
+        this.sharedAddress = false;
+        this.typeaheads = typeAheadService;
 
-        $scope.submit = function () {
-            $scope.data.address.$save().then(function() {
-                return $scope.data.guardian.$save({
-                    addressId: $scope.data.address.id
-                });
-            }).then(function() {
-                return $scope.data.relationship.$save({
-                    childId: ActiveCache.child.id,
-                    guardianId: $scope.data.guardian.id
-                });
-            }).then(function() {
-                $state.go('viewChild', {childId: ActiveCache.child.id});
-            });
-        };
-    }
+        ListService.relationshipTypes().then((data) => this.relationshipTypes = data);
+    };
 
-]);
+    this.cancel = function () {
+        $state.go('viewChild', {
+            childId: ActiveCache.child.id
+        });
+    };
+
+    this.submit = function () {
+        this.address.$save()
+            .then(() => this.guardian.$save({
+                addressId: this.address.id
+            }))
+            .then(() => this.relationship.$save({
+                childId: ActiveCache.child.id,
+                guardianId: this.guardian.id
+            }))
+            .then(() => $state.go('viewChild', {
+                childId: ActiveCache.child.id
+            }));
+    };
+}
+
+
+CreateGuardianCtrl.$inject = ['$state', 'uuid4', 'ActiveCache', 'Guardian', 'Address', 'Relationship', 'typeAheadService', 'ListService'];

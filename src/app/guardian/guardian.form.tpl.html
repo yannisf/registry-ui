@@ -1,14 +1,12 @@
 <div class="page-header">
-    <h2>{{viewData.submitLabel}} σχέσης
-        <small>
-            <person-name person="data.guardian"></person-name>
-        </small>
+    <h2>{{$ctrl.submitLabel}} σχέσης
+            <small>{{$ctrl.guardian.lastName}}</small>
     </h2>
 </div>
 
 <form class="form-horizontal well" role="form" ui-keypress="{'enter':'submit()', 'esc':'toScopedChild()'}">
-    <input type="hidden" ng-model="data.guardian.id"/>
-    <input type="hidden" ng-model="data.relationship.id"/>
+    <input type="hidden" ng-model="$ctrl.guardian.id"/>
+    <input type="hidden" ng-model="$ctrl.relationship.id"/>
 
     <fieldset>
 
@@ -18,8 +16,8 @@
     
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="firstName" autocomplete="off" focus
-                           ng-model="data.guardian.firstName"
-                           uib-typeahead="firstName for firstName in typeaheads.getFirstNames($viewValue)"
+                           ng-model="$ctrl.guardian.firstName"
+                           uib-typeahead="firstName for firstName in $ctrl.typeaheads.getFirstNames($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingFirstNames"/>
                     <img src="images/loader.png" ng-show="loadingFirstNames" class="loader-img"/>
                 </div>
@@ -32,8 +30,8 @@
     
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="lastName" autocomplete="off"
-                           ng-model="data.guardian.lastName" typeahead-loading="loadingLastNames"
-                           uib-typeahead="lastName for lastName in typeaheads.getLastNames($viewValue)"
+                           ng-model="$ctrl.guardian.lastName" typeahead-loading="loadingLastNames"
+                           uib-typeahead="lastName for lastName in $ctrl.typeaheads.getLastNames($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500"/>
                     <img src="images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
                 </div>
@@ -46,7 +44,7 @@
     
                 <div class="col-md-4">
                     <input type="text" class="form-control" id="dateOfBirth" placeholder="ΗΗ-ΜΜ-ΧΧΧΧ" 
-                            ng-model="data.guardian.dateOfBirth"/>
+                            ng-model="$ctrl.guardian.dateOfBirth"/>
                 </div>
             </div>
         </div>
@@ -57,7 +55,7 @@
                 <label for="gender" class="col-md-2 control-label">Φύλο</label>
     
                 <div class="col-md-4">
-                    <select class="form-control" id="gender" ng-model="data.guardian.gender">
+                    <select class="form-control" id="gender" ng-model="$ctrl.guardian.gender">
                         <option value="MALE">Άνδρας</option>
                         <option value="FEMALE">Γυναίκα</option>
                     </select>
@@ -71,8 +69,8 @@
     
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="nationality" autocomplete="off"
-                           ng-model="data.guardian.nationality" typeahead-loading="loadingNationalities"
-                           uib-typeahead="nationality for nationality in typeaheads.getNationalities($viewValue)"
+                           ng-model="$ctrl.guardian.nationality" typeahead-loading="loadingNationalities"
+                           uib-typeahead="nationality for nationality in $ctrl.typeaheads.getNationalities($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500"/>
                     <img src="images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
                 </div>
@@ -85,8 +83,8 @@
     
                 <div class="col-md-4">
                     <input type="text" class="form-control loader-input" id="profession" autocomplete="off"
-                           ng-model="data.guardian.profession" typeahead-loading="loadingProfession"
-                           uib-typeahead="profession for profession in typeaheads.getProfessions($viewValue)"
+                           ng-model="$ctrl.guardian.profession" typeahead-loading="loadingProfession"
+                           uib-typeahead="profession for profession in $ctrl.typeaheads.getProfessions($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500"/>
                     <img src="images/loader.png" ng-show="loadingProfession" class="loader-img"/>
                 </div>
@@ -98,7 +96,7 @@
                 <label for="email" class="col-md-2 control-label">E-mail</label>
     
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="email" ng-model="data.guardian.email" autocomplete="off"/>
+                    <input type="text" class="form-control" id="email" ng-model="$ctrl.guardian.email" autocomplete="off"/>
                 </div>
             </div>
         </div>
@@ -109,8 +107,8 @@
                 <label for="relationship" class="col-md-2 control-label">Σχέση με το παιδί</label>
     
                 <div class="col-md-4">
-                    <select class="form-control" id="relationship" ng-model="data.relationship.metadata.type"
-                            ng-options="relationship|relationshipFilter for relationship in relationshipTypes">
+                    <select class="form-control" id="relationship" ng-model="$ctrl.relationship.metadata.type"
+                            ng-options="relationship|relationshipFilter for relationship in $ctrl.relationshipTypes">
                         <option value="">--</option>
                     </select>
                 </div>
@@ -122,7 +120,7 @@
                 <label for="escort" class="col-md-2 control-label">Συνοδός</label>
     
                 <div class="col-md-4">
-                    <input class="form-control" id="escort" ng-model="data.relationship.metadata.pickup" type="checkbox"/>
+                    <input class="form-control" id="escort" ng-model="$ctrl.relationship.metadata.pickup" type="checkbox"/>
                 </div>
             </div>
         </div>
@@ -132,7 +130,7 @@
                 <label for="notes" class="col-md-2 control-label">Σημειώσεις</label>
     
                 <div class="col-md-4">
-                    <textarea rows="3" class="form-control" id="notes" ng-model="data.relationship.metadata.notes">
+                    <textarea rows="3" class="form-control" id="notes" ng-model="$ctrl.relationship.metadata.notes">
                     </textarea>
                 </div>
             </div>
@@ -140,18 +138,18 @@
     </fieldset>
 
     <!-- Telephones section -->
-    <telephones model="data.guardian.telephones"></telephones>
+    <telephones model="$ctrl.guardian.telephones"></telephones>
     
     <!-- Address section -->
-    <input-address address="data.address" allow-copy="true"></input-address>
+    <input-address address="$ctrl.address" allow-copy="true"></input-address>
 
     <div class="row">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-5">
-                <button class="btn btn-success" ng-click="submit()">
+                <button class="btn btn-success" ng-click="$ctrl.submit()">
                     Αποθήκευση
                 </button>
-                <button class="btn btn-primary" ng-click="cancel()">Άκυρωση</button>
+                <button class="btn btn-primary" ng-click="$ctrl.cancel()">Άκυρωση</button>
             </div>
         </div>
     </div>

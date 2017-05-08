@@ -7,9 +7,9 @@ angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'child', 'rela
                 component: 'createGuardian'
             })
             .state({
-                name: 'editGuardian',
+                name: 'updateGuardian',
                 url: '/guardian/:guardianId/edit',
-                component: 'editGuardian'
+                component: 'updateGuardian'
             })
             .state({
                 name: 'viewGuardian',

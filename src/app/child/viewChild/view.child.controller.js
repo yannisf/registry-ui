@@ -53,8 +53,11 @@ function ViewChildCtrl($stateParams, $window, $state, $uibModal, Child, Address,
             templateUrl: 'app/child/removeRelationshipModal/removeRelationshipModal.tpl.html',
             controller: 'removeRelationshipModalController',
             resolve: {
-                relationship: function () {
+                relationship: () => {
                     return relationship;
+                },
+                viewChildCtrl: () => {
+                    return this;
                 }
             }
         });

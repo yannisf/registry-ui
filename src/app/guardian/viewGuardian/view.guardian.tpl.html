@@ -1,13 +1,11 @@
 <div class="page-header">
     <h2>Πρόσωπο σχέσης
-        <small>
-            <person-name person="data.guardian"></person-name>
-        </small>
+        <small>{{$ctrl.guardian.lastName}}</small>
     </h2>
 </div>
 
-<display-guardian guardian="data.guardian" address="data.address"></display-guardian>
+<display-guardian guardian="$ctrl.guardian" address="$ctrl.address"></display-guardian>
 
-<button class="btn btn-default" ng-click="cancel()">
+<button class="btn btn-default" ng-click="$ctrl.cancel()">
     <span class="glyphicon glyphicon-arrow-left"></span> Πίσω
 </button>

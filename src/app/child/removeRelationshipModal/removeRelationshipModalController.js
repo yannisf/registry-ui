@@ -1,8 +1,8 @@
-angular.module('child').controller('removeRelationshipModalController', ['$scope', '$uibModalInstance', 'ActiveCache', 'Relationship', 'relationship',
-    function ($scope, $uibModalInstance, ActiveCache, Relationship, relationship) {
+angular.module('child').controller('removeRelationshipModalController', ['$scope', '$uibModalInstance', 'ActiveCache', 'Relationship', 'relationship', 'viewChildCtrl',
+    function ($scope, $uibModalInstance, ActiveCache, Relationship, relationship, viewChildCtrl) {
         $scope.removeRelationship = function () {
             relationship.$remove(function () {
-                $scope.data.relationships = Relationship.query({childId: ActiveCache.child.id}, function() {
+                viewChildCtrl.relationships = Relationship.query({childId: ActiveCache.child.id}, function() {
                     $scope.dismiss();
                 });
             });

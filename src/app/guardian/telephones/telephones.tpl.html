@@ -8,14 +8,14 @@
     <div class="row" ng-repeat="telephone in $ctrl.model">
         <input type="hidden" ng-model="telephone.id"/>
         <div class="form-group">
-            <label for="telephoneNumber" class="col-md-2 control-label">Τλέφωνο {{$index + 1}}</label>
-            <div class="col-md-2">
+            <label for="telephoneNumber" class="col-md-2 control-label">Τηλέφωνο {{$index + 1}}</label>
+            <div class="col-md-3">
                 <input type="text" class="form-control" id="telephoneNumber" ng-model="telephone.number"
                        ui-mask="{{'999 99 99 999'}}"/>
             </div>
             <div class="col-md-2">
                 <select class="form-control" id="telephoneType" ng-model="telephone.type"
-                        ng-options="type|telephoneTypeFilter for type in telephoneTypes">
+                        ng-options="type|telephoneTypeFilter for type in $ctrl.telephoneTypes">
                     <option value="">--</option>
                 </select>
             </div>

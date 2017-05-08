@@ -22,7 +22,7 @@
             
             <div ng-if="$ctrl.relationships.length === 0" class="submessage">Δεν έχει εισαχθεί καμιά σχέση ακόμα</div>
         
-            <table class="table table-hover" ng-if="$ctrl.relationships.length > 0">
+            <table class="table" ng-if="$ctrl.relationships.length > 0">
                 <thead>
                 <tr>
                     <th>Όνομα</th>
@@ -31,18 +31,21 @@
                     <th>&nbsp;</th>
                 </tr>
                 </thead>
-                <tbody ng-click="$ctrl.goToGuardian($event)">
-                <tr ng-repeat="relationship in $ctrl.relationships" class="clickable">
-                    <td>{{relationship.guardian.firstName}} {{relationship.guardian.lastName}}</td>
+                <tbody>
+                <tr ng-repeat="relationship in $ctrl.relationships">
+                    <td><a ui-sref="viewGuardian({guardianId: relationship.guardian.id})">
+                            {{relationship.guardian.firstName}} {{relationship.guardian.lastName}}
+                        </a>
+                    </td>
                     <td>{{relationship.metadata.type | relationshipFilter}}</td>
                     <td>
                         <telephone model="relationship.guardian.telephones[0]"></telephone>
                     </td>
                     <td class="text-right">
-                        <button class="btn btn-primary btn-xs" ng-click="go('/guardian/' + relationship.guardian.id + '/edit', $event)">
+                        <a class="btn btn-primary btn-xs" ui-sref="updateGuardian({guardianId: relationship.guardian.id})">
                             <span class="glyphicon glyphicon-edit"></span> Επεξεργασία
-                        </button>
-                        <button class="btn btn-danger btn-xs" ng-click="$ctrl.confirmRemoveRelationship($ctrl.relationship, $event)">
+                        </a>
+                        <button class="btn btn-danger btn-xs" ng-click="$ctrl.confirmRemoveRelationship(relationship, $event)">
                             <span class="glyphicon glyphicon-remove"></span> Διαγραφή
                         </button>
                     </td>

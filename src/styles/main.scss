@@ -80,8 +80,9 @@ body {
 }
 
 .phone-type {
-  @extend .label;
-  @extend .label-default;
+  @extend .badge;
+  font-size: x-small;
+  // @extend .label-default;
 }
 
 .child-list-col1 {
