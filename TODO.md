@@ -1,4 +1,3 @@
-- Convert all to components (guardian pending)
 - Ensure proper function
 - Upgrade all dependencies and stabilize
 - Remove $rootScope
