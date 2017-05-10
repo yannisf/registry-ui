@@ -1,4 +1,4 @@
-function GroupControlCtrl($scope, $element, $state, Group, ActiveCache) {
+function GroupControlCtrl($scope, $element, $state, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing GroupControlCtrl', this);
@@ -60,4 +60,4 @@ function GroupControlCtrl($scope, $element, $state, Group, ActiveCache) {
 
 }
 
-GroupControlCtrl.$inject = ['$scope', '$element', '$state', 'Group', 'ActiveCache'];
+GroupControlCtrl.$inject = ['$scope', '$element', '$state', 'ActiveCache'];

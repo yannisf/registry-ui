@@ -1,80 +1,53 @@
-angular.module('schoolApp').service('typeAheadService', ['$http',
+function TypeaheadSvc($http) {
 
-    function ($http) {
-        return {
-            getFirstNames: function (startsWith) {
-                return $http.get('api/typeahead/firstnames', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then((response) => {
-                    return response.data;
-                });
-            },
-            getLastNames: function (startsWith) {
-                return $http.get('api/typeahead/lastnames', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then((response) => {
-                    return response.data;
-                });
-            },
-            getProfessions: function (startsWith) {
-                return $http.get('api/typeahead/professions', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
-            },
-            getNationalities: function (startsWith) {
-                return $http.get('api/typeahead/nationalities', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
-            },
-            getStreetNames: function (startsWith) {
-                return $http.get('api/typeahead/streetnames', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
-            },
-            getNeighbourhoods: function (startsWith) {
-                return $http.get('api/typeahead/neighbourhoods', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
-            },
-            getCities: function (startsWith) {
-                return $http.get('api/typeahead/cities', {
-                    params: {
-                        search: startsWith
-                    }
-                }).then(
-                    function (response) {
-                        return response.data;
-                    }
-                );
-            }
-        };
+    const firstNamesEndpoint = 'api/typeahead/firstnames';
+    const lastNamesEndpoint = 'api/typeahead/lastnames';
+    const professionsEndpoint = 'api/typeahead/professions';
+    const nationalitiesEndpoint = 'api/typeahead/nationalities';
+    const streetnamesEndpoint = 'api/typeahead/streetnames';
+    const neighbourhoodsEndpoint = 'api/typeahead/neighbourhoods';
+    const citiesEndpoint = 'api/typeahead/cities';
+
+    this.getFirstNames = function (startsWith) {
+        return getTypeahead(firstNamesEndpoint, startsWith);
     }
-]);
+
+    this.getLastNames = function (startsWith) {
+        return getTypeahead(lastNamesEndpoint, startsWith);
+    }
+
+    this.getProfessions = function (startsWith) {
+        return getTypeahead(professionsEndpoint, startsWith);
+    }
+
+    this.getNationalities = function (startsWith) {
+        return getTypeahead(nationalitiesEndpoint, startsWith);
+    }
+
+    this.getStreetNames = function (startsWith) {
+        return getTypeahead(streetnamesEndpoint, startsWith);
+    }
+
+    this.getNeighbourhoods = function (startsWith) {
+        return getTypeahead(neighbourhoodsEndpoint, startsWith);
+    }
+
+    this.getCities = function (startsWith) {
+        return getTypeahead(citiesEndpoint, startsWith);
+    }
+
+    function createParam(startsWith) {
+        return {
+            params: {
+                search: startsWith
+            }
+        }
+    }
+
+    function getTypeahead(endpoint, startsWith) {
+        return $http.get(endpoint, createParam(startsWith))
+            .then((response) => response.data);
+    }
+}
+
+TypeaheadSvc.$inject = ['$http'];

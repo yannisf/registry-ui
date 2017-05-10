@@ -1,12 +1,18 @@
-function OverviewCtrl($cookieStore,School, Department, Group, ActiveCache) {
+function OverviewCtrl($cookieStore, Department, Group, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing OverviewCtrl', this);
         if (ActiveCache.department) {
-            this.departments = Department.query({schoolId: ActiveCache.school.id});
-            this.groups = Group.query({departmentId: ActiveCache.department.id});
+            this.departments = Department.query({
+                schoolId: ActiveCache.school.id
+            });
+            this.groups = Group.query({
+                departmentId: ActiveCache.department.id
+            });
         } else if (ActiveCache.school) {
-            this.departments = Department.query({schoolId: ActiveCache.school.id});
+            this.departments = Department.query({
+                schoolId: ActiveCache.school.id
+            });
         }
 
     };
@@ -23,13 +29,17 @@ function OverviewCtrl($cookieStore,School, Department, Group, ActiveCache) {
     this.setActiveSchool = function (school) {
         ActiveCache.school = school;
         ActiveCache.clearDepartment();
-        this.departments = Department.query({schoolId: school.id});
+        this.departments = Department.query({
+            schoolId: school.id
+        });
     };
 
     this.setActiveDepartment = function (department) {
         ActiveCache.department = department;
         ActiveCache.clearGroup();
-        this.groups = Group.query({departmentId: department.id});
+        this.groups = Group.query({
+            departmentId: department.id
+        });
     };
 
     this.setActiveGroup = function (group) {
@@ -38,4 +48,4 @@ function OverviewCtrl($cookieStore,School, Department, Group, ActiveCache) {
     };
 }
 
-OverviewCtrl.$inject = ['$cookieStore', 'School', 'Department', 'Group', 'ActiveCache'];
+OverviewCtrl.$inject = ['$cookieStore', 'Department', 'Group', 'ActiveCache'];

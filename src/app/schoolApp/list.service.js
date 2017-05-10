@@ -1,4 +1,4 @@
-angular.module('schoolApp').service('ListService', ['$http', function ($http) {
+function ListService($http) {
 
     var cachedRelationalTypes = null;
     var cachedTelephoneTypes = null;
@@ -12,11 +12,13 @@ angular.module('schoolApp').service('ListService', ['$http', function ($http) {
     };
 
     this.telephoneTypes = function () {
-        if ( cachedTelephoneTypes === null) {
-            cachedTelephoneTypes =  $http.get('api/types/telephone')
-            .then((response) => response.data);
+        if (cachedTelephoneTypes === null) {
+            cachedTelephoneTypes = $http.get('api/types/telephone')
+                .then((response) => response.data);
         }
         return cachedTelephoneTypes;
     };
 
-}]);
+}
+
+ListService.$inject = ['$http'];

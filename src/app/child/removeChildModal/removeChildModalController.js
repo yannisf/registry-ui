@@ -1,5 +1,5 @@
-angular.module('child').controller('removeChildModalController', ['$state', '$rootScope', '$scope', '$uibModalInstance', 'child', 'ActiveCache',
-    function ($state, $rootScope, $scope, $uibModalInstance, child, ActiveCache) {
+angular.module('child').controller('removeChildModalController', ['$state', '$scope', '$uibModalInstance', 'child', 'ActiveCache',
+    function ($state, $scope, $uibModalInstance, child, ActiveCache) {
         $scope.removeChild = function () {
             child.$remove(function() {
                 ActiveCache.child = null;

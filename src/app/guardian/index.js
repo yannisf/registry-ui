@@ -1,4 +1,4 @@
-angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'child', 'relationship'])
+angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'relationship'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state({

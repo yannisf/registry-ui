@@ -1,4 +1,4 @@
-angular.module('child', ['ngResource', 'ui.router', 'ui.bootstrap', 'uuid4', 'relationship'])
+angular.module('child', ['ngResource', 'ui.router', 'ui.bootstrap', 'uuid4', 'guardian', 'relationship'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state({

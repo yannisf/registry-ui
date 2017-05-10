@@ -1,4 +1,4 @@
-function DepartmentControlCtrl($scope, $element, Department, ActiveCache) {
+function DepartmentControlCtrl($scope, $element, ActiveCache) {
 
     this.working = false;
 
@@ -52,4 +52,4 @@ function DepartmentControlCtrl($scope, $element, Department, ActiveCache) {
     };
 }
 
-DepartmentControlCtrl.$inject = ['$scope', '$element', 'Department', 'ActiveCache'];
+DepartmentControlCtrl.$inject = ['$scope', '$element', 'ActiveCache'];

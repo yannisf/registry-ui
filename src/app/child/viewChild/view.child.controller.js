@@ -1,4 +1,4 @@
-function ViewChildCtrl($stateParams, $window, $state, $uibModal, Child, Address, Relationship, ActiveCache) {
+function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relationship, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing ViewChildCtrl', this);
@@ -64,4 +64,4 @@ function ViewChildCtrl($stateParams, $window, $state, $uibModal, Child, Address,
     };
 }
 
-ViewChildCtrl.$inject = ['$stateParams', '$window', '$state', '$uibModal', 'Child', 'Address', 'Relationship', 'ActiveCache']
+ViewChildCtrl.$inject = ['$stateParams', '$state', '$uibModal', 'Child', 'Address', 'Relationship', 'ActiveCache']

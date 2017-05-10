@@ -1,4 +1,4 @@
-function SchoolControlCtrl($scope, $element, School, ActiveCache) {
+function SchoolControlCtrl($scope, $element, ActiveCache) {
 
     this.$onInit = function () {
         this._oldName = this.school.name;
@@ -13,7 +13,7 @@ function SchoolControlCtrl($scope, $element, School, ActiveCache) {
                 }
             })
         });
-        
+
     };
 
     this.working = false;
@@ -52,4 +52,4 @@ function SchoolControlCtrl($scope, $element, School, ActiveCache) {
     };
 }
 
-SchoolControlCtrl.$inject = ['$scope', '$element', 'School', 'ActiveCache']
+SchoolControlCtrl.$inject = ['$scope', '$element', 'ActiveCache']
