@@ -8,11 +8,11 @@
 <img src="images/loader.png" ng-hide="$ctrl.children.$resolved" class="loader-area"/>
 
 <div ng-show="$ctrl.children.$resolved">
-    
+
     <div ng-show="$ctrl.noChildren" class="submessage">
         Δεν έχει εισαχθεί κανένα παιδί ακόμα.
     </div>
-    
+
     <table class="table table-striped table-hover" ng-hide="$ctrl.noChildren">
         <thead>
             <tr>
@@ -35,12 +35,12 @@
         <tfoot>
             <tr>
                 <td colspan="5">
-                    <group-statistics group-id="$ctrl.groupId"></group-statistics>
+                    <group-statistics></group-statistics>
                 </td>
             </tr>
         </tfoot>
     </table>
-    
+
     <a class="btn btn-primary btn-md" ui-sref="createChild">
         <span class="glyphicon glyphicon-flash"></span> Νέο παιδί
     </a>

@@ -17,37 +17,37 @@ gulp.task('connect', function () {
 });
 
 gulp.task('clean', function () {
-    return del.sync('/home/yannis/Development/Registry/registry/target/registry');
+    return del.sync('C:/Users/yannis/Development/registry/registry-server/target/registry');
 });
 
 gulp.task('html', function () {
     return gulp.src('src/**/*.html')
         .pipe(plugins.watch('src/**/*.html'))
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/'))
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/'))
 //        .on('finish', function() {plugins.util.log('HTML processed.')});
 });
 
 gulp.task('staticHtml', function () {
     return gulp.src('src/*.html')
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/'))
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/'))
 });
 
 gulp.task('templates', function () {
     return gulp.src('src/app/**/*.html')
         .pipe(plugins.angularTemplatecache('application.tpl.js', {root: 'app', module:'schoolApp'}))
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/scripts'))
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/scripts'))
 });
 
 gulp.task('styles', function () {
     return gulp.src('src/styles/main.scss')
         .pipe(plugins.sass())
         .pipe(plugins.cleanCss())
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/styles'))
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/styles'))
 });
 
 gulp.task('images', function () {
     return gulp.src([ 'src/images/*' ])
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/images'));
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/images'));
 });
 
 gulp.task('opensans-fonts', function () {
@@ -55,15 +55,15 @@ gulp.task('opensans-fonts', function () {
             'bower_components/open-sans-fontface/fonts/Bold/OpenSans-Bold.woff',
             'bower_components/open-sans-fontface/fonts/Italic/OpenSans-Italic.woff',
             'bower_components/open-sans-fontface/fonts/BoldItalic/OpenSans-BoldItalic.woff'])
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/fonts'));
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/fonts'));
 });
 
 gulp.task('bootstrap-fonts', function () {
-    return gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/*').pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/fonts'));
+    return gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/*').pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/fonts'));
 });
 
 gulp.task('fontawesome-fonts', function () {
-    return gulp.src('bower_components/components-font-awesome/fonts/*').pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/fonts'));
+    return gulp.src('bower_components/components-font-awesome/fonts/*').pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/fonts'));
 });
 
 gulp.task('fonts', ['opensans-fonts', 'bootstrap-fonts']);
@@ -77,7 +77,7 @@ gulp.task('vendor', function () {
             'bower_components/angular-uuid4/angular-uuid4.min.js',
             'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'])
         .pipe(plugins.concat('vendor.js'))
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/scripts'));
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/scripts'));
 });
 
 gulp.task('scripts', function () {
@@ -87,10 +87,10 @@ gulp.task('scripts', function () {
             'src/app/relationship/index.js', 'src/app/relationship/**/*.js',
             'src/app/child/index.js', 'src/app/child/**/*.js',
             'src/app/guardian/index.js', 'src/app/guardian/**/*.js',
-            'src/app/schoolApp/_module.js', 'src/app/schoolApp/**/*.js'
+            'src/app/schoolApp/index.js', 'src/app/schoolApp/**/*.js'
     ])
         .pipe(plugins.concat('application.js'))
-        .pipe(gulp.dest('/home/yannis/Development/Registry/registry/target/registry/scripts'));
+        .pipe(gulp.dest('C:/Users/yannis/Development/registry/registry-server/target/registry/scripts'));
 });
 
 

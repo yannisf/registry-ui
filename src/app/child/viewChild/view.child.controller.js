@@ -18,7 +18,7 @@ function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relation
         this.hasChildrenIdsInScope = ActiveCache.childIds.length > 1;
     };
 
-    this.getChildName = function() {
+    this.getChildName = function () {
         return ActiveCache.getChildName();
     }
 
@@ -37,12 +37,12 @@ function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relation
 
     this.confirmRemoveChild = function () {
         $uibModal.open({
-            templateUrl: 'app/child/removeChildModal/removeChildModal.tpl.html',
-            controller: 'removeChildModalController',
+            templateUrl: 'app/child/removeChildModal/remove.child.modal.controller.tpl..html',
+            controller: 'RemoveChildModalCtrl',
+            bindToController: true,
+            controllerAs: '$ctrl',
             resolve: {
-                child: () => {
-                    return this.child;
-                }
+                child: () => this.child
             }
         });
     };
@@ -50,15 +50,11 @@ function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relation
     this.confirmRemoveRelationship = function (relationship, $event) {
         $event.stopPropagation();
         $uibModal.open({
-            templateUrl: 'app/child/removeRelationshipModal/removeRelationshipModal.tpl.html',
-            controller: 'removeRelationshipModalController',
+            templateUrl: 'app/child/removeRelationshipModal/remove.relationship.modal.controller.tpl.html',
+            controller: 'RemoveRelationshipModalCtrl',
             resolve: {
-                relationship: () => {
-                    return relationship;
-                },
-                viewChildCtrl: () => {
-                    return this;
-                }
+                relationship: () => relationship,
+                viewChildCtrl: () => this
             }
         });
     };
