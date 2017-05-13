@@ -1,4 +1,4 @@
-function NavbarCtrl($state, $cookieStore, ActiveCache) {
+export default function NavbarCtrl($state, $cookieStore, ActiveCache) {
 
     this.active = ActiveCache;
 

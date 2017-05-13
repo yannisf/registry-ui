@@ -1,6 +1,8 @@
-function navbarComponent() {
+import template from './navbar.tpl.html';
+
+export default function navbarComponent() {
     return {
-        templateUrl: "app/schoolApp/navbar/navbar.tpl.html",
+        template: template,
         controller: 'NavbarCtrl'
     }
 }

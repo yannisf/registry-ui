@@ -1,4 +1,4 @@
-function LogoutCtrl($rootScope, $http, $window) {
+export default function LogoutCtrl($rootScope, $http, $window) {
 
     this.$onInit = function() {
         $http.get('api/context/authentication').then((data) => {

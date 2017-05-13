@@ -1,6 +1,30 @@
 import angular from 'angular';
+import ngResource from 'angular-resource';
+import ngCookies from 'angular-cookies';
+import uiRouter from 'angular-ui-router';
+import uiBootstrap from 'angular-ui-bootstrap';
+import breadcrumb from './breadcrumb';
+import OverviewCtrl from './overview.controller';
+import template from './overview.tpl.html';
+import groupStatistics from './grouStatistics';
+import schools from './schools';
+import departments from './departments';
+import groups from './groups';
+import 'angular-uuid4';
 
-angular.module('overview', ['ngResource', 'ngCookies', 'ui.router', 'ui.bootstrap', 'uuid4', 'schoolControl', 'child'])
+export default angular.module('overview', [
+        ngResource,
+        ngCookies,
+        uiRouter,
+        uiBootstrap,
+        'uuid4',
+        // 'child',
+        schools,
+        departments,
+        groups,
+        breadcrumb,
+        groupStatistics
+    ])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state({
             name: 'overview',
@@ -8,25 +32,6 @@ angular.module('overview', ['ngResource', 'ngCookies', 'ui.router', 'ui.bootstra
             component: 'overview'
         });
     }])
-    .directive('focusAndSelect', [
-        function () {
-            return {
-                restrict: 'A',
-                link: function (scope, element) {
-                    element.on('click dblclick', function ($event) {
-                        if ($event.target.nodeName !== 'INPUT') {
-                            element.find('input')[0].select();
-                        }
-                    });
-                }
-            };
-        }
-    ])
-    .controller('OverviewCtrl', OverviewCtrl)
-    .component('overview', {
-        templateUrl: 'app/overview/overview.tpl.html',
-        controller: 'OverviewCtrl'
-    })
     .factory('Department', ['$resource',
         function ($resource) {
             return $resource('api/overview/department/:id', {
@@ -87,4 +92,24 @@ angular.module('overview', ['ngResource', 'ngCookies', 'ui.router', 'ui.bootstra
                 },
             });
         }
-    ]);
+    ])
+    .controller('OverviewCtrl', OverviewCtrl)
+    .directive('focusAndSelect', [
+        function () {
+            return {
+                restrict: 'A',
+                link: function (scope, element) {
+                    element.on('click dblclick', function ($event) {
+                        if ($event.target.nodeName !== 'INPUT') {
+                            element.find('input')[0].select();
+                        }
+                    });
+                }
+            };
+        }
+    ])
+    .component('overview', {
+        template: template,
+        controller: 'OverviewCtrl'
+    })
+    .name;

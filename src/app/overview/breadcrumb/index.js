@@ -2,6 +2,7 @@ import angular from 'angular';
 import BreadcrumbCtrl from './breadcrumb.controller';
 import breadcrumbComponent from './breadcrumb.component';
 
-angular.module('overview')
+export default angular.module('breadcrumb', [])
     .controller('BreadcrumbCtrl', BreadcrumbCtrl)
-    .component('breadcrumb', breadcrumbComponent());
+    .component('breadcrumb', breadcrumbComponent())
+    .name;

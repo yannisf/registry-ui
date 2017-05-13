@@ -1,6 +1,8 @@
-function logoutComponent() {
+import template from './logout.tpl.html';
+
+export default function logoutComponent() {
     return {
-        templateUrl: "app/schoolApp/logout/logout.tpl.html",
+        template: template,
         controller: 'LogoutCtrl'
     }
 }

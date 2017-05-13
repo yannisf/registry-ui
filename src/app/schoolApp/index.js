@@ -1,15 +1,18 @@
 import angular from 'angular';
 import values from '../values';
+import filters from './filters';
+import address from './address';
 import overview from '../overview';
+import navbar from './navbar';
+import logout from './logout';
 import ngResource from 'angular-resource';
-import uiBootstrap from 'ui-bootstrap';
+import uiRouter from 'angular-ui-router';
+import uiBootstrap from 'angular-ui-bootstrap';
 import ActiveCacheSvc from './active.cache.service';
 import ListService from './list.service';
 import TypeaheadSvc from './typeahead.service';
-import filters from './filters';
 
-angular.module('schoolApp', [ngResource, uiBootstrap, values, filters, overview])
-
+angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters, address, overview, navbar, logout])
     .config(['$httpProvider', '$urlRouterProvider',
         function ($httpProvider, $urlRouterProvider) {
 
@@ -28,39 +31,8 @@ angular.module('schoolApp', [ngResource, uiBootstrap, values, filters, overview]
             $urlRouterProvider.otherwise('overview');
         }
     ])
-    .service('ActiveCache', ActiveCacheSvc)
-    .service('ListService', ListService)
-    .service('typeAheadService', TypeaheadSvc) //TODO: Rename
-    .factory('Address', ['$resource', function ($resource) {
-        return $resource('api/address/:id', {
-            id: '@id'
-        }, {
-            save: {
-                method: 'PUT',
-                params: {
-                    id: null
-                }
-            },
-            getForPerson: {
-                method: 'GET',
-                url: 'api/address/person/:personId'
-            }
-        });
-    }])
-    .service('AddressService', [function () {
-
-        this.isBlank = function (address) {
-            return !(address && (
-                address.streetName ||
-                address.streetNumber ||
-                address.neighbourhood ||
-                address.postalCode ||
-                address.city));
-        }
-
-    }])
-    .run(['$rootScope', '$http', '$location', '$window', '$state',
-        function ($rootScope, $http, $location, $window, $state) {
+    .run(['$rootScope', '$http', '$location', '$window',
+        function ($rootScope, $http, $location, $window) {
 
             $rootScope.applicationUrl = $window.location.toString().substring(0, $window.location.toString().indexOf('#'));
 
@@ -74,12 +46,21 @@ angular.module('schoolApp', [ngResource, uiBootstrap, values, filters, overview]
 
         }
     ])
-    .component('telephone', {
-        bindings: {
-            telephone: "=model"
-        },
-        template: '{{$ctrl.telephone.number}} <span class="phone-type">{{$ctrl.telephone.type|telephoneTypeFilter}}</span>'
-    })
+    .service('ActiveCache', ActiveCacheSvc)
+    .service('ListService', ListService)
+    .service('typeAheadService', TypeaheadSvc) //TODO: Rename
+    .service('AddressService', [function () {
+
+        this.isBlank = function (address) {
+            return !(address && (
+                address.streetName ||
+                address.streetNumber ||
+                address.neighbourhood ||
+                address.postalCode ||
+                address.city));
+        }
+
+    }])
     .directive('focus', [
         function focus() {
             return {
@@ -89,4 +70,10 @@ angular.module('schoolApp', [ngResource, uiBootstrap, values, filters, overview]
                 }
             };
         }
-    ]);
+    ])
+    .component('telephone', {
+        bindings: {
+            telephone: "=model"
+        },
+        template: '{{$ctrl.telephone.number}} <span class="phone-type">{{$ctrl.telephone.type|telephoneTypeFilter}}</span>'
+    });
