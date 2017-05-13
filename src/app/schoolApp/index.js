@@ -6,7 +6,7 @@ import overview from '../overview';
 import navbar from './navbar';
 import logout from './logout';
 import ngResource from 'angular-resource';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import uiBootstrap from 'angular-ui-bootstrap';
 import ActiveCacheSvc from './active.cache.service';
 import ListService from './list.service';

@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 import ngResource from 'angular-resource';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import uiBootstrap from 'angular-ui-bootstrap';
 import groupList from './groupList';
 import viewChild from './viewChild';

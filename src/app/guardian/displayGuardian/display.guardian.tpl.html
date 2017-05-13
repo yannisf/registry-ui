@@ -1,30 +1,30 @@
 <dl class="dl-horizontal">
 
     <dt>Όνομα</dt>
-    <dd>{{$ctrl.guardian.firstName}}&nbsp;</dd>
+    <dd>{{::$ctrl.guardian.firstName}}&nbsp;</dd>
 
     <dt>Επώνυμο</dt>
-    <dd>{{$ctrl.guardian.lastName}}&nbsp;</dd>
+    <dd>{{::$ctrl.guardian.lastName}}&nbsp;</dd>
 
-    <dt ng-if="$ctrl.guardian.dateOfBirth">Ημ/νία γέν.</dt>
-    <dd ng-if="$ctrl.guardian.dateOfBirth">{{$ctrl.guardian.dateOfBirth}}&nbsp;</dd>
+    <dt ng-if="::$ctrl.guardian.dateOfBirth">Ημ/νία γέν.</dt>
+    <dd ng-if="::$ctrl.guardian.dateOfBirth">{{::$ctrl.guardian.dateOfBirth}}&nbsp;</dd>
 
-    <dt ng-if="$ctrl.guardian.gender">Φύλο</dt>
-    <dd ng-if="$ctrl.guardian.gender">{{$ctrl.guardian.gender | guardianGenderTypeFilter}}&nbsp;</dd>
+    <dt ng-if="::$ctrl.guardian.gender">Φύλο</dt>
+    <dd ng-if="::$ctrl.guardian.gender">{{::$ctrl.guardian.gender | guardianGenderTypeFilter}}&nbsp;</dd>
 
-    <dt ng-if="$ctrl.guardian.nationality">Υπηκοότητα</dt>
-    <dd ng-if="$ctrl.guardian.nationality">{{$ctrl.guardian.nationality}}&nbsp;</dd>
+    <dt ng-if="::$ctrl.guardian.nationality">Υπηκοότητα</dt>
+    <dd ng-if="::$ctrl.guardian.nationality">{{::$ctrl.guardian.nationality}}&nbsp;</dd>
 
-    <dt ng-if="$ctrl.guardian.profession">Επάγγελμα</dt>
-    <dd ng-if="$ctrl.guardian.profession">{{$ctrl.guardian.profession}}&nbsp;</dd>
+    <dt ng-if="::$ctrl.guardian.profession">Επάγγελμα</dt>
+    <dd ng-if="::$ctrl.guardian.profession">{{::$ctrl.guardian.profession}}&nbsp;</dd>
 
-    <dt ng-repeat-start="telephone in $ctrl.guardian.telephones">Τηλέφωνο</dt>
+    <dt ng-repeat-start="telephone in ::$ctrl.guardian.telephones">Τηλέφωνο</dt>
     <dd ng-repeat-end>{{telephone.number}}&nbsp;
         <span class="phone-type">{{telephone.type|telephoneTypeFilter}}</span>
     </dd>
 
     <dt ng-if="!$ctrl.isBlankAddress($ctrl.address)">Διεύθυνση</dt>
-    <dd ng-if="!$ctrl.isBlankAddress($ctrl.address)">{{$ctrl.address | addressFilter}} &nbsp; </dd>
+    <dd ng-if="!$ctrl.isBlankAddress($ctrl.address)">{{::$ctrl.address | addressFilter}} &nbsp; </dd>
 
 </dl>
 

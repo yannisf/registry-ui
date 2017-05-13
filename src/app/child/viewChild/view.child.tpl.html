@@ -4,14 +4,12 @@
 
     
     <div class="page-header">
-        <h2>
-            {{$ctrl.getChildName()}}
-            <previous-next></previous-next>
+        <h2>{{::$ctrl.getChildName()}}<previous-next></previous-next>
         </h2>
     </div>
     
     <display-child child="$ctrl.child" address="$ctrl.address"></display-child>
-    
+
     <fieldset>
         <legend>
             Σχέσεις <span class="badge" ng-if="$ctrl.relationships.length > 0">{{$ctrl.relationships.length}}</span>

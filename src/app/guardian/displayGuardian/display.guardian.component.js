@@ -6,6 +6,7 @@ export default function displayGuardianComponent() {
             guardian: "=",
             address: "="
         },
-        template: template
+        template: template,
+        controller: 'DisplayGuardianCtrl'
     };
 }

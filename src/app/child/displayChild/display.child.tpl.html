@@ -1,3 +1,4 @@
+
 <dl class="dl-horizontal">
 
     <dt>Όνομα</dt>
@@ -22,6 +23,6 @@
     <dd ng-if="::$ctrl.child.nationality">{{::$ctrl.child.nationality}}&nbsp;</dd>
 
     <dt ng-if="!$ctrl.isBlankAddress($ctrl.address)">Διεύθυνση</dt>
-    <dd ng-if="!$ctrl.isBlankAddress($ctrl.address)">{{$ctrl.address | addressFilter}} &nbsp; </dd>
+    <dd ng-if="!$ctrl.isBlankAddress($ctrl.address)">{{::$ctrl.address | addressFilter}} &nbsp; </dd>
 
 </dl>

@@ -1,4 +1,4 @@
-import template from './display.child.controller';
+import template from './display.child.tpl.html';
 
 export default function displayChildComponent() {
     return {
