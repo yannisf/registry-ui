@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 const childGenderTypeFilter = function (childGenderTypeMap) {
     return function (value) {
         return childGenderTypeMap[value];
@@ -39,10 +41,11 @@ const telephoneTypeFilter = function (telephoneTypeMap) {
     };
 }
 
-angular.module('schoolApp')
+export default angular.module('filters', [])
     .filter('childGenderTypeFilter', ['childGenderTypeMap', childGenderTypeFilter])
     .filter('firstNameFilter', [firstNameFilter])
     .filter('guardianGenderTypeFilter', ['guardianGenderTypeMap', guardianGenderTypeFilter])
     .filter('preSchoolLevelFilter', ['preSchoolLevelMap', preSchoolLevelFilter])
     .filter('relationshipFilter', ['relationshipMap', relationshipFilter])
     .filter('telephoneTypeFilter', ['telephoneTypeMap', telephoneTypeFilter])
+    .name;

@@ -1,4 +1,4 @@
-function ViewGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address) {
+export default function ViewGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address) {
 
     this.$onInit = function () {
         this.guardian = Guardian.get({

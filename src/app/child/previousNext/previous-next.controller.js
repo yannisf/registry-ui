@@ -1,4 +1,4 @@
-function PreviousNextCtrl($state, $transitions, $document, ActiveCache) {
+export default function PreviousNextCtrl($state, $transitions, $document, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing PreviousNextCtrl', this);

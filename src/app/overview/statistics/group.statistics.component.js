@@ -1,6 +1,8 @@
-function groupStatisticsComponent() {
+import template from './group.statistics.tpl.html';
+
+export default function groupStatisticsComponent() {
     return {
-        templateUrl: "app/overview/statistics/group.statistics.tpl.html",
+        template: template,
         controller: 'GroupStatisticsCtrl'
     }
 }

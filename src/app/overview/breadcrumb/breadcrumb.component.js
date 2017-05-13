@@ -1,6 +1,8 @@
-function breadcrumbComponent() {
+import template from './breadcrumb.tpl.html';
+
+export default function breadcrumbComponent() {
     return {
-        templateUrl: "app/overview/breadcrumb/breadcrumb.tpl.html",
+        template: template,
         controller: 'BreadcrumbCtrl'
     };
 }

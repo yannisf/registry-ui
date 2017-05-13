@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular.module('schoolApp').filter('addressFilter', [function () {
     function formatAddress(address) {
         var formattedAddress = "";

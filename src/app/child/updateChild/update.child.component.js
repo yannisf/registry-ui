@@ -1,6 +1,8 @@
-function updateChildComponent() {
+import template from '../child.form.tpl.html';
+
+export default function updateChildComponent() {
     return {
-        templateUrl: 'app/child/child.form.tpl.html',
+        template: template,
         controller: 'UpdateChildCtrl'
     };
 }

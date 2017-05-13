@@ -1,11 +1,13 @@
-function groupControlDir() {
+import template from './group.control.tpl.html';
+
+export default function groupControlDir() {
     return {
         restrict: 'A',
         scope: {
             group: '=groupControl',
             groups: '=',
         },
-        templateUrl: 'app/overview/groups/groupControl/group.control.tpl.html',
+        template: template,
         bindToController: true,
         controllerAs: '$ctrl',
         controller: 'GroupControlCtrl'

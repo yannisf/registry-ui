@@ -1,4 +1,4 @@
-function DepartmentsCtrl(uuid4, Department, ActiveCache) {
+export default function DepartmentsCtrl(uuid4, Department, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing DepartmentsCtrl', this);

@@ -1,6 +1,8 @@
-function createChildComponent() {
+import template from './../child.form.tpl.html';
+
+export default function createChildComponent() {
     return {
-        templateUrl: 'app/child/child.form.tpl.html',
+        template: template,
         controller: 'CreateChildCtrl'
     };
 }

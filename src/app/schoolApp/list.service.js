@@ -1,4 +1,4 @@
-function ListService($http) {
+export default function ListService($http) {
 
     var cachedRelationalTypes = null;
     var cachedTelephoneTypes = null;

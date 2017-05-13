@@ -1,6 +1,8 @@
-function schoolsComponent() {
+import template from './schools.tpl.html';
+
+export default function schoolsComponent() {
     return {
-        templateUrl: "app/overview/schools/schools.tpl.html",
+        template: template,
         controller: 'SchoolsCtrl',
         require: {
             overviewCtrl: '^overview'

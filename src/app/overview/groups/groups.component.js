@@ -1,6 +1,8 @@
-function groupsComponent() {
+import template from './groups.tpl.html';
+
+export default function groupsComponent() {
     return {
-        templateUrl: "app/overview/groups/groups.tpl.html",
+        template: template,
         controller: 'GroupsCtrl',
         require: {
             overviewCtrl: '^overview'

@@ -1,10 +1,12 @@
-function inputAddressComponent() {
+import template from './input-address.tpl.html';
+
+export default function inputAddressComponent() {
     return {
         bindings: {
             address: "=",
             allowCopy: "="
         },
-        templateUrl: "app/schoolApp/address/input-address/input-address.tpl.html",
+        template: template,
         controller: 'InputAddressCtrl'
     }
 }

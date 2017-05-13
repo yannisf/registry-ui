@@ -1,6 +1,8 @@
-function viewGuardianComponent() {
+import template from './view.guardian.tpl.html';
+
+export default function viewGuardianComponent() {
     return {
-        templateUrl: 'app/guardian/viewGuardian/view.guardian.tpl.html',
+        template: template,
         controller: 'ViewGuardianCtrl'
     };
 }

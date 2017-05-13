@@ -1,6 +1,8 @@
-function viewChildComponent() {
+import template from './view.child.tpl.html';
+
+export default function viewChildComponent() {
     return {
-        templateUrl: 'app/child/viewChild/view.child.tpl.html',
+        template: template,
         controller: 'ViewChildCtrl'
     };
 }

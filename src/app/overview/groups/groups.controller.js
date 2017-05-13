@@ -1,4 +1,4 @@
-function GroupsCtrl(uuid4, Group, ActiveCache) {
+export default function GroupsCtrl(uuid4, Group, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing GroupsCtrl', this);

@@ -1,4 +1,4 @@
-function DepartmentControlCtrl($scope, $element, ActiveCache) {
+export default function DepartmentControlCtrl($scope, $element, ActiveCache) {
 
     this.working = false;
 

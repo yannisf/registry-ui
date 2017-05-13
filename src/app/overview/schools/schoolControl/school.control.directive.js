@@ -1,11 +1,13 @@
-function schoolControlDir() {
+import template from './school.control.tpl.html';
+
+export default function schoolControlDir() {
     return {
         restrict: 'A',
         scope: {
             school: "=schoolControl",
             schools: "="
         },
-        templateUrl: "app/overview/schools/schoolControl/school.control.tpl.html",
+        template: template,
         bindToController: true,
         controllerAs: '$ctrl',
         controller: 'SchoolControlCtrl'

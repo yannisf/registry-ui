@@ -1,4 +1,4 @@
-function OverviewCtrl($cookieStore, Department, Group, ActiveCache) {
+export default function OverviewCtrl($cookieStore, Department, Group, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing OverviewCtrl', this);

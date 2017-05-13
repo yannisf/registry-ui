@@ -1,6 +1,8 @@
-function departmentsComponent() {
+import template from './departments.tpl.html';
+
+export default function departmentsComponent() {
     return {
-        templateUrl: "app/overview/departments/departments.tpl.html",
+        template: template,
         controller: 'DepartmentsCtrl',
         require: {
             overviewCtrl: '^overview'

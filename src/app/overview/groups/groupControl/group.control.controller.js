@@ -1,4 +1,4 @@
-function GroupControlCtrl($scope, $element, $state, ActiveCache) {
+export default function GroupControlCtrl($scope, $element, $state, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing GroupControlCtrl', this);

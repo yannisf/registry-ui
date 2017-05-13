@@ -1,4 +1,4 @@
-function SchoolControlCtrl($scope, $element, ActiveCache) {
+export default function SchoolControlCtrl($scope, $element, ActiveCache) {
 
     this.$onInit = function () {
         this._oldName = this.school.name;

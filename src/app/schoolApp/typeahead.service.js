@@ -1,4 +1,4 @@
-function TypeaheadSvc($http) {
+export default function TypeaheadSvc($http) {
 
     const firstNamesEndpoint = 'api/typeahead/firstnames';
     const lastNamesEndpoint = 'api/typeahead/lastnames';

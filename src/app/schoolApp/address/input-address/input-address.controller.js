@@ -1,4 +1,4 @@
-function InputAddressCtrl(typeAheadService, ActiveCache, Address) {
+export default function InputAddressCtrl(typeAheadService, ActiveCache, Address) {
 
     this.$onInit = function () {
         this.typeaheads = typeAheadService;

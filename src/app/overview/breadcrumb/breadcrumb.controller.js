@@ -1,4 +1,4 @@
-function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
+export default function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing BreadcrumbCtrl', this);

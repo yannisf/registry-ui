@@ -1,4 +1,4 @@
-function SchoolsCtrl(uuid4, School, ActiveCache) {
+export default function SchoolsCtrl(uuid4, School, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing SchoolsCtrl', this);

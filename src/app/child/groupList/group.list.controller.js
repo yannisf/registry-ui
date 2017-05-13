@@ -1,4 +1,4 @@
-function GroupListCtrl($state, $stateParams, $cookieStore, ActiveCache, Group) {
+export default function GroupListCtrl($state, $stateParams, $cookieStore, ActiveCache, Group) {
 
     this.children = [];
     this.groupId = $stateParams.groupId;

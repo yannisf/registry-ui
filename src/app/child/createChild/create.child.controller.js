@@ -1,4 +1,4 @@
-function CreateChildCtrl($state, uuid4, typeAheadService, ActiveCache, Child, Address) {
+export default function CreateChildCtrl($state, uuid4, typeAheadService, ActiveCache, Child, Address) {
 
     this.$onInit = function () {
         ActiveCache.child = null;

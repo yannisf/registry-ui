@@ -1,4 +1,4 @@
-function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address, typeAheadService, ListService) {
+export default function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address, typeAheadService, ListService) {
 
     this.$onInit = function () {
         this.guardian = Guardian.get({
@@ -13,7 +13,7 @@ function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relatio
             childId: ActiveCache.child.id,
             guardianId: $stateParams.guardianId
         });
-        
+
         this.guardianId = $stateParams.guardianId;
         this.submitLabel = "Επεξεργασία";
         this.typeaheads = typeAheadService;

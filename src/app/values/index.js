@@ -36,9 +36,10 @@ const telephoneTypeMap = {
     OTHER: "Άλλο"
 }
 
-angular.module('values', [])
+export default angular.module('values', [])
     .value('childGenderTypeMap', childGenderTypeMap)
     .value('guardianGenderTypeMap', guardianGenderTypeMap)
     .value('preSchoolLevelMap', preSchoolLevelMap)
     .value('relationshipMap', relationshipMap)
-    .value('telephoneTypeMap', telephoneTypeMap);
+    .value('telephoneTypeMap', telephoneTypeMap)
+    .name;

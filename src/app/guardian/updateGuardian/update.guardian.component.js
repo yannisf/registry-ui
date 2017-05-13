@@ -1,6 +1,8 @@
-function updateGuardianComponent() {
+import template from '../guardian.form.tpl.html';
+
+export default function updateGuardianComponent() {
     return {
-        templateUrl: 'app/guardian/guardian.form.tpl.html',
+        template: template,
         controller: 'UpdateGuardianCtrl'
     };
 }

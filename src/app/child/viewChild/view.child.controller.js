@@ -1,4 +1,4 @@
-function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relationship, ActiveCache) {
+export default function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relationship, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing ViewChildCtrl', this);

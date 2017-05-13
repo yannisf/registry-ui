@@ -1,4 +1,4 @@
-function GroupStatisticsCtrl (ActiveCache, Group) {
+export default function GroupStatisticsCtrl (ActiveCache, Group) {
 
         this.$onInit = function () {
             this.statistics = Group.statistics({

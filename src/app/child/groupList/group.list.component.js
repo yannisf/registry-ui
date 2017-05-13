@@ -1,6 +1,8 @@
-function groupList() {
+import template from './group.list.tpl.html';
+
+export default function groupListComponent() {
     return {
-        templateUrl: "app/child/groupList/group.list.tpl.html",
+        template: template,
         controller: 'GroupListCtrl'
     }
 }

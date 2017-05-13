@@ -1,4 +1,4 @@
-function ActiveCacheSvc($http, $q) {
+export default function ActiveCacheSvc($http, $q) {
 
     this.school = null;
     this.department = null;

@@ -1,4 +1,6 @@
-angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'relationship'])
+import angular from 'angular';
+
+export default angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'relationship'])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state({
@@ -16,4 +18,5 @@ angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'relationship'
                 url: '/guardian/:guardianId/view',
                 component: 'viewGuardian'
             })
-    }]);
+    }])
+    .name;

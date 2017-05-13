@@ -1,4 +1,4 @@
-function UpdateChildCtrl($stateParams, $state, $uibModal, typeAheadService, Child, Address, ActiveCache) {
+export default function UpdateChildCtrl($stateParams, $state, $uibModal, typeAheadService, Child, Address, ActiveCache) {
 
     this.$onInit = function () {
         this.child = Child.get({

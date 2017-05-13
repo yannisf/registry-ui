@@ -1,4 +1,4 @@
-function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListService) {
+export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListService) {
 
     this.$onInit = function () {
         this.guardian = new Guardian({

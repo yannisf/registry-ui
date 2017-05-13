@@ -1,4 +1,4 @@
-function RemoveChildModalCtrl($state, $uibModalInstance, child, ActiveCache) {
+export default function RemoveChildModalCtrl($state, $uibModalInstance, child, ActiveCache) {
 
 
     this.removeChild = function () {

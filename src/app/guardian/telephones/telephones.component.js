@@ -1,9 +1,11 @@
-function telephonesComponent() {
+import template from './telephones.tpl.html';
+
+export default function telephonesComponent() {
     return {
         bindings: {
             model: "=",
         },
-        templateUrl: "app/guardian/telephones/telephones.tpl.html",
+        template: template,
         controller: 'TelephonesCtrl'
     };
 }

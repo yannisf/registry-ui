@@ -1,4 +1,4 @@
-function TelephonesCtrl(uuid4, ListService) {
+export default function TelephonesCtrl(uuid4, ListService) {
 
     this.$onInit = function () {
         ListService.telephoneTypes().then((data) => this.telephoneTypes = data);
