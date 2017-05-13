@@ -1,4 +1,4 @@
-export default function RemoveRelationshipModalCtrl($scope, $uibModalInstance, ActiveCache, Relationship, relationship, viewChildCtrl) {
+export default function RemoveRelationshipModalCtrl($uibModalInstance, ActiveCache, Relationship, relationship, viewChildCtrl) {
 
     this.removeRelationship = function () {
         relationship.$remove(() => {

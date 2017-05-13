@@ -1,15 +1,28 @@
 import angular from 'angular';
-import './viewChild';
-import './createChild';
-import './updateChild';
-import './displayChild';
-import './groupList';
-import './previousNext';
-import './removeRelationshipModal';
-import './removeRelationshipModal';
 
+import ngResource from 'angular-resource';
+import uiRouter from 'angular-ui-router';
+import uiBootstrap from 'angular-ui-bootstrap';
+import groupList from './groupList';
+import viewChild from './viewChild';
+import createChild from './createChild';
+import updateChild from './updateChild';
+import relationship from '../relationship';
+import guardian from '../guardian';
+import 'angular-uuid4';
 
-export default angular.module('child', ['ngResource', 'ui.router', 'ui.bootstrap', 'uuid4', 'guardian', 'relationship'])
+export default angular.module('child', [
+        ngResource,
+        uiRouter,
+        uiBootstrap,
+        'uuid4',
+        groupList,
+        viewChild,
+        createChild,
+        updateChild,
+        relationship,
+        guardian
+    ])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state({

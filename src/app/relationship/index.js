@@ -1,6 +1,15 @@
 import angular from 'angular';
 
-export default angular.module('relationship', ['ngResource'])
+import ngResource from 'angular-resource';
+import uiRouter from 'angular-ui-router';
+import uiBootstrap from 'angular-ui-bootstrap';
+
+
+export default angular.module('relationship', [
+        ngResource,
+        uiRouter,
+        uiBootstrap
+    ])
     .factory('Relationship', ['$resource',
         function ($resource) {
             return $resource('api/relationship/:id', {

@@ -15,7 +15,7 @@
                        uib-typeahead="firstName for firstName in $ctrl.typeaheads.getFirstNames($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500"
                        typeahead-loading="loadingFirstNames"/>
-                <img src="images/loader.png" ng-show="loadingFirstNames" class="loader-img"/>
+                <img src="../../images/loader.png" ng-show="loadingFirstNames" class="loader-img"/>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                        ng-model="$ctrl.child.lastName" ng-required="!$ctrl.child.firstName"
                        autocomplete="off" uib-typeahead="lastName for lastName in $ctrl.typeaheads.getLastNames($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingLastNames"/>
-                <img src="images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
+                <img src="../../images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
                 <input type="text" class="form-control loader-input" id="nationality" ng-model="$ctrl.child.nationality"
                        autocomplete="off" uib-typeahead="nationality for nationality in $ctrl.typeaheads.getNationalities($viewValue)"
                        typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingNationalities"/>
-                <img src="images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
+                <img src="../../images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
             </div>
         </div>
     </div>

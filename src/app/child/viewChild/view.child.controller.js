@@ -1,3 +1,6 @@
+import removeChildModalTemplate from './remove.child.modal.controller.tpl.html';
+import removeRelationshipModalTemplate from './remove.relationship.modal.controller.tpl.html';
+
 export default function ViewChildCtrl($stateParams, $state, $uibModal, Child, Address, Relationship, ActiveCache) {
 
     this.$onInit = function () {
@@ -26,18 +29,9 @@ export default function ViewChildCtrl($stateParams, $state, $uibModal, Child, Ad
         $state.go('createGuardian')
     };
 
-    this.goToGuardian = function ($event) {
-        let clickedElement = angular.element($event.target);
-        let guardianId = clickedElement.scope().relationship.guardian.id;
-        $event.stopPropagation();
-        $state.go('viewGuardian', {
-            guardianId: guardianId
-        });
-    };
-
     this.confirmRemoveChild = function () {
         $uibModal.open({
-            templateUrl: 'app/child/removeChildModal/remove.child.modal.controller.tpl..html',
+            template: removeChildModalTemplate,
             controller: 'RemoveChildModalCtrl',
             bindToController: true,
             controllerAs: '$ctrl',
@@ -50,8 +44,10 @@ export default function ViewChildCtrl($stateParams, $state, $uibModal, Child, Ad
     this.confirmRemoveRelationship = function (relationship, $event) {
         $event.stopPropagation();
         $uibModal.open({
-            templateUrl: 'app/child/removeRelationshipModal/remove.relationship.modal.controller.tpl.html',
+            template: removeRelationshipModalTemplate,
             controller: 'RemoveRelationshipModalCtrl',
+            bindToController: true,
+            controllerAs: '$ctrl',
             resolve: {
                 relationship: () => relationship,
                 viewChildCtrl: () => this

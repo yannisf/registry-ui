@@ -19,7 +19,7 @@
                            ng-model="$ctrl.guardian.firstName"
                            uib-typeahead="firstName for firstName in $ctrl.typeaheads.getFirstNames($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500" typeahead-loading="loadingFirstNames"/>
-                    <img src="images/loader.png" ng-show="loadingFirstNames" class="loader-img"/>
+                    <img src="../../images/loader.png" ng-show="loadingFirstNames" class="loader-img"/>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                            ng-model="$ctrl.guardian.lastName" typeahead-loading="loadingLastNames"
                            uib-typeahead="lastName for lastName in $ctrl.typeaheads.getLastNames($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500"/>
-                    <img src="images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
+                    <img src="../../images/loader.png" ng-show="loadingLastNames" class="loader-img"/>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                            ng-model="$ctrl.guardian.nationality" typeahead-loading="loadingNationalities"
                            uib-typeahead="nationality for nationality in $ctrl.typeaheads.getNationalities($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500"/>
-                    <img src="images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
+                    <img src="../../images/loader.png" ng-show="loadingNationalities" class="loader-img"/>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                            ng-model="$ctrl.guardian.profession" typeahead-loading="loadingProfession"
                            uib-typeahead="profession for profession in $ctrl.typeaheads.getProfessions($viewValue)"
                            typeahead-min-length="1" typeahead-wait-ms="500"/>
-                    <img src="images/loader.png" ng-show="loadingProfession" class="loader-img"/>
+                    <img src="../../images/loader.png" ng-show="loadingProfession" class="loader-img"/>
                 </div>
             </div>
         </div>

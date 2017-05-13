@@ -2,6 +2,7 @@ import angular from 'angular';
 import GroupListCtrl from './group.list.controller';
 import groupListComponent from './group.list.component';
 
-angular.module('child')
+export default angular.module('groupList', [])
     .controller('GroupListCtrl', GroupListCtrl)
-    .component('groupList', groupListComponent());
+    .component('groupList', groupListComponent())
+    .name;

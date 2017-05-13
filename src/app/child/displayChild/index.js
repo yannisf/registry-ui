@@ -2,6 +2,7 @@ import angular from 'angular';
 import DisplayChildCtrl from './display.child.controller';
 import displayChildComponent from './display.child.component';
 
-angular.module('child')
+export default angular.module('displayChild', [])
     .controller('DisplayChildCtrl', DisplayChildCtrl)
-    .component('displayChild', displayChildComponent());
+    .component('displayChild', displayChildComponent())
+    .name;

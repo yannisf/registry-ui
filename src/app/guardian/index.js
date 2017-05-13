@@ -1,6 +1,23 @@
 import angular from 'angular';
+import ngResource from 'angular-resource';
+import uiRouter from 'angular-ui-router';
+import uiBootstrap from 'angular-ui-bootstrap';
+import viewGuardian from './viewGuardian';
+import createGuardian from './createGuardian';
+import updateGuardian from './updateGuardian';
+import relationship from '../relationship';
+import 'angular-uuid4';
 
-export default angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4', 'relationship'])
+export default angular.module('guardian', [
+        ngResource,
+        uiRouter,
+        uiBootstrap,
+        'uuid4',
+        viewGuardian,
+        createGuardian,
+        updateGuardian,
+        relationship
+    ])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state({
@@ -19,4 +36,18 @@ export default angular.module('guardian', ['ui.bootstrap', 'ui.router', 'uuid4',
                 component: 'viewGuardian'
             })
     }])
+    .factory('Guardian', ['$resource',
+        function ($resource) {
+            return $resource('api/guardian/:id', {
+                id: '@id'
+            }, {
+                save: {
+                    method: 'PUT',
+                    params: {
+                        id: null
+                    }
+                },
+            });
+        }
+    ])
     .name;

@@ -11,6 +11,7 @@ import uiBootstrap from 'angular-ui-bootstrap';
 import ActiveCacheSvc from './active.cache.service';
 import ListService from './list.service';
 import TypeaheadSvc from './typeahead.service';
+import '../../styles/main.scss';
 
 angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters, address, overview, navbar, logout])
     .config(['$httpProvider', '$urlRouterProvider',

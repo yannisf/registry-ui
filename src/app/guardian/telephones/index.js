@@ -2,6 +2,7 @@ import angular from 'angular';
 import TelephonesCtrl from './telephones.controller';
 import telephonesComponent from './telephones.component';
 
-angular.module('guardian')
+export default angular.module('telephones', [])
     .controller('TelephonesCtrl', TelephonesCtrl)
-    .component('telephones', telephonesComponent());
+    .component('telephones', telephonesComponent())
+    .name;

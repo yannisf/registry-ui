@@ -10,6 +10,7 @@ import groupStatistics from './grouStatistics';
 import schools from './schools';
 import departments from './departments';
 import groups from './groups';
+import child from '../child';
 import 'angular-uuid4';
 
 export default angular.module('overview', [
@@ -23,7 +24,8 @@ export default angular.module('overview', [
         departments,
         groups,
         breadcrumb,
-        groupStatistics
+        groupStatistics,
+        child
     ])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state({
