@@ -19,9 +19,7 @@
     <dd ng-if="::$ctrl.guardian.profession">{{::$ctrl.guardian.profession}}&nbsp;</dd>
 
     <dt ng-repeat-start="telephone in ::$ctrl.guardian.telephones">Τηλέφωνο</dt>
-    <dd ng-repeat-end>{{telephone.number}}&nbsp;
-        <span class="phone-type">{{telephone.type|telephoneTypeFilter}}</span>
-    </dd>
+    <dd ng-repeat-end><telephone model="telephone"></telephone></dd>
 
     <dt ng-if="!$ctrl.isBlankAddress($ctrl.address)">Διεύθυνση</dt>
     <dd ng-if="!$ctrl.isBlankAddress($ctrl.address)">{{::$ctrl.address | addressFilter}} &nbsp; </dd>

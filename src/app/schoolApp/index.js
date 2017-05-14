@@ -73,5 +73,5 @@ angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters,
         bindings: {
             telephone: "=model"
         },
-        template: '{{$ctrl.telephone.number}} <span class="phone-type">{{$ctrl.telephone.type|telephoneTypeFilter}}</span>'
+        template: '{{$ctrl.telephone.number | telephoneNumber}} <span class="phone-type">{{$ctrl.telephone.type|telephoneTypeFilter}}</span>'
     });

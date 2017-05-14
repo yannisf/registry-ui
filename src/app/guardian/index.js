@@ -50,4 +50,12 @@ export default angular.module('guardian', [
             });
         }
     ])
+    .filter('telephoneNumber', [function () {
+        const pattern = /(\d{3})(\d{2})(\d{2})(\d{3})/;
+        return function (number) {
+            if (number) {
+                return number.replace(pattern, '$1 $2 $3 $4');
+            }
+        };
+    }])
     .name;

@@ -9,7 +9,7 @@ export default function ActiveCacheSvc($http, $q) {
 
     this.resolveGroup = function (groupId) {
         if (this.group && this.group.id == groupId) {
-            return $q(function (resolve) {
+            return $q((resolve) => {
                 resolve();
             });
         } else {
@@ -55,7 +55,7 @@ export default function ActiveCacheSvc($http, $q) {
             }
             return name;
         }
-    }
+    };
 
 }
 
