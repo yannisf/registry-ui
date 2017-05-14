@@ -1,9 +1,8 @@
 @import '_variables';
-@import '../../bower_components/bootswatch/cosmo/_variables';
+@import '~bootswatch/cosmo/_variables';
 @import '_bootstrap';
-@import '../../bower_components/bootswatch/cosmo/_bootswatch';
-
-//@import '../../bower_components/components-font-awesome/css/font-awesome';
+@import '~bootswatch/cosmo/_bootswatch';
+@import '~font-awesome/scss/font-awesome';
 
 $boy-color: #3399ff;
 $girl-color: #ff33ff;
@@ -80,8 +79,9 @@ body {
 }
 
 .phone-type {
-  @extend .label;
-  @extend .label-default;
+  @extend .badge;
+  font-size: x-small;
+  // @extend .label-default;
 }
 
 .child-list-col1 {
@@ -108,9 +108,9 @@ body {
 }
 
 .overview-msg {
-  width: 100%; 
+  width: 100%;
   text-align: center;
-  font-style: italic; 
+  font-style: italic;
 }
 
 .overview-col1 {
@@ -159,30 +159,26 @@ body {
 
 @font-face {
   font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url('../fonts/OpenSans-Regular.woff') format('woff');
+  src: url('../fonts/OpenSans-Regular.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/OpenSans-Bold.woff') format('woff');
+  src: url('../fonts/OpenSans-Bold.woff') format('woff');
+  font-weight: bold;
 }
 
 @font-face {
   font-family: 'Open Sans';
+  src: url('../fonts/OpenSans-Italic.woff') format('woff');
   font-style: italic;
-  font-weight: 400;
-  src: local('Open Sans Italic'), local('OpenSans-Italic'), url('../fonts/OpenSans-Italic.woff') format('woff');
 }
 
 @font-face {
   font-family: 'Open Sans';
+  font-weight: bold;
   font-style: italic;
-  font-weight: 700;
-  src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'), url('../fonts/OpenSans-BoldItalic.woff') format('woff');
+  src: url('../fonts/OpenSans-BoldItalic.woff') format('woff');
 }
 
 .overview-area table {

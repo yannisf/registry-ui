@@ -5,25 +5,23 @@
         <div class="panel panel-primary">
 
             <div class="panel-heading">Σχολεία
-                <button class="btn btn-xs btn-default" ng-click="addSchool()" title="Νέο σχολείο">
-                        <span class="glyphicon glyphicon-plus"></span>
+                <button class="btn btn-xs btn-default" ng-click="$ctrl.addSchool()" title="Νέο σχολείο">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Νέο
                 </button>
             </div>
 
-            <div class="panel-body" ng-if="!data.schools.length">
-                <div class="overview-msg" ng-show="data.schools.$resolved">
-                    Δεν έχει εισαχθεί κανένα σχολείο
-                </div>
+            <div class="panel-body" ng-if="!$ctrl.showSchools()">
+                <div class="overview-msg">Δεν έχει εισαχθεί κανένα σχολείο</div>
             </div>
 
-            <img src="images/loader.png"  ng-hide="data.schools.$resolved" class="center-block loader-medium"/>
+            <img src="../../../images/loader.png" ng-hide="$ctrl.schoolsResolved()" class="center-block loader-medium" />
 
-            <table class="table" ng-if="data.schools.length" ng-show="data.schools.$resolved">
+            <table class="table" ng-if="$ctrl.showSchools()">
                 <tbody>
-                    <tr class="clickable" ng-repeat="school in data.schools" focus-and-select
-                        school-control="school" schools="data.schools" view-data="viewData"
-                        ng-click="setActiveSchool(school)"
-                        ng-class="{ 'active': school.id === viewData.active.school.id}">
+                    <tr class="clickable" ng-repeat="school in $ctrl.overviewCtrl.schools" focus-and-select 
+                        school-control="school" schools="$ctrl.overviewCtrl.schools"
+                        ng-click="$ctrl.setActiveSchool(school)" 
+                        ng-class="{ 'active': $ctrl.isActiveSchool(school)}">
                     </tr>
                 </tbody>
             </table>
