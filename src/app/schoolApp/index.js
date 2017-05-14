@@ -37,7 +37,6 @@ angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters,
             $rootScope.applicationUrl = $window.location.href.substring(0, $window.location.href.indexOf('#'));
             $http.get('api/context/authentication').then((response) => {
                 $rootScope.credentials = {
-                    authenticated: response.data.name != 'anonymousUser',
                     username: response.data.name,
                     authorities: response.data.authorities
                 };

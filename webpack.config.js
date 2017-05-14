@@ -4,7 +4,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
+    filename: "[name].css",
 });
 
 module.exports = {
@@ -56,8 +56,12 @@ module.exports = {
     plugins: [
         extractSass,
         new HtmlWebpackPlugin({
-            title: 'Sample Angular application!!',
             template: './src/index.ejs'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'login.html',
+            template: './src/login.html',
+            inject: false
         })
     ]
 };
