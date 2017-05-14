@@ -34,14 +34,12 @@ angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters,
     ])
     .run(['$rootScope', '$http', '$location', '$window',
         function ($rootScope, $http, $location, $window) {
-
-            $rootScope.applicationUrl = $window.location.toString().substring(0, $window.location.toString().indexOf('#'));
-
-            $http.get('api/context/authentication').then(function (data) {
+            $rootScope.applicationUrl = $window.location.href.substring(0, $window.location.href.indexOf('#'));
+            $http.get('api/context/authentication').then((response) => {
                 $rootScope.credentials = {
-                    authenticated: data.name != 'anonymousUser',
-                    username: data.name,
-                    authorities: data.authorities
+                    authenticated: response.data.name != 'anonymousUser',
+                    username: response.data.name,
+                    authorities: response.data.authorities
                 };
             });
 
