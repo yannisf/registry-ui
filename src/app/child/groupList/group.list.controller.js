@@ -7,15 +7,13 @@ export default function GroupListCtrl($state, $stateParams, $cookieStore, Active
     this.$onInit = function () {
         // console.log('Initializing GroupListCtrl:', this);
         ActiveCache.resolveGroup($stateParams.groupId).then(() => {
-            // $cookieStore.put('group', $stateParams.groupId);
+            $cookieStore.put('group', $stateParams.groupId);
             this.children = Group.children({
                 id: $stateParams.groupId
             }, (response) => {
                 this.noChildren = response.length === 0;
                 ActiveCache.children = response;
-                ActiveCache.childIds = response.map(function (child) {
-                    return child.id;
-                });
+                ActiveCache.childIds = response.map((child) => child.id);
             });
         });
     };

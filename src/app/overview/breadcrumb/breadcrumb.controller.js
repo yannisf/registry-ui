@@ -1,9 +1,5 @@
 export default function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
 
-    this.$onInit = function () {
-        // console.log('Initializing BreadcrumbCtrl', this);
-    };
-
     this.getSchool = function () {
         return ActiveCache.school;
     }
@@ -27,7 +23,6 @@ export default function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
     };
 
     this.toDepartment = function () {
-        console.log('toDepartment: ActiveCache', ActiveCache);
         ActiveCache.clearGroup();
         $cookieStore.remove('group');
         $state.go('overview');

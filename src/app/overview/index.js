@@ -31,7 +31,10 @@ export default angular.module('overview', [
         $stateProvider.state({
             name: 'overview',
             url: '/overview',
-            component: 'overview'
+            component: 'overview',
+            params: {
+                root: null
+            }
         });
     }])
     .factory('Department', ['$resource',

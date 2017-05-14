@@ -1,10 +1,18 @@
-export default function GroupStatisticsCtrl (ActiveCache, Group) {
+export default function GroupStatisticsCtrl(ActiveCache, Group) {
 
-        this.$onInit = function () {
-            this.statistics = Group.statistics({
-                id: ActiveCache.group.id
-            });
-        };
+    let _statistics = null;
+
+    this.resolve = function () {
+        if (ActiveCache.group) {
+            if (_statistics === null) {
+                _statistics = Group.statistics({
+                    id: ActiveCache.group.id
+                });
+            }
+            return _statistics;
+        }
+    }
+
 }
 
 GroupStatisticsCtrl.$inject = ['ActiveCache', 'Group'];

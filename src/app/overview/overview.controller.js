@@ -1,7 +1,18 @@
-export default function OverviewCtrl($cookieStore, Department, Group, ActiveCache) {
+export default function OverviewCtrl($state, $stateParams, $cookieStore, Department, Group, ActiveCache) {
 
     this.$onInit = function () {
-        // console.log('Initializing OverviewCtrl', this);
+        if ($stateParams.root) {
+            $cookieStore.remove('group');
+        }
+
+        if ($cookieStore.get('group')) {
+            ActiveCache.clearChild();
+            let groupId = $cookieStore.get('group');
+            $state.go('group', {
+                groupId: groupId
+            });
+        }
+
         if (ActiveCache.department) {
             this.departments = Department.query({
                 schoolId: ActiveCache.school.id
@@ -20,11 +31,6 @@ export default function OverviewCtrl($cookieStore, Department, Group, ActiveCach
     this.schools = [];
     this.departments = [];
     this.groups = [];
-
-    // if ($cookieStore.get('group')) {
-    // var groupId = $cookieStore.get('group');
-    // $location.path('/group/' + groupId);
-    // }
 
     this.setActiveSchool = function (school) {
         ActiveCache.school = school;
@@ -48,4 +54,4 @@ export default function OverviewCtrl($cookieStore, Department, Group, ActiveCach
     };
 }
 
-OverviewCtrl.$inject = ['$cookieStore', 'Department', 'Group', 'ActiveCache'];
+OverviewCtrl.$inject = ['$state', '$stateParams', '$cookieStore', 'Department', 'Group', 'ActiveCache'];
