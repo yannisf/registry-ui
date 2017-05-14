@@ -15,19 +15,36 @@
             </span>
         </div>
 
-        <div class="collapse navbar-collapse" collapse="navCollapsed">
+        <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
 
             <ul class="nav navbar-nav">
 
-                <li><a ui-sref="overview">Επισκόπιση</a></li>
+                <li>
+                    <a ui-sref="overview">
+                        <i class="fa fa-home" aria-hidden="true"></i> Επισκόπιση
+                    </a>
+                </li>
 
                 <li ng-if="$ctrl.active.group" uib-dropdown>
                     <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
-                        Tάξη<span class="caret"></span>
+                        Tάξη <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
-                        <li><a href ng-click="$ctrl.toGroup()">Παιδιά</a></li>
-                        <li><a ui-sref="createChild">Νέο παιδί</a> </li>
+                        <li>
+                            <a href ng-click="$ctrl.toGroup()">
+                                <i class="fa fa-child" aria-hidden="true"></i> Κατάλογος παιδιών
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="createChild">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> Νέο παιδί
+                            </a>
+                        </li>
+                        <li>
+                            <a href="api/overview/group/{{::$ctrl.active.group.id}}/emails" target="_blank">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>  email επικοινωνίας
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

@@ -13,9 +13,9 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: '/home/yannis/Development/Registry/registry/target/registry',
+        path: path.resolve(__dirname, 'dist')
     },
-    devtool: "cheap-eval-source-map",
+    devtool: "source-map",
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,

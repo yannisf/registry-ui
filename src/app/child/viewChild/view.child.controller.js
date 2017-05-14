@@ -25,10 +25,6 @@ export default function ViewChildCtrl($stateParams, $state, $uibModal, Child, Ad
         return ActiveCache.getChildName();
     }
 
-    this.addGuardian = function () {
-        $state.go('createGuardian')
-    };
-
     this.confirmRemoveChild = function () {
         $uibModal.open({
             template: removeChildModalTemplate,
@@ -41,8 +37,7 @@ export default function ViewChildCtrl($stateParams, $state, $uibModal, Child, Ad
         });
     };
 
-    this.confirmRemoveRelationship = function (relationship, $event) {
-        $event.stopPropagation();
+    this.confirmRemoveRelationship = function (relationship) {
         $uibModal.open({
             template: removeRelationshipModalTemplate,
             controller: 'RemoveRelationshipModalCtrl',
