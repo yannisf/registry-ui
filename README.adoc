@@ -9,32 +9,12 @@ An AngularJS application to provide a user interface to the Registry application
 === Initialize
 ----
 # npm install
-# bower install
-----
-=== Setup environment path
-.Linux
-----
-# . env.sh
-----
-
-.Windows
-----
-> env.cmd
 ----
 
 === Build
 ----
-# gulp
+# webpack
 # mvn clean install
 ----
 
 After the application is built, it needs to be included into the server side package (_war_). For more information, review the _registry_ server side project documentation.
-
-
-==== Notes
-To add a build dependency in `package.json`, e.g. `less` use the following command:
-
-----
-npm install grunt-contrib-less --save-dev
-----
-
