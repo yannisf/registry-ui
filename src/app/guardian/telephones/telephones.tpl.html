@@ -1,20 +1,21 @@
 <fieldset>
     <legend>Τηλέφωνα
-        <button class="btn btn-xs btn-default" ng-click="$ctrl.addTelephone()" title="Προσθήκη">
-            <span class="glyphicon glyphicon-plus"></span>
+        <button class="btn btn-xs btn-info" ng-click="$ctrl.addTelephone()" title="Προσθήκη">
+            <i class="fa fa-phone" aria-hidden="true"></i>
         </button>
     </legend>
 
     <div class="row" ng-repeat="telephone in $ctrl.model">
         <input type="hidden" ng-model="telephone.id"/>
-        <div class="form-group">
+        <div class="form-group" ng-class="{ 'has-error': $ctrl.form['telephone_type_' + {{$index}}].$invalid || $ctrl.form['telephone_number_' + {{$index}}].$invalid }">
             <label for="telephoneNumber" class="col-md-2 control-label">Τηλέφωνο {{$index + 1}}</label>
             <div class="col-md-3">
-                <input type="text" class="form-control" id="telephoneNumber" ng-model="telephone.number"
-                       ui-mask="{{'999 99 99 999'}}"/>
+                <input type="text" class="form-control" id="telephoneNumber" name="telephone_number_{{$index}}"
+                        ng-model="telephone.number" ui-mask="{{'999 99 99 999'}}" required/>
             </div>
             <div class="col-md-2">
-                <select class="form-control" id="telephoneType" ng-model="telephone.type"
+                <select class="form-control" id="telephoneType" name="telephone_type_{{$index}}" required 
+                        ng-model="telephone.type"
                         ng-options="type|telephoneTypeFilter for type in $ctrl.telephoneTypes">
                     <option value="">--</option>
                 </select>

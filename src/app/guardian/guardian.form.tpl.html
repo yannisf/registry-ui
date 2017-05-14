@@ -1,10 +1,9 @@
 <div class="page-header">
-    <h2>{{$ctrl.submitLabel}} σχέσης
-            <small>{{$ctrl.guardian.lastName}}</small>
-    </h2>
+    <h2>{{$ctrl.submitLabel}} σχέσης</h2>
 </div>
 
-<form class="form-horizontal well" role="form" ui-keypress="{'enter':'submit()', 'esc':'toScopedChild()'}">
+<form class="form-horizontal well" role="form"  name="guardianForm"
+        ui-keypress="{'enter':'submit()', 'esc':'toScopedChild()'}" novalidate>
     <input type="hidden" ng-model="$ctrl.guardian.id"/>
     <input type="hidden" ng-model="$ctrl.relationship.id"/>
 
@@ -103,11 +102,11 @@
 
         <!-- Relationship section -->
         <div class="row">
-            <div class="form-group">
+            <div class="form-group" ng-class="{ 'has-error': guardianForm.relationship.$invalid}">
                 <label for="relationship" class="col-md-2 control-label">Σχέση με το παιδί</label>
     
                 <div class="col-md-4">
-                    <select class="form-control" id="relationship" ng-model="$ctrl.relationship.metadata.type"
+                    <select class="form-control" id="relationship" name="relationship" required ng-model="$ctrl.relationship.metadata.type"
                             ng-options="relationship|relationshipFilter for relationship in $ctrl.relationshipTypes">
                         <option value="">--</option>
                     </select>
@@ -138,7 +137,7 @@
     </fieldset>
 
     <!-- Telephones section -->
-    <telephones model="$ctrl.guardian.telephones"></telephones>
+    <telephones model="$ctrl.guardian.telephones" form="guardianForm"></telephones>
     
     <!-- Address section -->
     <input-address address="$ctrl.address" allow-copy="true"></input-address>
@@ -146,7 +145,7 @@
     <div class="row">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-5">
-                <button class="btn btn-success" ng-click="$ctrl.submit()">
+                <button class="btn btn-success" ng-click="$ctrl.submit()" ng-disabled="guardianForm.$invalid" >
                     Αποθήκευση
                 </button>
                 <button class="btn btn-primary" ng-click="$ctrl.cancel()">Άκυρωση</button>
