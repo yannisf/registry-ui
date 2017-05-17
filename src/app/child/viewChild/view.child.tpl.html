@@ -20,7 +20,7 @@
             </div>
             <div class="photo" ng-if="$ctrl.hasPhoto">
                 <img ng-src="api/child/{{$ctrl.child.id}}/photo"/>
-                <button type="button" class="btn btn-danger btn-xs" ng-click="$ctrl.removePhoto()" title="Διαγραφή φωτογραφίας">
+                <button type="button" class="btn btn-danger btn-xs" ng-click="$ctrl.confirmRemovePhoto()" title="Διαγραφή φωτογραφίας">
                     <i class="remove-photo"></i>
                 </button>
             </div>

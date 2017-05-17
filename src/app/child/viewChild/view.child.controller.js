@@ -1,5 +1,4 @@
-import removeChildModalTemplate from './remove.child.modal.controller.tpl.html';
-import removeRelationshipModalTemplate from './remove.relationship.modal.controller.tpl.html';
+import confimationModalTemplate from './confirmation.modal.tpl.html';
 
 export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $http, Upload, Child, Address, Relationship, ActiveCache) {
 
@@ -49,36 +48,89 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
         return ActiveCache.getChildName();
     }
 
-    this.removePhoto = function () {
-        $http.delete('api/child/' + $stateParams.childId + '/photo')
-            .then(
-                (response) => this.hasPhoto = false
-            );
-    }
-
-    this.confirmRemoveChild = function () {
-        $uibModal.open({
-            template: removeChildModalTemplate,
-            controller: 'RemoveChildModalCtrl',
+    this.confirmRemovePhoto = function () {
+        let modal = $uibModal.open({
+            template: confimationModalTemplate,
+            controller: 'ConfirmationModalCtrl',
             bindToController: true,
             controllerAs: '$ctrl',
             resolve: {
-                child: () => this.child
+                texts: function () {
+                    return {
+                        title: 'Διαγραφή φωτογραφίας παιδιού',
+                        content: 'Επιθυμείτε τη διαγραφή της φωτογραφίας του παιδιού;',
+                        ok: 'Ναι',
+                        cancel: 'Όχι'
+                    };
+                }
             }
         });
+
+        modal.result.then(
+            (success) => {
+                $http.delete('api/child/' + $stateParams.childId + '/photo').then(
+                    (response) => this.hasPhoto = false
+                );
+            });
+    };
+
+
+    this.confirmRemoveChild = function () {
+        let modal = $uibModal.open({
+            template: confimationModalTemplate,
+            controller: 'ConfirmationModalCtrl',
+            bindToController: true,
+            controllerAs: '$ctrl',
+            resolve: {
+                texts: function () {
+                    return {
+                        title: 'Διαγραφή παιδιού',
+                        content: 'Επιθυμείτε τη διαγραφή του παιδιού από το κατάλογο;',
+                        ok: 'Ναι',
+                        cancel: 'Όχι'
+                    };
+                }
+            }
+        });
+
+        modal.result.then(
+            (success) => {
+                this.child.$remove(() => {
+                    ActiveCache.child = null;
+                    $state.go('group', {
+                        groupId: ActiveCache.group.id
+                    });
+                });
+            });
     };
 
     this.confirmRemoveRelationship = function (relationship) {
-        $uibModal.open({
-            template: removeRelationshipModalTemplate,
-            controller: 'RemoveRelationshipModalCtrl',
+        let modal = $uibModal.open({
+            template: confimationModalTemplate,
+            controller: 'ConfirmationModalCtrl',
             bindToController: true,
             controllerAs: '$ctrl',
             resolve: {
-                relationship: () => relationship,
-                viewChildCtrl: () => this
+                texts: function () {
+                    return {
+                        title: 'Διαγραφή σχέσης',
+                        content: 'Επιθυμείτε τη διαγραφή αυτής της σχέσης;',
+                        ok: 'Ναι',
+                        cancel: 'Όχι'
+                    };
+                }
             }
         });
+
+        modal.result.then(
+            (success) => {
+                relationship.$remove(() => {
+                    this.relationships = Relationship.query({
+                        childId: ActiveCache.child.id
+                    });
+                });
+            });
+
     };
 }
 
