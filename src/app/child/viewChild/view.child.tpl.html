@@ -4,11 +4,29 @@
 
 
     <div class="page-header">
-        <h2>{{$ctrl.getChildName()}}<previous-next></previous-next>
-        </h2>
+        <h2>{{$ctrl.getChildName()}}<previous-next></previous-next> </h2>
     </div>
 
-    <display-child child="$ctrl.child" address="$ctrl.address"></display-child>
+    <div class="row">
+
+        <div class="col-sm-8">
+            <display-child child="$ctrl.child" address="$ctrl.address"></display-child>
+        </div>
+
+        <div class="col-sm-4">
+            <div ng-if="!$ctrl.hasPhoto" ngf-drop ngf-select ng-model="$ctrl.file" class="drop-box"
+                    ngf-drag-over-class="'dragover'" accept="image/*" ngf-pattern="'image/*'">
+                Σύρετε μια φωτογραφία εδώ, ή πιέστε για να επιλέξετε μία
+            </div>
+            <div class="photo" ng-if="$ctrl.hasPhoto">
+                <img ng-src="api/child/{{$ctrl.child.id}}/photo"/>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="$ctrl.removePhoto()" title="Διαγραφή φωτογραφίας">
+                    <i class="remove-photo"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
 
     <fieldset>
         <legend>

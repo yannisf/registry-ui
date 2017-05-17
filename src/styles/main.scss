@@ -3,22 +3,20 @@
 @import '_bootstrap';
 @import '~bootswatch/cosmo/_bootswatch';
 @import '~font-awesome/scss/font-awesome';
-
 $boy-color: #3399ff;
 $girl-color: #ff33ff;
 $preschool-a-color: #ff8000;
 $preschool-b-color: #66cc00;
-
 body {
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .clabel {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .submessage {
@@ -80,8 +78,7 @@ body {
 
 .phone-type {
   @extend .badge;
-  font-size: x-small;
-  // @extend .label-default;
+  font-size: x-small; // @extend .label-default;
 }
 
 .child-list-col1 {
@@ -104,8 +101,7 @@ body {
   width: 10%
 }
 
-.overview-area {
-}
+.overview-area {}
 
 .overview-msg {
   width: 100%;
@@ -136,25 +132,25 @@ body {
 }
 
 @mixin info-badge-mixin($background: $badge-bg) {
-	@extend .badge;
-	color: lighten($badge-color, 80%);
-	background-color: $background;
+  @extend .badge;
+  color: lighten($badge-color, 80%);
+  background-color: $background;
 }
 
 .boys-badge {
-	@include info-badge-mixin($boy-color);
+  @include info-badge-mixin($boy-color);
 }
 
 .girls-badge {
-    @include info-badge-mixin($girl-color);
+  @include info-badge-mixin($girl-color);
 }
 
 .levela-badge {
-	@include info-badge-mixin($preschool-a-color);
+  @include info-badge-mixin($preschool-a-color);
 }
 
 .levelb-badge {
-	@include info-badge-mixin($preschool-b-color);
+  @include info-badge-mixin($preschool-b-color);
 }
 
 @font-face {
@@ -185,14 +181,15 @@ body {
   @extend .table-hover;
   font-size: 14px;
   td {
-	position: relative;
+    position: relative;
     input {
-  	  width: 70%;
-  	}
-  };
+      width: 70%;
+    }
+  }
+  ;
   .loader-small {
-	position: absolute;
-	right: 5px;
+    position: absolute;
+    right: 5px;
   }
 }
 
@@ -238,4 +235,33 @@ span.new-window {
   @extend .btn-xs;
   @extend .btn-link;
   font-size: 14px;
+}
+
+.drop-box {
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+  font-size: smaller;
+      vertical-align: text-top;
+
+}
+
+.dragover {
+  border: 5px dashed blue;
+}
+
+.photo img {
+  width: 100px;
+  height: auto;
+  image-orientation: from-image;
+  vertical-align: bottom;
+}
+
+.remove-photo {
+  @extend .fa;
+  @extend .fa-times;
 }

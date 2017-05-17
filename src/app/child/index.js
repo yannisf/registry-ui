@@ -9,6 +9,7 @@ import createChild from './createChild';
 import updateChild from './updateChild';
 import relationship from '../relationship';
 import guardian from '../guardian';
+import ngFileUpload from 'ng-file-upload';
 import 'angular-uuid4';
 
 export default angular.module('child', [
@@ -21,7 +22,8 @@ export default angular.module('child', [
         createChild,
         updateChild,
         relationship,
-        guardian
+        guardian,
+        ngFileUpload
     ])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
