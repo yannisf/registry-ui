@@ -8,5 +8,5 @@ export default function inputAddressComponent() {
         },
         template: template,
         controller: 'InputAddressCtrl'
-    }
+    };
 }

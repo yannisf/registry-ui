@@ -10,38 +10,38 @@ export default function TypeaheadSvc($http) {
 
     this.getFirstNames = function (startsWith) {
         return getTypeahead(firstNamesEndpoint, startsWith);
-    }
+    };
 
     this.getLastNames = function (startsWith) {
         return getTypeahead(lastNamesEndpoint, startsWith);
-    }
+    };
 
     this.getProfessions = function (startsWith) {
         return getTypeahead(professionsEndpoint, startsWith);
-    }
+    };
 
     this.getNationalities = function (startsWith) {
         return getTypeahead(nationalitiesEndpoint, startsWith);
-    }
+    };
 
     this.getStreetNames = function (startsWith) {
         return getTypeahead(streetnamesEndpoint, startsWith);
-    }
+    };
 
     this.getNeighbourhoods = function (startsWith) {
         return getTypeahead(neighbourhoodsEndpoint, startsWith);
-    }
+    };
 
     this.getCities = function (startsWith) {
         return getTypeahead(citiesEndpoint, startsWith);
-    }
+    };
 
     function createParam(startsWith) {
         return {
             params: {
                 search: startsWith
             }
-        }
+        };
     }
 
     function getTypeahead(endpoint, startsWith) {

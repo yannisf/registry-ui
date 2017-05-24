@@ -4,5 +4,5 @@ export default function groupListComponent() {
     return {
         template: template,
         controller: 'GroupListCtrl'
-    }
+    };
 }

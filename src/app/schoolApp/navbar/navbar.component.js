@@ -4,5 +4,5 @@ export default function navbarComponent() {
     return {
         template: template,
         controller: 'NavbarCtrl'
-    }
+    };
 }

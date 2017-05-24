@@ -4,5 +4,5 @@ export default function previousNextComponent() {
     return {
         template: template,
         controller: 'PreviousNextCtrl'
-    }
+    };
 }

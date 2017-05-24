@@ -4,11 +4,11 @@ export default function RemoveRelationshipModalCtrl($uibModalInstance, texts) {
 
     this.ok = function() {
         $uibModalInstance.close();
-    }
+    };
 
     this.cancel = function() {
         $uibModalInstance.dismiss();
-    }
+    };
 
 }
 

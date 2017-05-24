@@ -34,7 +34,7 @@ export default angular.module('guardian', [
                 name: 'viewGuardian',
                 url: '/guardian/:guardianId/view',
                 component: 'viewGuardian'
-            })
+            });
     }])
     .factory('Guardian', ['$resource',
         function ($resource) {

@@ -11,7 +11,7 @@ export default function GroupStatisticsCtrl(ActiveCache, Group) {
             }
             return _statistics;
         }
-    }
+    };
 
 }
 

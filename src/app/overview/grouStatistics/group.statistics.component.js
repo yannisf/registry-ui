@@ -4,5 +4,5 @@ export default function groupStatisticsComponent() {
     return {
         template: template,
         controller: 'GroupStatisticsCtrl'
-    }
+    };
 }

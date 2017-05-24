@@ -26,7 +26,7 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
         );
 
 
-        console.log('Defining watch')
+        console.log('Defining watch');
         $scope.$watch('$ctrl.file', () => {
             console.log('Into watch');
             if (this.file) {
@@ -46,7 +46,7 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
 
     this.getChildName = function () {
         return ActiveCache.getChildName();
-    }
+    };
 
     this.confirmRemovePhoto = function () {
         let modal = $uibModal.open({
@@ -134,4 +134,4 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
     };
 }
 
-ViewChildCtrl.$inject = ['$scope', '$stateParams', '$state', '$uibModal', '$http', 'Upload', 'Child', 'Address', 'Relationship', 'ActiveCache']
+ViewChildCtrl.$inject = ['$scope', '$stateParams', '$state', '$uibModal', '$http', 'Upload', 'Child', 'Address', 'Relationship', 'ActiveCache'];

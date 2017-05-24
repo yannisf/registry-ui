@@ -2,26 +2,26 @@ export default function DepartmentsCtrl(uuid4, Department, ActiveCache) {
 
     this.$onInit = function () {
         // console.log('Initializing DepartmentsCtrl', this);
-    }
+    };
 
     this.showDepartments = function () {
         return this.hasActiveSchool() &&
             this.deparmentsResolved() &&
             this.hasDepartments();
-    }
+    };
 
     this.hasActiveSchool = function () {
         return ActiveCache.school != null;
-    }
+    };
 
     this.deparmentsResolved = function () {
         let departments =  this.overviewCtrl.departments;
         return !angular.isDefined(departments.$resolved) || departments.$resolved;
-    }
+    };
 
     this.hasDepartments = function () {
         return this.overviewCtrl.departments.length > 0;
-    }
+    };
 
     this.setActiveDepartment = function (department) {
         this.overviewCtrl.setActiveDepartment(department);
@@ -31,7 +31,7 @@ export default function DepartmentsCtrl(uuid4, Department, ActiveCache) {
         if (ActiveCache.department) {
             return department.id === ActiveCache.department.id;
         }
-    }
+    };
 
     this.addDepartment = function () {
         this.overviewCtrl.departments.$resolved = false;

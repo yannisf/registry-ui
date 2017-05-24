@@ -28,4 +28,4 @@ export default function GroupListCtrl($state, $stateParams, $cookieStore, Active
     };
 }
 
-GroupListCtrl.$inject = ['$state', '$stateParams', '$cookieStore', 'ActiveCache', 'Group']
+GroupListCtrl.$inject = ['$state', '$stateParams', '$cookieStore', 'ActiveCache', 'Group'];

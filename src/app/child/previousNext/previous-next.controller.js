@@ -28,7 +28,7 @@ export default function PreviousNextCtrl($state, $transitions, $document, Active
         }
         $state.go('viewChild', {
             childId: next.id
-        })
+        });
     };
 
     this.previousChild = function () {

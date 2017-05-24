@@ -11,7 +11,7 @@ export default function SchoolControlCtrl($scope, $element, ActiveCache) {
                 } else if ($event.keyCode === 27) {
                     this.cancel();
                 }
-            })
+            });
         });
 
     };
@@ -52,4 +52,4 @@ export default function SchoolControlCtrl($scope, $element, ActiveCache) {
     };
 }
 
-SchoolControlCtrl.$inject = ['$scope', '$element', 'ActiveCache']
+SchoolControlCtrl.$inject = ['$scope', '$element', 'ActiveCache'];

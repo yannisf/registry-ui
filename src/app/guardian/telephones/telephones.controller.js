@@ -2,7 +2,7 @@ export default function TelephonesCtrl(uuid4, ListService) {
 
     this.$onInit = function () {
         ListService.telephoneTypes().then((data) => this.telephoneTypes = data);
-    }
+    };
 
     this.addTelephone = function () {
         let telephone = {

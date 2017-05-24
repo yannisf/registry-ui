@@ -4,5 +4,5 @@ export default function logoutComponent() {
     return {
         template: template,
         controller: 'LogoutCtrl'
-    }
+    };
 }

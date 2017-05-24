@@ -2,19 +2,19 @@ export default function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
 
     this.getSchool = function () {
         return ActiveCache.school;
-    }
+    };
 
     this.getDepartment = function () {
         return ActiveCache.department;
-    }
+    };
 
     this.getGroup = function () {
         return ActiveCache.group;
-    }
+    };
 
     this.getChildName = function () {
         return ActiveCache.getChildName();
-    }
+    };
 
     this.toSchool = function () {
         ActiveCache.clearDepartment();

@@ -4,7 +4,7 @@ const childGenderTypeFilter = function (childGenderTypeMap) {
     return function (value) {
         return childGenderTypeMap[value];
     };
-}
+};
 
 const firstNameFilter = function () {
     return function (child) {
@@ -14,32 +14,32 @@ const firstNameFilter = function () {
         }
         return value;
     };
-}
+};
 
 const guardianGenderTypeFilter = function (guardianGenderTypeMap) {
     return function (value) {
         return guardianGenderTypeMap[value];
     };
-}
+};
 
 const preSchoolLevelFilter = function (preSchoolLevelMap) {
     return function (value) {
         return preSchoolLevelMap[value];
     };
 
-}
+};
 
 const relationshipFilter = function (relationshipMap) {
     return function (value) {
         return relationshipMap[value];
     };
-}
+};
 
 const telephoneTypeFilter = function (telephoneTypeMap) {
     return function (value) {
         return telephoneTypeMap[value];
     };
-}
+};
 
 export default angular.module('filters', [])
     .filter('childGenderTypeFilter', ['childGenderTypeMap', childGenderTypeFilter])

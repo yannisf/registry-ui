@@ -14,7 +14,7 @@ export default function DepartmentControlCtrl($scope, $element, ActiveCache) {
                 } else if ($event.keyCode === 27) {
                     this.cancel();
                 }
-            })
+            });
         });
 
     };

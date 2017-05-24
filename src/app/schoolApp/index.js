@@ -56,7 +56,7 @@ angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters,
                 address.neighbourhood ||
                 address.postalCode ||
                 address.city));
-        }
+        };
 
     }])
     .directive('focus', [

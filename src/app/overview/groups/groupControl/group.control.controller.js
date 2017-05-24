@@ -12,7 +12,7 @@ export default function GroupControlCtrl($scope, $element, $state, ActiveCache) 
                 } else if ($event.keyCode === 27) {
                     this.cancel();
                 }
-            })
+            });
         });
 
     };
