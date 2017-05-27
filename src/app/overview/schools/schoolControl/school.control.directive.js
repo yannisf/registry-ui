@@ -4,8 +4,8 @@ export default function schoolControlDir() {
     return {
         restrict: 'A',
         scope: {
-            school: "=schoolControl",
-            schools: "="
+            school: '=schoolControl',
+            schools: '='
         },
         template: template,
         bindToController: true,

@@ -21,9 +21,10 @@
         "no-global-assign": "warn",
         "no-implicit-coercion": "warn",
         "no-implicit-globals": "warn",
-        "no-invalid-this": "warn",
         "no-sequences": "warn",
         "no-unused-expressions": "warn",
-        "semi": "warn"
+        "semi": "warn",
+        "quotes": ["warn", "single"],
+        "consistent-this": "error"
     }
 }

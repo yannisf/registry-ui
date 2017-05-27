@@ -4,7 +4,6 @@ import ngResource from 'angular-resource';
 import uiRouter from '@uirouter/angularjs';
 import uiBootstrap from 'angular-ui-bootstrap';
 
-
 export default angular.module('relationship', [
         ngResource,
         uiRouter,

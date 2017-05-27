@@ -1,11 +1,9 @@
 export default function PreviousNextCtrl($state, $transitions, $document, ActiveCache) {
 
     this.$onInit = function () {
-        // console.log('Initializing PreviousNextCtrl', this);
         this.groupHasMoreThanOneChildren = ActiveCache.childIds.length > 1;
 
-        $document.on("keyup", ($event) => {
-            console.log('keyup');
+        $document.on('keyup', ($event) => {
             if ($event.keyCode === 39) {
                 this.nextChild();
             } else if ($event.keyCode === 37) {
@@ -14,8 +12,7 @@ export default function PreviousNextCtrl($state, $transitions, $document, Active
         });
 
         let unregister = $transitions.onExit({}, () => {
-            console.log('canceling keyup');
-            $document.off("keyup");
+            $document.off('keyup');
             unregister();
         });
 
@@ -23,9 +20,6 @@ export default function PreviousNextCtrl($state, $transitions, $document, Active
 
     this.nextChild = function () {
         let next = findNextChild();
-        if (next.rollover) {
-            console.log("Ανακύκλωση καταλόγου. ");
-        }
         $state.go('viewChild', {
             childId: next.id
         });
@@ -33,9 +27,6 @@ export default function PreviousNextCtrl($state, $transitions, $document, Active
 
     this.previousChild = function () {
         let previous = findPreviousChild();
-        if (previous.rollover) {
-            console.log("Ανακύκλωση καταλόγου. ");
-        }
         $state.go('viewChild', {
             childId: previous.id
         });

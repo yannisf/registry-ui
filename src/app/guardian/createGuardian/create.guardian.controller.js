@@ -1,4 +1,4 @@
-export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListService) {
+export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListSvc) {
 
     this.$onInit = function () {
         this.guardian = new Guardian({
@@ -17,11 +17,11 @@ export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian,
             }
         });
 
-        this.submitLabel = "Δημιουργία";
+        this.submitLabel = 'Δημιουργία';
         this.sharedAddress = false;
         this.typeaheads = typeAheadService;
 
-        ListService.relationshipTypes().then((data) => this.relationshipTypes = data);
+        ListSvc.relationshipTypes().then((data) => this.relationshipTypes = data);
     };
 
     this.cancel = function () {
@@ -46,4 +46,4 @@ export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian,
 }
 
 
-CreateGuardianCtrl.$inject = ['$state', 'uuid4', 'ActiveCache', 'Guardian', 'Address', 'Relationship', 'typeAheadService', 'ListService'];
+CreateGuardianCtrl.$inject = ['$state', 'uuid4', 'ActiveCache', 'Guardian', 'Address', 'Relationship', 'TypeaheadSvc', 'ListSvc'];

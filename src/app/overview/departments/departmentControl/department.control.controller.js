@@ -3,12 +3,10 @@ export default function DepartmentControlCtrl($scope, $element, ActiveCache) {
     this.working = false;
 
     this.$onInit = function () {
-        // console.log('Initializing DepartmentControlCtrl');
         this._oldName = this.department.name;
 
         $element.on('keyup', ($event) => {
             $scope.$apply(() => {
-                console.log('$event handling');
                 if ($event.keyCode === 13) {
                     this.update();
                 } else if ($event.keyCode === 27) {

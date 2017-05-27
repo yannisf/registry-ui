@@ -1,7 +1,7 @@
-export default function TelephonesCtrl(uuid4, ListService) {
+export default function TelephonesCtrl(uuid4, ListSvc) {
 
     this.$onInit = function () {
-        ListService.telephoneTypes().then((data) => this.telephoneTypes = data);
+        ListSvc.telephoneTypes().then((data) => this.telephoneTypes = data);
     };
 
     this.addTelephone = function () {
@@ -17,4 +17,4 @@ export default function TelephonesCtrl(uuid4, ListService) {
 
 }
 
-TelephonesCtrl.$inject = ['uuid4', 'ListService'];
+TelephonesCtrl.$inject = ['uuid4', 'ListSvc'];

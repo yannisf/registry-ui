@@ -1,4 +1,4 @@
-export default function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address, typeAheadService, ListService) {
+export default function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address, typeAheadService, ListSvc) {
 
     this.$onInit = function () {
         this.guardian = Guardian.get({
@@ -15,10 +15,10 @@ export default function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Gu
         });
 
         this.guardianId = $stateParams.guardianId;
-        this.submitLabel = "Επεξεργασία";
+        this.submitLabel = 'Επεξεργασία';
         this.typeaheads = typeAheadService;
 
-        ListService.relationshipTypes().then((data) => this.relationshipTypes = data);
+        ListSvc.relationshipTypes().then((data) => this.relationshipTypes = data);
 
     };
 
@@ -43,4 +43,4 @@ export default function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Gu
     };
 }
 
-UpdateGuardianCtrl.$inject = ['$state', '$stateParams', 'ActiveCache', 'Guardian', 'Relationship', 'Address', 'typeAheadService', 'ListService'];
+UpdateGuardianCtrl.$inject = ['$state', '$stateParams', 'ActiveCache', 'Guardian', 'Relationship', 'Address', 'TypeaheadSvc', 'ListSvc'];

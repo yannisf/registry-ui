@@ -4,8 +4,8 @@ export default function departmentControlDir() {
     return {
         restrict: 'A',
         scope: {
-            department: "=departmentControl",
-            departments: "=",
+            department: '=departmentControl',
+            departments: '=',
         },
         template: template,
         bindToController: true,

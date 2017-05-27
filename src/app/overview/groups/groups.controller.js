@@ -11,7 +11,7 @@ export default function GroupsCtrl(uuid4, Group, ActiveCache) {
     };
 
     this.hasActiveDepartment = function () {
-        return ActiveCache.department != null;
+        return ActiveCache.department !== null;
     };
 
     this.groupsResolved = function () {

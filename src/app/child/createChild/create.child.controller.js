@@ -12,7 +12,7 @@ export default function CreateChildCtrl($state, uuid4, typeAheadService, ActiveC
 
         this.typeaheads = typeAheadService;
     };
-    
+
 
     this.submit = function () {
         this.address.$save(() => {
@@ -35,4 +35,4 @@ export default function CreateChildCtrl($state, uuid4, typeAheadService, ActiveC
     };
 }
 
-CreateChildCtrl.$inject = ['$state', 'uuid4', 'typeAheadService', 'ActiveCache', 'Child', 'Address'];
+CreateChildCtrl.$inject = ['$state', 'uuid4', 'TypeaheadSvc', 'ActiveCache', 'Child', 'Address'];

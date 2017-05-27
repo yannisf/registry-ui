@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 export default function GroupListCtrl($state, $stateParams, $cookieStore, ActiveCache, Group) {
 
     this.children = [];
@@ -5,7 +7,6 @@ export default function GroupListCtrl($state, $stateParams, $cookieStore, Active
     this.noChildren = false;
 
     this.$onInit = function () {
-        // console.log('Initializing GroupListCtrl:', this);
         ActiveCache.resolveGroup($stateParams.groupId).then(() => {
             $cookieStore.put('group', $stateParams.groupId);
             this.children = Group.children({

@@ -3,7 +3,6 @@ import confimationModalTemplate from './confirmation.modal.tpl.html';
 export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $http, Upload, Child, Address, Relationship, ActiveCache) {
 
     this.$onInit = function () {
-        // console.log('Initializing ViewChildCtrl', this);
         this.child = Child.get({
                 id: $stateParams.childId
             },
@@ -21,24 +20,19 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
 
         this.hasPhoto = false;
         $http.head('api/child/' + $stateParams.childId + '/photo').then(
-            (response) => this.hasPhoto = true,
-            (error) => this.hasPhoto = false
+            () => this.hasPhoto = true,
+            () => this.hasPhoto = false
         );
 
 
-        console.log('Defining watch');
         $scope.$watch('$ctrl.file', () => {
-            console.log('Into watch');
             if (this.file) {
-                console.log('Watch invoked');
                 Upload.upload({
                     url: 'api/child/' + $stateParams.childId + '/photo',
                     data: {
                         photo: this.file
                     }
-                }).then(
-                    (response) => this.hasPhoto = true
-                );
+                }).then(() => this.hasPhoto = true);
             }
         });
 
@@ -66,12 +60,11 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
             }
         });
 
-        modal.result.then(
-            (success) => {
-                $http.delete('api/child/' + $stateParams.childId + '/photo').then(
-                    (response) => this.hasPhoto = false
-                );
-            });
+        modal.result.then(() => {
+            $http.delete('api/child/' + $stateParams.childId + '/photo').then(() =>
+                this.hasPhoto = false
+            );
+        });
     };
 
 
@@ -93,15 +86,14 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
             }
         });
 
-        modal.result.then(
-            (success) => {
-                this.child.$remove(() => {
-                    ActiveCache.child = null;
-                    $state.go('group', {
-                        groupId: ActiveCache.group.id
-                    });
+        modal.result.then(() => {
+            this.child.$remove(() => {
+                ActiveCache.child = null;
+                $state.go('group', {
+                    groupId: ActiveCache.group.id
                 });
             });
+        });
     };
 
     this.confirmRemoveRelationship = function (relationship) {
@@ -122,14 +114,13 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
             }
         });
 
-        modal.result.then(
-            (success) => {
-                relationship.$remove(() => {
-                    this.relationships = Relationship.query({
-                        childId: ActiveCache.child.id
-                    });
+        modal.result.then(() => {
+            relationship.$remove(() => {
+                this.relationships = Relationship.query({
+                    childId: ActiveCache.child.id
                 });
             });
+        });
 
     };
 }

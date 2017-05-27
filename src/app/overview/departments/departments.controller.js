@@ -1,9 +1,5 @@
 export default function DepartmentsCtrl(uuid4, Department, ActiveCache) {
 
-    this.$onInit = function () {
-        // console.log('Initializing DepartmentsCtrl', this);
-    };
-
     this.showDepartments = function () {
         return this.hasActiveSchool() &&
             this.deparmentsResolved() &&
@@ -11,12 +7,12 @@ export default function DepartmentsCtrl(uuid4, Department, ActiveCache) {
     };
 
     this.hasActiveSchool = function () {
-        return ActiveCache.school != null;
+        return ActiveCache.school !== null;
     };
 
     this.deparmentsResolved = function () {
         let departments =  this.overviewCtrl.departments;
-        return !angular.isDefined(departments.$resolved) || departments.$resolved;
+        return departments.$resolved === undefined || departments.$resolved;
     };
 
     this.hasDepartments = function () {

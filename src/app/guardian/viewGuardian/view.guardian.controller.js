@@ -15,7 +15,7 @@ export default function ViewGuardianCtrl($state, $stateParams, ActiveCache, Guar
         });
 
         this.guardianId = $stateParams.guardianId;
-        this.submitLabel = "Επεξεργασία";
+        this.submitLabel = 'Επεξεργασία';
     };
 
     this.cancel = function () {

@@ -45,4 +45,4 @@ export default function UpdateChildCtrl($stateParams, $state, $uibModal, typeAhe
     };
 }
 
-UpdateChildCtrl.$inject = ['$stateParams', '$state', '$uibModal', 'typeAheadService', 'Child', 'Address', 'ActiveCache'];
+UpdateChildCtrl.$inject = ['$stateParams', '$state', '$uibModal', 'TypeaheadSvc', 'Child', 'Address', 'ActiveCache'];

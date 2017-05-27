@@ -6,7 +6,6 @@ export default function GroupControlCtrl($scope, $element, $state, ActiveCache) 
 
         $element.on('keyup', ($event) => {
             $scope.$apply(() => {
-                console.log('$event handling');
                 if ($event.keyCode === 13) {
                     this.update();
                 } else if ($event.keyCode === 27) {
