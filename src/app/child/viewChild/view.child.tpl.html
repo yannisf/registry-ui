@@ -49,12 +49,12 @@
         </div>
 
         <div class="col-sm-4">
-            <div ng-if="!$ctrl.hasPhoto" ngf-drop ngf-select ng-model="$ctrl.file" class="drop-box" ngf-drag-over-class="'dragover'"
+            <div ng-if="!$ctrl.child.photoId" ngf-drop ngf-select ng-model="$ctrl.file" class="drop-box" ngf-drag-over-class="'dragover'"
                 accept="image/*" ngf-pattern="'image/*'">
                 Σύρετε μια φωτογραφία εδώ, ή πιέστε για να επιλέξετε μία
             </div>
-            <div class="photo" ng-if="$ctrl.hasPhoto">
-                <img ng-src="api/child/{{$ctrl.child.id}}/photo" />
+            <div class="photo" ng-if="$ctrl.child.photoId">
+                <img ng-src="api/child/photo/{{$ctrl.child.photoId}}" />
                 <button type="button" class="btn btn-danger btn-xs" ng-click="$ctrl.confirmRemovePhoto()" title="Διαγραφή φωτογραφίας">
                     <i class="remove-photo"></i>
                 </button>

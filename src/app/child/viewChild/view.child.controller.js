@@ -18,21 +18,17 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
         this.submitLabel = 'Επεξεργασία';
         this.hasChildrenIdsInScope = ActiveCache.childIds.length > 1;
 
-        this.hasPhoto = false;
-        $http.head('api/child/' + $stateParams.childId + '/photo').then(
-            () => this.hasPhoto = true,
-            () => this.hasPhoto = false
-        );
-
-
         $scope.$watch('$ctrl.file', () => {
             if (this.file) {
                 Upload.upload({
-                    url: 'api/child/' + $stateParams.childId + '/photo',
+                    url: `api/child/${$stateParams.childId}/photo`,
                     data: {
                         photo: this.file
                     }
-                }).then(() => this.hasPhoto = true);
+                }).then((response) => {
+                    let location = response.headers('Location');
+                    this.child.photoId = location.substr (location.lastIndexOf ('/') + 1);
+                });
             }
         });
 
@@ -61,8 +57,8 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
         });
 
         modal.result.then(() => {
-            $http.delete('api/child/' + $stateParams.childId + '/photo').then(() =>
-                this.hasPhoto = false
+            $http.delete(`api/child/${$stateParams.childId}/photo`).then(() =>
+                this.child.photoId = null
             );
         });
     };
