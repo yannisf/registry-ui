@@ -8,7 +8,7 @@
     <div class="row">
         <div class="form-group" ng-class="{ 'has-error': childForm.firstName.$invalid && childForm.$dirty}">
             <label for="firstName" class="col-md-2 control-label">Όνομα</label>
-    
+
             <div class="col-md-4">
                 <input type="text" class="form-control loader-input" id="firstName" name="firstName" autocomplete="off"
                        focus ng-model="$ctrl.child.firstName" ng-required="!$ctrl.child.lastName"
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="row">        
+    <div class="row">
         <div class="form-group">
             <label for="callName" class="col-md-2 control-label">Χαϊδευτικό</label>
 
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <input-address address="$ctrl.address" share-option="false"></input-address>
+    <input-address address="$ctrl.child.address" share-option="false"></input-address>
 
     <div class="row">
         <div class="form-group">
