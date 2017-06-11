@@ -1,4 +1,4 @@
-export default function CreateChildCtrl($state, uuid4, typeAheadService, ActiveCache, Child, Address) {
+export default function CreateChildCtrl($state, $http, uuid4, TypeaheadSvc, ActiveCache, Child, Address) {
 
     this.$onInit = function () {
         ActiveCache.child = null;
@@ -10,20 +10,24 @@ export default function CreateChildCtrl($state, uuid4, typeAheadService, ActiveC
         });
         this.submitLabel = 'Εισαγωγή';
 
-        this.typeaheads = typeAheadService;
+        this.typeaheads = TypeaheadSvc;
     };
 
 
     this.submit = function () {
-        this.address.$save(() => {
-            this.child.$save({
+        this.address.$save().then(() => {
+            return this.child.$save({
                 addressId: this.address.id,
                 groupId: ActiveCache.group.id
-            }, () => {
-                ActiveCache.child = this.child;
-                $state.go('viewChild', {
-                    childId: ActiveCache.child.id
-                });
+            });
+        }).then(() => {
+            return $http.get(`api/overview/group/${ActiveCache.group.id}/child`);
+        }).then((response) => {
+            ActiveCache.children = response.data;
+            ActiveCache.childIds = response.data.map((child) => child.id);
+            ActiveCache.child = this.child;
+            $state.go('viewChild', {
+                childId: ActiveCache.child.id
             });
         });
     };
@@ -35,4 +39,4 @@ export default function CreateChildCtrl($state, uuid4, typeAheadService, ActiveC
     };
 }
 
-CreateChildCtrl.$inject = ['$state', 'uuid4', 'TypeaheadSvc', 'ActiveCache', 'Child', 'Address'];
+CreateChildCtrl.$inject = ['$state', '$http', 'uuid4', 'TypeaheadSvc', 'ActiveCache', 'Child', 'Address'];
