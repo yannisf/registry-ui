@@ -27,12 +27,12 @@
 
                 <li ng-if="$ctrl.active.group" uib-dropdown>
                     <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
-                        Tάξη <span class="caret"></span>
+                        <i class="fa fa-child" aria-hidden="true"></i> Tάξη <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
                         <li>
                             <a href ng-click="$ctrl.toGroup()">
-                                <i class="fa fa-child" aria-hidden="true"></i> Κατάλογος παιδιών
+                                <i class="fa fa-id-card" aria-hidden="true"></i> Κατάλογος παιδιών
                             </a>
                         </li>
                         <li>
@@ -50,7 +50,7 @@
 
                 <li ng-if="$ctrl.active.group" uib-dropdown>
                     <a href="#" role="button" aria-expanded="false" uib-dropdown-toggle>
-                        Εκτυπώσεις <span class="caret"></span>
+                        <i class="fa fa-print" aria-hidden="true"></i> Εκτυπώσεις <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" data-toggle="dropdown" role="menu" uib-dropdown-menu>
                         <li><a href="api/child/report/pdf/first?class={{$ctrl.active.group.id}}" target="_blank">Μικρά ονόματα</a></li>
