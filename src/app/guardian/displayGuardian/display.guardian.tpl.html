@@ -7,7 +7,7 @@
     <dd>{{::$ctrl.guardian.lastName}}&nbsp;</dd>
 
     <dt ng-if="::$ctrl.guardian.dateOfBirth">Ημ/νία γέν.</dt>
-    <dd ng-if="::$ctrl.guardian.dateOfBirth">{{::$ctrl.guardian.dateOfBirth}}&nbsp;</dd>
+    <dd ng-if="::$ctrl.guardian.dateOfBirth">{{::$ctrl.guardian.dateOfBirth | date:'dd-MM-yyyy'}}&nbsp;</dd>
 
     <dt ng-if="::$ctrl.guardian.gender">Φύλο</dt>
     <dd ng-if="::$ctrl.guardian.gender">{{::$ctrl.guardian.gender | guardianGenderTypeFilter}}&nbsp;</dd>

@@ -14,7 +14,7 @@
     <dd>{{::$ctrl.child.level|preSchoolLevelFilter}}&nbsp;</dd>
 
     <dt ng-if="::$ctrl.child.dateOfBirth">Ημ/νία γέν.</dt>
-    <dd ng-if="::$ctrl.child.dateOfBirth">{{::$ctrl.child.dateOfBirth}}&nbsp;</dd>
+    <dd ng-if="::$ctrl.child.dateOfBirth">{{::$ctrl.child.dateOfBirth | date:'dd-MM-yyyy'}}&nbsp;</dd>
 
     <dt ng-if="::$ctrl.child.gender">Φύλο</dt>
     <dd ng-if="::$ctrl.child.gender">{{::$ctrl.child.gender | childGenderTypeFilter}}&nbsp;</dd>

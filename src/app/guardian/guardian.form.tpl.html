@@ -42,8 +42,22 @@
                 <label for="dateOfBirth" class="col-md-2 control-label">Ημ/νία γεν.</label>
     
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="dateOfBirth" placeholder="ΗΗ-ΜΜ-ΧΧΧΧ" 
-                            ng-model="$ctrl.guardian.dateOfBirth"/>
+                    <div class="input-group">
+                        <input type="text" class="form-control" 
+                            uib-datepicker-popup="dd-MM-yyyy"
+                            ng-model="$ctrl.guardian.dateOfBirth" 
+                            is-open="$ctrl.calendar.opened"
+                            datepicker-options="$ctrl.calendar.dateOptions"
+                            clear-text="Καθαρισμός"
+                            close-text="Κλείσιμο"
+                            current-text="Σήμερα"
+                            readonly/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="$ctrl.calendar.open()">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

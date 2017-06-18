@@ -49,8 +49,22 @@
             <label for="dateOfBirth" class="col-md-2 control-label">Ημ/νία γεν.</label>
 
             <div class="col-md-4">
-                <input type="text" class="form-control" id="dateOfBirth" ng-model="$ctrl.child.dateOfBirth"
-                       placeholder="ΗΗ-ΜΜ-ΧΧΧΧ"/>
+                <div class="input-group">
+                    <input type="text" class="form-control" 
+                        uib-datepicker-popup="dd-MM-yyyy"
+                        ng-model="$ctrl.child.dateOfBirth" 
+                        is-open="$ctrl.calendar.opened"
+                        datepicker-options="$ctrl.calendar.dateOptions"
+                        clear-text="Καθαρισμός"
+                        close-text="Κλείσιμο"
+                        current-text="Σήμερα"
+                        readonly/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="$ctrl.calendar.open()">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -103,6 +117,16 @@
 
             <div class="col-md-4">
                 <textarea rows="3" class="form-control" id="notes" ng-model="$ctrl.child.notes"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <label for="private_notes" class="col-md-2 control-label">Ιδιωτικές σημειώσεις</label>
+
+            <div class="col-md-4">
+                <textarea rows="3" class="form-control" id="private_notes" ng-model="$ctrl.child.privateNotes"></textarea>
             </div>
         </div>
     </div>

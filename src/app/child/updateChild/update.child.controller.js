@@ -13,6 +13,24 @@ export default function UpdateChildCtrl($stateParams, $state, $uibModal, typeAhe
 
         this.submitLabel = 'Επεξεργασία';
         this.typeaheads = typeAheadService;
+
+        this.calendar = {
+            open: function() {
+                this.opened = true;
+            },
+            opened: false,
+            dateOptions: {
+                maxDate: new Date(),
+                maxMode: 'month',
+                initDate: (function() {
+                    let initDate = new Date();
+                    initDate.setFullYear(initDate.getFullYear() - 5);
+                    return initDate;
+                })(),
+                startingDay: 1,
+                showWeeks: false
+            }
+        };
     };
 
     this.cancel = function () {

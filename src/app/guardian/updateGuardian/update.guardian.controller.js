@@ -20,6 +20,24 @@ export default function UpdateGuardianCtrl($state, $stateParams, ActiveCache, Gu
 
         ListSvc.relationshipTypes().then((data) => this.relationshipTypes = data);
 
+        this.calendar = {
+            open: function() {
+                this.opened = true;
+            },
+            opened: false,
+            dateOptions: {
+                maxDate: new Date(),
+                maxMode: 'month',
+                initDate: (function() {
+                    let initDate = new Date();
+                    initDate.setFullYear(initDate.getFullYear() - 30);
+                    return initDate;
+                })(),
+                startingDay: 1,
+                showWeeks: false
+            }
+        };
+
     };
 
     this.cancel = function () {

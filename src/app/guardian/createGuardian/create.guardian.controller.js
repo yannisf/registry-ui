@@ -22,6 +22,24 @@ export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian,
         this.typeaheads = typeAheadService;
 
         ListSvc.relationshipTypes().then((data) => this.relationshipTypes = data);
+
+        this.calendar = {
+            open: function() {
+                this.opened = true;
+            },
+            opened: false,
+            dateOptions: {
+                maxDate: new Date(),
+                maxMode: 'month',
+                initDate: (function() {
+                    let initDate = new Date();
+                    initDate.setFullYear(initDate.getFullYear() - 30);
+                    return initDate;
+                })(),
+                startingDay: 1,
+                showWeeks: false
+            }
+        };
     };
 
     this.cancel = function () {
