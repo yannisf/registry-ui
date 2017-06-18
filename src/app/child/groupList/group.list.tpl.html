@@ -16,15 +16,43 @@
     <table class="table table-striped table-hover" ng-hide="$ctrl.noChildren">
         <thead>
             <tr>
-                <th class="child-list-col1">Όνομα</th>
-                <th class="child-list-col2">Επώνυμο</th>
-                <th class="child-list-col3">Τάξη</th>
-                <th class="child-list-col4">Φύλο</th>
+                <th class="child-list-col1">
+                    <a href ng-click="$ctrl.orderByField='firstName'; $ctrl.reverseSort = !$ctrl.reverseSort">Όνομα</a>
+                    <span ng-show="$ctrl.orderByField == 'firstName'">
+                        <span ng-show="!$ctrl.reverseSort" class="fa fa-sort-asc"></span>
+                        <span ng-show="$ctrl.reverseSort" class="fa fa-sort-desc"></span>
+                    </span>
+                </th>
+
+                <th class="child-list-col2">
+                    <a href ng-click="$ctrl.orderByField='lastName'; $ctrl.reverseSort = !$ctrl.reverseSort">Επώνυμο</a>
+                    <span ng-show="$ctrl.orderByField == 'lastName'">
+                        <span ng-show="!$ctrl.reverseSort" class="fa fa-sort-asc"></span>
+                        <span ng-show="$ctrl.reverseSort" class="fa fa-sort-desc"></span>
+                    </span>
+                </th>
+
+                <th class="child-list-col3">
+                    <a href ng-click="$ctrl.orderByField='level'; $ctrl.reverseSort = !$ctrl.reverseSort">Τάξη</a>
+                    <span ng-show="$ctrl.orderByField == 'level'">
+                        <span ng-show="!$ctrl.reverseSort" class="fa fa-sort-asc"></span>
+                        <span ng-show="$ctrl.reverseSort" class="fa fa-sort-desc"></span>
+                    </span>
+                </th>
+
+                <th class="child-list-col4">
+                    <a href ng-click="$ctrl.orderByField='gender'; $ctrl.reverseSort = !$ctrl.reverseSort">Φύλο</a>
+                    <span ng-show="$ctrl.orderByField == 'gender'">
+                        <span ng-show="!$ctrl.reverseSort" class="fa fa-sort-asc"></span>
+                        <span ng-show="$ctrl.reverseSort" class="fa fa-sort-desc"></span>
+                    </span>
+                </th>
+                
                 <th class="child-list-col5">Σημειώσεις</th>
             </tr>
         </thead>
         <tbody ng-click="$ctrl.viewChild($event)">
-            <tr ng-repeat="child in $ctrl.children" class="clickable">
+            <tr ng-repeat="child in $ctrl.children|orderBy : $ctrl.orderByField :   $ctrl.reverseSort" class="clickable">
                 <td>{{::child|firstNameFilter}}</td>
                 <td>{{::child.lastName}}</td>
                 <td>{{::child.level|preSchoolLevelFilter}}</td>
