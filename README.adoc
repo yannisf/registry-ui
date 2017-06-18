@@ -1,4 +1,4 @@
-== User interface for the _Registry_ application
+== User interface for the *Registry* application
 
 An AngularJS application to provide a user interface to the Registry application.
 
@@ -12,9 +12,18 @@ An AngularJS application to provide a user interface to the Registry application
 ----
 
 === Build
+
+==== Development
 ----
-# webpack
-# mvn clean install
+# webpack --output-path=/path/to/java_app --watch
+----
+
+This mode, expects the backend application to be locally deployed in `/path/to/java_app` (filesystem location). It generates the UI, copies it to the appropriate directory and watches the local copy for changes.
+
+==== Production
+----
+# npm run prod
+# mvn
 ----
 
 After the application is built, it needs to be included into the server side package (_war_). For more information, review the _registry_ server side project documentation.
