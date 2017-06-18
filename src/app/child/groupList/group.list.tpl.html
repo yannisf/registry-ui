@@ -25,14 +25,16 @@
         </thead>
         <tbody ng-click="$ctrl.viewChild($event)">
             <tr ng-repeat="child in $ctrl.children" class="clickable">
-                <td>{{child|firstNameFilter}}</td>
-                <td>{{child.lastName}}</td>
-                <td>{{child.level|preSchoolLevelFilter}}</td>
-                <td>{{child.gender|childGenderTypeFilter}}</td>
+                <td>{{::child|firstNameFilter}}</td>
+                <td>{{::child.lastName}}</td>
+                <td>{{::child.level|preSchoolLevelFilter}}</td>
+                <td>{{::child.gender|childGenderTypeFilter}}</td>
                 <td>
                     <i class="fa fa-file-image-o" aria-hidden="true" ng-if="child.photoId"></i>
                     &nbsp;
-                    <i class="fa fa-info" aria-hidden="true" ng-if="child.notes" title="{{child.notes}}"></i>
+                    <i class="fa fa-info" aria-hidden="true" ng-if="child.notes" title="{{::child.notes}}"></i>
+                    &nbsp;
+                    <i class="fa fa-exclamation" aria-hidden="true" ng-if="child.privateNotes" title="Ιδιωτική σημείωση"></i>
                 </td>
             </tr>
         </tbody>
