@@ -1,11 +1,10 @@
 import template from './schools.tpl.html';
+import SchoolsCtrl from './schools.controller';
 
-export default function schoolsComponent() {
-    return {
-        template: template,
-        controller: 'SchoolsCtrl',
-        require: {
-            overviewCtrl: '^overview'
-        }
-    };
-}
+export default {
+    template: template,
+    controller: SchoolsCtrl,
+    require: {
+        overviewCtrl: '^overview'
+    }
+};

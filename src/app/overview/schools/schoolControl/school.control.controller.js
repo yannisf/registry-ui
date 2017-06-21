@@ -1,10 +1,18 @@
-export default function SchoolControlCtrl($scope, $element, ActiveCache) {
+export default class SchoolControlCtrl {
 
-    this.$onInit = function () {
+    constructor($scope, $element, ActiveCache) {
+        Object.assign(this, {
+            $scope,
+            $element,
+            ActiveCache
+        });
+        this.working = false;
+    }
+
+    $onInit() {
         this._oldName = this.school.name;
-
-        $element.on('keyup', ($event) => {
-            $scope.$apply(() => {
+        this.$element.on('keyup', ($event) => {
+            this.$scope.$apply(() => {
                 if ($event.keyCode === 13) {
                     this.update();
                 } else if ($event.keyCode === 27) {
@@ -12,43 +20,40 @@ export default function SchoolControlCtrl($scope, $element, ActiveCache) {
                 }
             });
         });
+    }
 
-    };
-
-    this.working = false;
-
-    this.remove = function () {
+    remove() {
         this.working = true;
         this.school.$remove({},
             () => {
                 let index = this.schools.indexOf(this.school);
                 this.schools.splice(index, 1);
-                if (this.school.id === ActiveCache.school.id) {
-                    ActiveCache.school = null;
+                if (this.school.id === this.ActiveCache.school.id) {
+                    this.ActiveCache.school = null;
                 }
                 this.working = false;
             },
             () => {
                 this.working = false;
             });
-    };
+    }
 
-    this.edit = function () {
+    edit() {
         this.editMode = true;
-    };
+    }
 
-    this.cancel = function () {
+    cancel () {
         this.editMode = false;
         this.school.name = this._oldName;
-    };
+    }
 
-    this.update = function () {
+    update () {
         this.editMode = false;
         this.working = true;
         this.school.$save({}, () => {
             this.working = false;
         });
-    };
+    }
 }
 
 SchoolControlCtrl.$inject = ['$scope', '$element', 'ActiveCache'];

@@ -1,8 +1,14 @@
-export default function DisplayChildCtrl(AddressService) {
+export default class DisplayChildCtrl {
 
-    this.isBlankAddress = function (address) {
-        return AddressService.isBlank(address);
-    };
+    constructor(AddressService) {
+        Object.assign(this, {
+            AddressService
+        });
+    }
+
+    isBlankAddress(address) {
+        return this.AddressService.isBlank(address);
+    }
 
 }
 

@@ -1,4 +1,5 @@
 import template from './school.control.tpl.html';
+import SchoolControlCtrl from './school.control.controller';
 
 export default function schoolControlDir() {
     return {
@@ -10,6 +11,6 @@ export default function schoolControlDir() {
         template: template,
         bindToController: true,
         controllerAs: '$ctrl',
-        controller: 'SchoolControlCtrl'
+        controller: SchoolControlCtrl
     };
 }

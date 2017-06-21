@@ -1,12 +1,19 @@
-export default function DepartmentControlCtrl($scope, $element, ActiveCache) {
+export default class DepartmentControlCtrl {
 
-    this.working = false;
+    constructor($scope, $element, ActiveCache) {
+        Object.assign(this, {
+            $scope,
+            $element,
+            ActiveCache
+        });
+        this.working = false;
+    }
 
-    this.$onInit = function () {
+
+    $onInit() {
         this._oldName = this.department.name;
-
-        $element.on('keyup', ($event) => {
-            $scope.$apply(() => {
+        this.$element.on('keyup', ($event) => {
+            this.$scope.$apply(() => {
                 if ($event.keyCode === 13) {
                     this.update();
                 } else if ($event.keyCode === 27) {
@@ -14,40 +21,40 @@ export default function DepartmentControlCtrl($scope, $element, ActiveCache) {
                 }
             });
         });
+    }
 
-    };
-
-    this.remove = function () {
+    remove() {
         this.working = true;
         this.department.$remove({}, () => {
             let index = this.departments.indexOf(this.department);
             this.departments.splice(index, 1);
-            if (this.department.id === ActiveCache.department.id) {
-                ActiveCache.department = null;
+            if (this.department.id === this.ActiveCache.department.id) {
+                this.ActiveCache.department = null;
             }
-            ActiveCache.school.numberOfDepartments--;
+            this.ActiveCache.school.numberOfDepartments--;
             this.working = false;
         });
-    };
+    }
 
-    this.edit = function () {
+    edit() {
         this.editMode = true;
-    };
+    }
 
-    this.cancel = function () {
+    cancel() {
         this.editMode = false;
         this.department.name = this._oldName;
-    };
+    }
 
-    this.update = function () {
+    update() {
         this.editMode = false;
         this.working = true;
         this.department.$save({
-            schoolId: ActiveCache.school.id
+            schoolId: this.ActiveCache.school.id
         }, () => {
             this.working = false;
         });
-    };
+    }
+
 }
 
 DepartmentControlCtrl.$inject = ['$scope', '$element', 'ActiveCache'];

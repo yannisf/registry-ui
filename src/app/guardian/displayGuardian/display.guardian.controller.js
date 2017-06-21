@@ -1,8 +1,14 @@
-export default function DisplayGuardianCtrl(AddressService) {
+export default class DisplayGuardianCtrl {
 
-    this.isBlankAddress = function (address) {
-        return AddressService.isBlank(address);
-    };
+    constructor(AddressService) {
+        Object.assign(this, {
+            AddressService
+        })
+    }
+
+    isBlankAddress(address) {
+        return this.AddressService.isBlank(address);
+    }
 
 }
 

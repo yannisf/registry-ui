@@ -1,8 +1,7 @@
 import template from '../guardian.form.tpl.html';
+import CreateGuardianCtrl from './create.guardian.controller';
 
-export default function createGuardianComponent() {
-    return {
-        template: template,
-        controller: 'CreateGuardianCtrl'
-    };
-}
+export default {
+    template: template,
+    controller: CreateGuardianCtrl
+};

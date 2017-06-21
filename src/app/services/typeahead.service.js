@@ -5,8 +5,7 @@ const nationalitiesEndpoint = 'api/typeahead/nationalities';
 const streetnamesEndpoint = 'api/typeahead/streetnames';
 const neighbourhoodsEndpoint = 'api/typeahead/neighbourhoods';
 const citiesEndpoint = 'api/typeahead/cities';
-
-class TypeaheadSvc {
+export default class TypeaheadSvc {
 
     constructor($http) {
         this._$http = $http;
@@ -55,5 +54,3 @@ class TypeaheadSvc {
 }
 
 TypeaheadSvc.$inject = ['$http'];
-
-export default TypeaheadSvc;

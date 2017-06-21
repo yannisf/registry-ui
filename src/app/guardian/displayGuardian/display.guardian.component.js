@@ -1,12 +1,11 @@
 import template from './display.guardian.tpl.html';
+import DisplayGuardianCtrl from './display.guardian.controller';
 
-export default function displayGuardianComponent() {
-    return {
-        bindings: {
-            guardian: '=',
-            address: '='
-        },
-        template: template,
-        controller: 'DisplayGuardianCtrl'
-    };
-}
+export default {
+    bindings: {
+        guardian: '=',
+        address: '='
+    },
+    template: template,
+    controller: DisplayGuardianCtrl
+};

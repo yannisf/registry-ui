@@ -1,43 +1,51 @@
-export default function SchoolsCtrl(uuid4, School, ActiveCache) {
+export default class SchoolsCtrl {
 
-    this.$onInit = function () {
-        this.overviewCtrl.schools = School.query();
-    };
+    constructor(uuid4, School, ActiveCache) {
+        Object.assign(this, {
+            uuid4,
+            School,
+            ActiveCache
+        })
+    }
 
-    this.showSchools = function () {
+    $onInit() {
+        this.overviewCtrl.schools = this.School.query();
+    }
+
+    showSchools() {
         return this.schoolsResolved() &&
             this.hasSchools();
-    };
+    }
 
-    this.schoolsResolved = function () {
+    schoolsResolved() {
         return this.overviewCtrl.schools.$resolved;
-    };
+    }
 
-    this.hasSchools = function () {
+    hasSchools() {
         return this.overviewCtrl.schools.length > 0;
-    };
+    }
 
-    this.setActiveSchool = function (school) {
+    setActiveSchool(school) {
         this.overviewCtrl.setActiveSchool(school);
-    };
+    }
 
-    this.isActiveSchool = function (school) {
-        if (ActiveCache.school) {
-            return school.id === ActiveCache.school.id;
+    isActiveSchool(school) {
+        if (this.ActiveCache.school) {
+            return school.id === this.ActiveCache.school.id;
         }
-    };
+    }
 
-    this.addSchool = function () {
+    addSchool() {
         this.overviewCtrl.schools.$resolved = false;
-        let school = new School({
-            id: uuid4.generate(),
+        let school = new this.School({
+            id: this.uuid4.generate(),
             name: 'Νεο σχολείο'
         });
         school.$save({}, () => {
             this.setActiveSchool(school);
-            this.overviewCtrl.schools = School.query();
+            this.overviewCtrl.schools = this.School.query();
         });
-    };
+    }
 }
 
 SchoolsCtrl.$inject = ['uuid4', 'School', 'ActiveCache'];

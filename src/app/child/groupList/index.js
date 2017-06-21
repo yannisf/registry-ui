@@ -1,8 +1,6 @@
 import angular from 'angular';
-import GroupListCtrl from './group.list.controller';
-import groupListComponent from './group.list.component';
+import groupList from './group.list.component';
 
 export default angular.module('groupList', [])
-    .controller('GroupListCtrl', GroupListCtrl)
-    .component('groupList', groupListComponent())
+    .component('groupList', groupList)
     .name;

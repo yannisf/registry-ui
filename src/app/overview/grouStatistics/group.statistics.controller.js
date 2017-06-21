@@ -1,17 +1,23 @@
-export default function GroupStatisticsCtrl(ActiveCache, Group) {
+export default class GroupStatisticsCtrl {
 
-    let _statistics = null;
+    constructor(ActiveCache, Group) {
+        Object.assign(this, {
+            ActiveCache,
+            Group
+        });
+        this._statistics = null;
+    }
 
-    this.resolve = function () {
-        if (ActiveCache.group) {
-            if (_statistics === null) {
-                _statistics = Group.statistics({
-                    id: ActiveCache.group.id
+    resolve() {
+        if (this.ActiveCache.group) {
+            if (this._statistics === null) {
+                this._statistics = this.Group.statistics({
+                    id: this.ActiveCache.group.id
                 });
             }
-            return _statistics;
+            return this._statistics;
         }
-    };
+    }
 
 }
 

@@ -1,11 +1,10 @@
 import template from './departments.tpl.html';
+import DepartmentsCtrl from './departments.controller';
 
-export default function departmentsComponent() {
-    return {
-        template: template,
-        controller: 'DepartmentsCtrl',
-        require: {
-            overviewCtrl: '^overview'
-        }
-    };
-}
+export default {
+    template: template,
+    controller: DepartmentsCtrl,
+    require: {
+        overviewCtrl: '^overview'
+    }
+};

@@ -1,8 +1,6 @@
 import angular from 'angular';
-import UpdateChildCtrl from './update.child.controller';
-import updateChildComponent from './update.child.component';
+import updateChild from './update.child.component';
 
 export default angular.module('updateChild', [])
-    .controller('UpdateChildCtrl', UpdateChildCtrl)
-    .component('updateChild', updateChildComponent())
+    .component('updateChild', updateChild)
     .name;

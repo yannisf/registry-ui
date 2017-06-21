@@ -1,28 +1,40 @@
-export default function UpdateChildCtrl($stateParams, $state, $uibModal, typeAheadService, Child, Address, ActiveCache) {
+export default class UpdateChildCtrl {
 
-    this.$onInit = function () {
-        this.child = Child.get({
-            id: $stateParams.childId
+    constructor($stateParams, $state, $uibModal, typeAheadService, Child, Address, ActiveCache) {
+        Object.assign(this, {
+            $stateParams,
+            $state,
+            $uibModal,
+            typeAheadService,
+            Child,
+            Address,
+            ActiveCache
+        });
+    }
+
+    $onInit() {
+        this.child = this.Child.get({
+            id: this.$stateParams.childId
         }, (response) => {
-            ActiveCache.child = response;
+            this.ActiveCache.child = response;
         });
 
-        this.address = Address.getForPerson({
-            personId: $stateParams.childId
+        this.address = this.Address.getForPerson({
+            personId: this.$stateParams.childId
         });
 
         this.submitLabel = 'Επεξεργασία';
-        this.typeaheads = typeAheadService;
+        this.typeaheads = this.typeAheadService;
 
         this.calendar = {
-            open: function() {
+            open: function () {
                 this.opened = true;
             },
             opened: false,
             dateOptions: {
                 maxDate: new Date(),
                 maxMode: 'month',
-                initDate: (function() {
+                initDate: (function () {
                     let initDate = new Date();
                     initDate.setFullYear(initDate.getFullYear() - 5);
                     return initDate;
@@ -31,36 +43,28 @@ export default function UpdateChildCtrl($stateParams, $state, $uibModal, typeAhe
                 showWeeks: false
             }
         };
-    };
+    }
 
-    this.cancel = function () {
-        $state.go('viewChild', {
-            childId: ActiveCache.child.id
+    cancel() {
+        this.$state.go('viewChild', {
+            childId: this.ActiveCache.child.id
         });
-    };
+    }
 
-    this.submit = function () {
-        // if ($scope.childForm.$pristine) {
-        //     console.log('Form is pristine');
-        //     $state.go('viewChild', {
-        //         childId: ActiveCache.child.id
-        //     });
-        // } else if ($scope.childForm.$invalid) {
-        //     console.log('Form is invalid');
-        // } else {
+    submit() {
         this.address.$save(() => {
             this.child.$save({
                 addressId: this.address.id,
-                groupId: ActiveCache.group.id
+                groupId: this.ActiveCache.group.id
             }, () => {
-                ActiveCache.child = this.child;
-                $state.go('viewChild', {
-                    childId: ActiveCache.child.id
+                this.ActiveCache.child = this.child;
+                this.$state.go('viewChild', {
+                    childId: this.ActiveCache.child.id
                 });
             });
         });
-        // }
-    };
+
+    }
 }
 
 UpdateChildCtrl.$inject = ['$stateParams', '$state', '$uibModal', 'TypeaheadSvc', 'Child', 'Address', 'ActiveCache'];

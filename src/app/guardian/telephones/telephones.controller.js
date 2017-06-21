@@ -1,19 +1,26 @@
-export default function TelephonesCtrl(uuid4, ListSvc) {
+export default class TelephonesCtrl {
 
-    this.$onInit = function () {
-        ListSvc.telephoneTypes().then((data) => this.telephoneTypes = data);
-    };
+    constructor(uuid4, ListSvc) {
+        Object.assign(this, {
+            uuid4,
+            ListSvc
+        });
+    }
 
-    this.addTelephone = function () {
+    $onInit() {
+        this.ListSvc.telephoneTypes().then((data) => this.telephoneTypes = data);
+    }
+
+    addTelephone() {
         let telephone = {
-            id: uuid4.generate()
+            id: this.uuid4.generate()
         };
         this.model.push(telephone);
-    };
+    }
 
-    this.removeTelephone = function (telephoneIndex) {
+    removeTelephone(telephoneIndex) {
         this.model.splice(telephoneIndex, 1);
-    };
+    }
 
 }
 

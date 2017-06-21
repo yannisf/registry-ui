@@ -1,8 +1,7 @@
 import template from './navbar.tpl.html';
+import NavbarCtrl from './navbar.controller';
 
-export default function navbarComponent() {
-    return {
-        template: template,
-        controller: 'NavbarCtrl'
-    };
-}
+export default {
+    template: template,
+    controller: NavbarCtrl
+};

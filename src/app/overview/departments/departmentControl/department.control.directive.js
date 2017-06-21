@@ -1,4 +1,6 @@
 import template from './department.control.tpl.html';
+import DepartmentControlCtrl from './department.control.controller';
+
 
 export default function departmentControlDir() {
     return {
@@ -10,6 +12,6 @@ export default function departmentControlDir() {
         template: template,
         bindToController: true,
         controllerAs: '$ctrl',
-        controller: 'DepartmentControlCtrl'
+        controller: DepartmentControlCtrl
     };
 }

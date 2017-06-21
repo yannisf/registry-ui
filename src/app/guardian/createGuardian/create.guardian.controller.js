@@ -1,17 +1,30 @@
-export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListSvc) {
+export default class CreateGuardianCtrl {
 
-    this.$onInit = function () {
-        this.guardian = new Guardian({
-            id: uuid4.generate(),
+    constructor($state, uuid4, ActiveCache, Guardian, Address, Relationship, typeAheadService, ListSvc) {
+        Object.assign(this, {
+            $state,
+            uuid4,
+            ActiveCache,
+            Guardian,
+            Address,
+            Relationship,
+            typeAheadService,
+            ListSvc
+        });
+    }
+
+    $onInit() {
+        this.guardian = new this.Guardian({
+            id: this.uuid4.generate(),
             telephones: []
         });
 
-        this.address = new Address({
-            id: uuid4.generate()
+        this.address = new this.Address({
+            id: this.uuid4.generate()
         });
 
-        this.relationship = new Relationship({
-            id: uuid4.generate(),
+        this.relationship = new this.Relationship({
+            id: this.uuid4.generate(),
             metadata: {
                 type: null
             }
@@ -19,19 +32,19 @@ export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian,
 
         this.submitLabel = 'Δημιουργία';
         this.sharedAddress = false;
-        this.typeaheads = typeAheadService;
+        this.typeaheads = this.typeAheadService;
 
-        ListSvc.relationshipTypes().then((data) => this.relationshipTypes = data);
+        this.ListSvc.relationshipTypes().then((data) => this.relationshipTypes = data);
 
         this.calendar = {
-            open: function() {
+            open: function () {
                 this.opened = true;
             },
             opened: false,
             dateOptions: {
                 maxDate: new Date(),
                 maxMode: 'month',
-                initDate: (function() {
+                initDate: (function () {
                     let initDate = new Date();
                     initDate.setFullYear(initDate.getFullYear() - 30);
                     return initDate;
@@ -40,28 +53,28 @@ export default function CreateGuardianCtrl($state, uuid4, ActiveCache, Guardian,
                 showWeeks: false
             }
         };
-    };
+    }
 
-    this.cancel = function () {
-        $state.go('viewChild', {
-            childId: ActiveCache.child.id
+    cancel() {
+        this.$state.go('viewChild', {
+            childId: this.ActiveCache.child.id
         });
-    };
+    }
 
-    this.submit = function () {
+    submit() {
         this.address.$save()
             .then(() => this.guardian.$save({
                 addressId: this.address.id
             }))
             .then(() => this.relationship.$save({
-                childId: ActiveCache.child.id,
+                childId: this.ActiveCache.child.id,
                 guardianId: this.guardian.id
             }))
-            .then(() => $state.go('viewChild', {
-                childId: ActiveCache.child.id
+            .then(() => this.$state.go('viewChild', {
+                childId: this.ActiveCache.child.id
             }));
-    };
-}
+    }
 
+}
 
 CreateGuardianCtrl.$inject = ['$state', 'uuid4', 'ActiveCache', 'Guardian', 'Address', 'Relationship', 'TypeaheadSvc', 'ListSvc'];

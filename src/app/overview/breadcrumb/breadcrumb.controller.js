@@ -1,45 +1,53 @@
-export default function BreadcrumbCtrl($state, $cookieStore, ActiveCache) {
+export default class BreadcrumbCtrl {
 
-    this.getSchool = function () {
-        return ActiveCache.school;
-    };
-
-    this.getDepartment = function () {
-        return ActiveCache.department;
-    };
-
-    this.getGroup = function () {
-        return ActiveCache.group;
-    };
-
-    this.getChildName = function () {
-        return ActiveCache.getChildName();
-    };
-
-    this.toSchool = function () {
-        ActiveCache.clearDepartment();
-        $cookieStore.remove('group');
-        $state.go('overview');
-    };
-
-    this.toDepartment = function () {
-        ActiveCache.clearGroup();
-        $cookieStore.remove('group');
-        $state.go('overview');
-    };
-
-    this.toGroup = function () {
-        ActiveCache.clearChild();
-        $state.go('overview', {
-            groupId: ActiveCache.group.id
+    constructor($state, $cookieStore, ActiveCache) {
+        Object.assign(this, {
+            $state,
+            $cookieStore,
+            ActiveCache
         });
-    };
+    }
 
-    this.toChild = function () {
-        $state.go('viewChild', {
-            childId: ActiveCache.child.id
+    getSchool() {
+        return this.ActiveCache.school;
+    }
+
+    getDepartment() {
+        return this.ActiveCache.department;
+    }
+
+    getGroup() {
+        return this.ActiveCache.group;
+    }
+
+    getChildName() {
+        return this.ActiveCache.getChildName();
+    }
+
+    toSchool() {
+        this.ActiveCache.clearDepartment();
+        this.$cookieStore.remove('group');
+        this.$state.go('overview');
+    }
+
+    toDepartment() {
+        this.ActiveCache.clearGroup();
+        this.$cookieStore.remove('group');
+        this.$state.go('overview');
+    }
+
+    toGroup() {
+        this.ActiveCache.clearChild();
+        this.$state.go('overview', {
+            groupId: this.ActiveCache.group.id
         });
-    };
+    }
+
+    toChild() {
+        this.$state.go('viewChild', {
+            childId: this.ActiveCache.child.id
+        });
+    }
 
 }
 

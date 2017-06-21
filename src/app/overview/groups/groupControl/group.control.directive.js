@@ -1,4 +1,5 @@
 import template from './group.control.tpl.html';
+import GroupControlCtrl from './group.control.controller';
 
 export default function groupControlDir() {
     return {
@@ -10,6 +11,6 @@ export default function groupControlDir() {
         template: template,
         bindToController: true,
         controllerAs: '$ctrl',
-        controller: 'GroupControlCtrl'
+        controller: GroupControlCtrl
     };
 }

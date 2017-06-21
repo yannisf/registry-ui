@@ -1,18 +1,22 @@
-export default function LogoutCtrl($rootScope, $http, $window) {
+export default class LogoutCtrl {
 
-    this.username = function() {
-        if ($rootScope.credentials) {
-            return $rootScope.credentials.username;
+    constructor($rootScope, $http, $window) {
+        Object.assign(this, {$rootScope, $http, $window});
+    }
+
+    username() {
+        if (this.$rootScope.credentials) {
+            return this.$rootScope.credentials.username;
         }
-    };
+    }
 
-    this.logout = function() {
-        delete $http.defaults.headers.common['X-Requested-With'];
-        $http.get('logout').then(() => {
-                $window.location.replace($rootScope.applicationUrl);
+    logout() {
+        delete this.$http.defaults.headers.common['X-Requested-With'];
+        this.$http.get('logout').then(() => {
+                this.$window.location.replace(this.$rootScope.applicationUrl);
             }
         );
-    };
+    }
 }
 
 LogoutCtrl.$inject = ['$rootScope', '$http', '$window'];

@@ -1,47 +1,63 @@
 import confimationModalTemplate from './confirmation.modal.tpl.html';
+import ConfirmationModalCtrl from './confirmation.modal.controller';
 
-export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $http, Upload, Child, Address, Relationship, ActiveCache) {
+export default class ViewChildCtrl {
 
-    this.$onInit = function () {
-        this.child = Child.get({
-                id: $stateParams.childId
+    constructor($scope, $stateParams, $state, $uibModal, $http, Upload, Child, Address, Relationship, ActiveCache) {
+        Object.assign(this, {
+            $scope,
+            $stateParams,
+            $state,
+            $uibModal,
+            $http,
+            Upload,
+            Child,
+            Address,
+            Relationship,
+            ActiveCache
+        });
+    }
+
+    $onInit() {
+        this.child = this.Child.get({
+                id: this.$stateParams.childId
             },
             (response) => {
-                ActiveCache.child = response;
+                this.ActiveCache.child = response;
             });
-        this.address = Address.getForPerson({
-            personId: $stateParams.childId
+        this.address = this.Address.getForPerson({
+            personId: this.$stateParams.childId
         });
-        this.relationships = Relationship.query({
-            childId: $stateParams.childId
+        this.relationships = this.Relationship.query({
+            childId: this.$stateParams.childId
         });
         this.submitLabel = 'Επεξεργασία';
-        this.hasChildrenIdsInScope = ActiveCache.childIds.length > 1;
+        this.hasChildrenIdsInScope = this.ActiveCache.childIds.length > 1;
 
-        $scope.$watch('$ctrl.file', () => {
+        this.$scope.$watch('$ctrl.file', () => {
             if (this.file) {
-                Upload.upload({
-                    url: `api/child/${$stateParams.childId}/photo`,
+                this.Upload.upload({
+                    url: `api/child/${this.$stateParams.childId}/photo`,
                     data: {
                         photo: this.file
                     }
                 }).then((response) => {
                     let location = response.headers('Location');
-                    this.child.photoId = location.substr (location.lastIndexOf ('/') + 1);
+                    this.child.photoId = location.substr(location.lastIndexOf('/') + 1);
                 });
             }
         });
 
-    };
+    }
 
-    this.getChildName = function () {
-        return ActiveCache.getChildName();
-    };
+    getChildName() {
+        return this.ActiveCache.getChildName();
+    }
 
-    this.confirmRemovePhoto = function () {
-        let modal = $uibModal.open({
+    confirmRemovePhoto() {
+        let modal = this.$uibModal.open({
             template: confimationModalTemplate,
-            controller: 'ConfirmationModalCtrl',
+            controller: ConfirmationModalCtrl,
             bindToController: true,
             controllerAs: '$ctrl',
             resolve: {
@@ -57,17 +73,16 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
         });
 
         modal.result.then(() => {
-            $http.delete(`api/child/${$stateParams.childId}/photo`).then(() =>
+            this.$http.delete(`api/child/${this.$stateParams.childId}/photo`).then(() =>
                 this.child.photoId = null
             );
         });
-    };
+    }
 
-
-    this.confirmRemoveChild = function () {
-        let modal = $uibModal.open({
+    confirmRemoveChild() {
+        let modal = this.$uibModal.open({
             template: confimationModalTemplate,
-            controller: 'ConfirmationModalCtrl',
+            controller: ConfirmationModalCtrl,
             bindToController: true,
             controllerAs: '$ctrl',
             resolve: {
@@ -84,18 +99,18 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
 
         modal.result.then(() => {
             this.child.$remove(() => {
-                ActiveCache.child = null;
-                $state.go('group', {
-                    groupId: ActiveCache.group.id
+                this.ActiveCache.child = null;
+                this.$state.go('group', {
+                    groupId: this.ActiveCache.group.id
                 });
             });
         });
-    };
+    }
 
-    this.confirmRemoveRelationship = function (relationship) {
-        let modal = $uibModal.open({
+    confirmRemoveRelationship(relationship) {
+        let modal = this.$uibModal.open({
             template: confimationModalTemplate,
-            controller: 'ConfirmationModalCtrl',
+            controller: ConfirmationModalCtrl,
             bindToController: true,
             controllerAs: '$ctrl',
             resolve: {
@@ -112,13 +127,13 @@ export default function ViewChildCtrl($scope, $stateParams, $state, $uibModal, $
 
         modal.result.then(() => {
             relationship.$remove(() => {
-                this.relationships = Relationship.query({
-                    childId: ActiveCache.child.id
+                this.relationships = this.Relationship.query({
+                    childId: this.ActiveCache.child.id
                 });
             });
         });
 
-    };
+    }
 }
 
 ViewChildCtrl.$inject = ['$scope', '$stateParams', '$state', '$uibModal', '$http', 'Upload', 'Child', 'Address', 'Relationship', 'ActiveCache'];

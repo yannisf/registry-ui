@@ -1,8 +1,8 @@
 import template from './previous-next.tpl.html';
+import PreviousNextCtrl from './previous-next.controller';
 
-export default function previousNextComponent() {
-    return {
-        template: template,
-        controller: 'PreviousNextCtrl'
-    };
-}
+export default {
+    template: template,
+    controller: PreviousNextCtrl
+};
+

@@ -1,8 +1,7 @@
 import template from './logout.tpl.html';
+import LogoutCtrl from './logout.controller';
 
-export default function logoutComponent() {
-    return {
-        template: template,
-        controller: 'LogoutCtrl'
-    };
-}
+export default {
+    template: template,
+    controller: LogoutCtrl
+};

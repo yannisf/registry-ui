@@ -1,14 +1,13 @@
 const RELATIONSHIP_TYPE_ENDPOINT = 'api/types/relationship';
 const TELEPHONE_TYPE_ENDPOINT = 'api/types/telephone';
 
-class ListSvc {
+export default class ListSvc {
 
     constructor($http) {
         this._$http = $http;
         this._cachedRelationalTypes = null;
         this._cachedTelephoneTypes = null;
     }
-
 
     relationshipTypes() {
         if (this._cachedRelationalTypes === null) {
@@ -29,5 +28,3 @@ class ListSvc {
 }
 
 ListSvc.$inject = ['$http'];
-
-export default ListSvc;

@@ -1,54 +1,58 @@
-export default function GroupsCtrl(uuid4, Group, ActiveCache) {
+export default class GroupsCtrl {
 
-    this.$onInit = function () {
-        // console.log('Initializing GroupsCtrl', this);
-    };
+    constructor(uuid4, Group, ActiveCache) {
+        Object.assign(this, {
+            uuid4,
+            Group,
+            ActiveCache
+        });
+    }
 
-    this.showGroups = function () {
+    showGroups() {
         return this.hasActiveDepartment() &&
             this.groupsResolved() &&
             this.hasGroups();
-    };
+    }
 
-    this.hasActiveDepartment = function () {
-        return ActiveCache.department !== null;
-    };
+    hasActiveDepartment() {
+        return this.ActiveCache.department !== null;
+    }
 
-    this.groupsResolved = function () {
+    groupsResolved() {
         return this.overviewCtrl.groups.$resolved;
-    };
+    }
 
-    this.hasGroups = function () {
+    hasGroups() {
         return this.overviewCtrl.groups.length > 0;
-    };
+    }
 
-    this.setActiveGroup = function (group) {
+    setActiveGroup(group) {
         this.overviewCtrl.setActiveGroup(group);
-    };
+    }
 
-    this.isActiveGroup = function (group) {
-        if (ActiveCache.group) {
-            return group.id === ActiveCache.group.id;
+    isActiveGroup(group) {
+        if (this.ActiveCache.group) {
+            return group.id === this.ActiveCache.group.id;
         }
-    };
+    }
 
-    this.addGroup = function () {
+    addGroup() {
         this.overviewCtrl.groups.$resolved = false;
-        let group = new Group({
-            id: uuid4.generate(),
+        let group = new this.Group({
+            id: this.uuid4.generate(),
             name: 'Νεα χρόνια'
         });
         group.$save({
-            departmentId: ActiveCache.department.id
+            departmentId: this.ActiveCache.department.id
         }, () => {
             this.setActiveGroup(group);
-            this.overviewCtrl.groups = Group.query({
-                departmentId: ActiveCache.department.id
+            this.overviewCtrl.groups = this.Group.query({
+                departmentId: this.ActiveCache.department.id
             }, () => {
-                ActiveCache.department.numberOfGroups++;
+                this.ActiveCache.department.numberOfGroups++;
             });
         });
-    };
+    }
 }
 
 GroupsCtrl.$inject = ['uuid4', 'Group', 'ActiveCache'];

@@ -1,8 +1,8 @@
 import template from '../child.form.tpl.html';
+import UpdateChildCtrl from './update.child.controller';
 
-export default function updateChildComponent() {
-    return {
-        template: template,
-        controller: 'UpdateChildCtrl'
-    };
-}
+export default {
+    template: template,
+    controller: UpdateChildCtrl
+};
+

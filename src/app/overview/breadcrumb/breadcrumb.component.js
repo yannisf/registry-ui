@@ -1,8 +1,7 @@
 import template from './breadcrumb.tpl.html';
+import BreadcrumbCtrl from './breadcrumb.controller';
 
-export default function breadcrumbComponent() {
-    return {
-        template: template,
-        controller: 'BreadcrumbCtrl'
-    };
-}
+export default {
+    template: template,
+    controller: BreadcrumbCtrl
+};

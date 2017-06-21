@@ -1,9 +1,7 @@
 import angular from 'angular';
-import GroupsCtrl from './groups.controller';
-import groupsComponent from './groups.component';
+import groups from './groups.component';
 import groupControl from './groupControl';
 
 export default angular.module('groups', [groupControl])
-    .controller('GroupsCtrl', GroupsCtrl)
-    .component('groups', groupsComponent())
+    .component('groups', groups)
     .name;

@@ -38,7 +38,7 @@
     "sass-loader": "6.0.x",
     "style-loader": "0.16.x",
     "url-loader": "0.5.x",
-    "webpack": "2.5.x",
+    "webpack": "2.6.x",
     "webpack-dev-server": "2.4.x"
   }
 }

@@ -1,15 +1,17 @@
-export default function RemoveRelationshipModalCtrl($uibModalInstance, texts) {
+export default class ConfirmationModalCtrl {
 
-    this.texts = texts;
+    constructor($uibModalInstance, texts) {
+        Object.assign(this, {$uibModalInstance, texts});
+    }
 
-    this.ok = function() {
-        $uibModalInstance.close();
-    };
+    ok() {
+        this.$uibModalInstance.close();
+    }
 
-    this.cancel = function() {
-        $uibModalInstance.dismiss();
-    };
+    cancel() {
+        this.$uibModalInstance.dismiss();
+    }
 
 }
 
-RemoveRelationshipModalCtrl.$inject = ['$uibModalInstance', 'texts'];
+ConfirmationModalCtrl.$inject = ['$uibModalInstance', 'texts'];

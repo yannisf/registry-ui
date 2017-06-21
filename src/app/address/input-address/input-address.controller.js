@@ -1,11 +1,15 @@
-export default function InputAddressCtrl(typeAheadService, ActiveCache, Address) {
+export default class InputAddressCtrl {
 
-    this.$onInit = function () {
+    constructor(typeAheadService, ActiveCache, Address) {
+        Object.assign(this, {ActiveCache, Address});
         this.typeaheads = typeAheadService;
-        this.isAddressOpen = false;
-    };
+    }
 
-    this.clear = function () {
+    $onInit() {
+        this.isAddressOpen = false;
+    }
+
+    clear() {
         for (var property in this.address) {
             if (this.address.hasOwnProperty(property) && !property.startsWith('$')) {
                 if (property !== 'id') {
@@ -13,16 +17,17 @@ export default function InputAddressCtrl(typeAheadService, ActiveCache, Address)
                 }
             }
         }
-    };
+    }
 
-    this.copyFromChild = function () {
+    copyFromChild() {
         let id = this.address.id;
-        this.address = Address.getForPerson({
-            personId: ActiveCache.child.id
+        this.address = this.Address.getForPerson({
+            personId: this.ActiveCache.child.id
         }, () => {
             this.address.id = id;
         });
-    };
+    }
+
 }
 
 InputAddressCtrl.$inject = ['TypeaheadSvc', 'ActiveCache', 'Address'];

@@ -1,12 +1,11 @@
 import template from './display.child.tpl.html';
+import DisplayChildCtrl from './display.child.controller';
 
-export default function displayChildComponent() {
-    return {
-        bindings: {
-            child: '=',
-            address: '='
-        },
-        template: template,
-        controller: 'DisplayChildCtrl'
-    };
-}
+export default {
+    bindings: {
+        child: '=',
+        address: '='
+    },
+    template: template,
+    controller: DisplayChildCtrl
+};

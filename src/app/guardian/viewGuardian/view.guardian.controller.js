@@ -1,28 +1,39 @@
-export default function ViewGuardianCtrl($state, $stateParams, ActiveCache, Guardian, Relationship, Address) {
+export default class ViewGuardianCtrl {
 
-    this.$onInit = function () {
-        this.guardian = Guardian.get({
-            id: $stateParams.guardianId
+    constructor($state, $stateParams, ActiveCache, Guardian, Relationship, Address) {
+        Object.assign(this, {
+            $state,
+            $stateParams,
+            ActiveCache,
+            Guardian,
+            Relationship,
+            Address
+        })
+    }
+
+    $onInit() {
+        this.guardian = this.Guardian.get({
+            id: this.$stateParams.guardianId
         });
 
-        this.address = Address.getForPerson({
-            personId: $stateParams.guardianId
+        this.address = this.Address.getForPerson({
+            personId: this.$stateParams.guardianId
         });
 
-        this.relationship = Relationship.get({
-            childId: ActiveCache.child.id,
-            guardianId: $stateParams.guardianId
+        this.relationship = this.Relationship.get({
+            childId: this.ActiveCache.child.id,
+            guardianId: this.$stateParams.guardianId
         });
 
-        this.guardianId = $stateParams.guardianId;
+        this.guardianId = this.$stateParams.guardianId;
         this.submitLabel = 'Επεξεργασία';
-    };
+    }
 
-    this.cancel = function () {
-        $state.go('viewChild', {
-            childId: ActiveCache.child.id
+    cancel() {
+        this.$state.go('viewChild', {
+            childId: this.ActiveCache.child.id
         });
-    };
+    }
 
 }
 

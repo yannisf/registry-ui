@@ -1,4 +1,4 @@
-class ActiveCacheSvc {
+export default class ActiveCacheSvc {
 
     constructor($http, $q) {
         this._$http = $http;
@@ -63,5 +63,3 @@ class ActiveCacheSvc {
 }
 
 ActiveCacheSvc.$inject = ['$http', '$q'];
-
-export default ActiveCacheSvc;
