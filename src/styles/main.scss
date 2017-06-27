@@ -1,8 +1,9 @@
+@import 'font-awesome';
 @import '_variables';
 @import '~bootswatch/cosmo/_variables';
 @import '_bootstrap';
 @import '~bootswatch/cosmo/_bootswatch';
-@import '~font-awesome/scss/font-awesome';
+
 $boy-color: #3399ff;
 $girl-color: #ff33ff;
 $preschool-a-color: #ff8000;
@@ -27,18 +28,18 @@ body {
 
 .collaspable {
   @extend .clickable;
-  @extend .glyphicon;
+  @extend .fa;
   font-size: small;
 }
 
 .collapsable-open {
   @extend .collaspable;
-  @extend .glyphicon-triangle-right;
+  @extend .fa-caret-right;
 }
 
 .collapsable-close {
   @extend .collaspable;
-  @extend .glyphicon-triangle-bottom;
+  @extend .fa-caret-down;
 }
 
 .loader-input {
@@ -206,28 +207,28 @@ tr:hover div.controls {
 }
 
 .control-glyphicon {
-  @extend .glyphicon;
+  @extend .fa;
   font-size: 14px;
 }
 
 span.remove {
   @extend .control-glyphicon;
-  @extend .glyphicon-remove;
+  @extend .fa-times;
 }
 
 span.ok {
   @extend .control-glyphicon;
-  @extend .glyphicon-ok;
+  @extend .fa-check;
 }
 
 span.edit {
   @extend .control-glyphicon;
-  @extend .glyphicon-edit;
+  @extend .fa-pencil-square-o;
 }
 
 span.new-window {
   @extend .control-glyphicon;
-  @extend .glyphicon-new-window;
+  @extend .fa-external-link;
 }
 
 .cancel-link {
