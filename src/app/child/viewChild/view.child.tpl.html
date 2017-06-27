@@ -16,7 +16,7 @@
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                         <li role="menuitem">
                             <a download href="api/child/{{$ctrl.child.id}}/cards">
-                                <span class="glyphicon glyphicon-print"></span> Καρτέλες
+                                <span class="fa fa-print"></span> Καρτέλες
                             </a>
                         </li>
                         <li role="menuitem">
@@ -26,13 +26,13 @@
                         </li>
                         <li role="menuitem">
                             <a ui-sref="updateChild({childId: $ctrl.child.id})">
-                                <span class="glyphicon glyphicon-edit"></span> Επεξεργασία
+                                <span class="fa fa-pencil-square-o"></span> Επεξεργασία
                             </a>
                         </li>
                         <li class="divider"></li>
                         <li role="menuitem">
                             <a href ng-click="$ctrl.confirmRemoveChild()">
-                                <span class="glyphicon glyphicon-remove"></span> Διαγραφή
+                                <span class="fa fa-times"></span> Διαγραφή
                             </a>
                         </li>
                     </ul>
@@ -97,13 +97,13 @@
                                 </li>
                                 <li role="menuitem">
                                     <a ui-sref="updateGuardian({guardianId: relationship.guardian.id})" style="text-decoration: none">
-                                        <span class="glyphicon glyphicon-edit"></span> Επεξεργασία
+                                        <span class="fa fa-pencil-square-o"></span> Επεξεργασία
                             </a>
                             </li>
                             <li class="divider"></li>
                             <li role="menuitem">
                                 <a href ng-click="$ctrl.confirmRemoveRelationship(relationship)" style="text-decoration: none">
-                                    <span class="glyphicon glyphicon-remove"></span> Διαγραφή
+                                    <span class="fa fa-times"></span> Διαγραφή
                                 </a>
                             </li>
                             </ul>
