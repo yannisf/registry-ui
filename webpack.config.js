@@ -1,5 +1,6 @@
 var path = require('path');
 
+const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -55,6 +56,15 @@ module.exports = {
     },
     plugins: [
         extractSass,
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: function (module) {
+                return module.context && module.context.indexOf('node_modules') !== -1;
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest'
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.ejs'
         }),
