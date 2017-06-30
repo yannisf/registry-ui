@@ -1,13 +1,14 @@
 @import 'font-awesome';
-@import '_variables';
-@import '~bootswatch/cosmo/_variables';
-@import '_bootstrap';
-@import '~bootswatch/cosmo/_bootswatch';
+@import 'variables';
+@import '~bootswatch/cosmo/variables';
+@import 'bootstrap';
+@import '~bootswatch/cosmo/bootswatch';
 
 $boy-color: #3399ff;
 $girl-color: #ff33ff;
 $preschool-a-color: #ff8000;
 $preschool-b-color: #66cc00;
+
 body {
   font-family: 'Open Sans', sans-serif;
 }

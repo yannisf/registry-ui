@@ -1,38 +1,35 @@
-var path = require('path');
-
+const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const revision = require('child_process').execSync('git rev-parse --short HEAD').toString().trim();
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].css",
-});
 
 module.exports = {
     entry: {
-        application: './src/app/index.js',
+        app: './src/app/index.js',
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9000,
         proxy: {
-            "/api": "http://localhost:9090/registry"
+            '/api': 'http://localhost:9090/registry'
         }
     },
     module: {
         rules: [{
                 test: /\.scss$/,
-                use: extractSass.extract({
+                use: ExtractTextPlugin.extract({
                     use: [{
-                        loader: "css-loader"
+                        loader: 'css-loader'
                     }, {
-                        loader: "sass-loader"
+                        loader: 'sass-loader'
                     }],
                 })
             }, {
@@ -55,7 +52,10 @@ module.exports = {
         ]
     },
     plugins: [
-        extractSass,
+        new CleanWebpackPlugin(['dist']),
+        new ExtractTextPlugin({
+            filename: 'styles.css',
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function (module) {
@@ -66,12 +66,18 @@ module.exports = {
             name: 'manifest'
         }),
         new HtmlWebpackPlugin({
-            template: './src/index.ejs'
+            template: './src/index.ejs',
+            message: revision
         }),
         new HtmlWebpackPlugin({
             filename: 'login.html',
             template: './src/login.html',
             inject: false
+        }),
+        new webpack.SourceMapDevToolPlugin({
+            filename: '[name].js.map',
+            include: 'app.js',
+            exclude: 'vendor.js'
         })
     ]
 };

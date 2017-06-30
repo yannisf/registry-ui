@@ -1,4 +1,9 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/" !default;
-$fa-font-path: "~font-awesome/fonts/";
+// $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/" !default;
+// $fa-font-path: "~font-awesome/fonts/";
 //$btn-default-bg:        lighten($gray-light, 10%);
 //$table-bg-active:       darken($table-bg-hover, 5%);
+
+$font-family-sans-serif:  "Open Sans", sans-serif !default;
+$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
+$font-family-base:        $font-family-sans-serif !default;

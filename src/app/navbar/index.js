@@ -1,7 +1,6 @@
 import angular from 'angular';
 import navbar from './navbar.component';
-import logout from '../logout';
 
-export default angular.module('navbar', [logout])
+export default angular.module('navbar', [])
     .component('navbar', navbar)
     .name;

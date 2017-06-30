@@ -4,7 +4,6 @@ import filters from './services/filters';
 import address from './address';
 import overview from './overview';
 import navbar from './navbar';
-import logout from './logout';
 import ngResource from 'angular-resource';
 import uiRouter from '@uirouter/angularjs';
 import uiBootstrap from 'angular-ui-bootstrap';
@@ -13,7 +12,7 @@ import ListSvc from './services/list.service';
 import TypeaheadSvc from './services/typeahead.service';
 import '../styles/main.scss';
 
-angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters, address, overview, navbar, logout])
+angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters, address, overview, navbar])
     .config(['$httpProvider', '$urlRouterProvider',
         function ($httpProvider, $urlRouterProvider) {
 
@@ -32,16 +31,9 @@ angular.module('schoolApp', [ngResource, uiBootstrap, uiRouter, values, filters,
             $urlRouterProvider.otherwise('overview');
         }
     ])
-    .run(['$rootScope', '$http', '$location', '$window',
-        function ($rootScope, $http, $location, $window) {
+    .run(['$rootScope', '$location', '$window',
+        function ($rootScope, $location, $window) {
             $rootScope.applicationUrl = $window.location.href.substring(0, $window.location.href.indexOf('#'));
-            $http.get('api/context/authentication').then((response) => {
-                $rootScope.credentials = {
-                    username: response.data.name,
-                    authorities: response.data.authorities
-                };
-            });
-
         }
     ])
     .service('ActiveCache', ActiveCacheSvc)
