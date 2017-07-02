@@ -67,7 +67,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/index.ejs',
-            message: revision
+            favicon: './src/images/favicon.png',
+            revision: revision
         }),
         new HtmlWebpackPlugin({
             filename: 'login.html',
